@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class MySQLDAO {
     
     public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String DBURL = "jdbc:mysql:///gestaoFinanceiraDB";
+    public static final String DBURL = "jdbc:mysql://104.196.3.222:3306/gestaoFinanceiraDB";
     private static Connection con;
     
     // metodo para criar a conexao com MySQL
@@ -73,4 +73,10 @@ public class MySQLDAO {
             e.printStackTrace();
         }
     }
+    
+//    Teste da conexão com o servidor da aplicação
+//    public static void main(String[] args) {
+//        getConnection();
+//    }
+    
 }
