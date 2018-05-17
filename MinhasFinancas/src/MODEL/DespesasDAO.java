@@ -32,7 +32,7 @@ public class DespesasDAO {
                 + " ICMS, PIS, COFINS, tcGrupoContas_idGrupoContas, tcTipoConta_idTipoConta) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, 
-                despesa.getIdGrupoContas(), 
+                despesa.getIdttCredito(), 
                 despesa.getDocumento(), 
                 despesa.getValorOriginal(), 
                 despesa.getOrigem(),

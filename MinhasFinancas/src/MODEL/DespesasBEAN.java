@@ -26,8 +26,25 @@ public class DespesasBEAN {
     private int idGrupoContas;
     private int idTipoConta;
 
+    public DespesasBEAN(){
+        
+    }
     public DespesasBEAN(int idttCredito, String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, Date DataInclusao, Date DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
         this.idttCredito = idttCredito;
+        this.Documento = Documento;
+        this.ValorOriginal = ValorOriginal;
+        this.Origem = Origem;
+        this.Situacao = Situacao;
+        this.Parcela = Parcela;
+        this.DataInclusao = DataInclusao;
+        this.DataVencimento = DataVencimento;
+        this.ICMS = ICMS;
+        this.PIS = PIS;
+        this.COFINS = COFINS;
+        this.idGrupoContas = idGrupoContas;
+        this.idTipoConta = idTipoCOnta;
+    }
+    public DespesasBEAN(String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, Date DataInclusao, Date DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
         this.Documento = Documento;
         this.ValorOriginal = ValorOriginal;
         this.Origem = Origem;
