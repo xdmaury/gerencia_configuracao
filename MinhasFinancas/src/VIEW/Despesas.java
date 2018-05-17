@@ -7,6 +7,7 @@ import MODEL.TipoContasBEAN;
 import MODEL.DespesasBEAN;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Calendar;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import javax.swing.JFormattedTextField;
@@ -119,6 +120,7 @@ public class Despesas extends javax.swing.JDialog {
         jLabel8.setText("Grupo:");
 
         cb_grupoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cb_grupoConta.setSelectedItem(cb_grupoConta);
         cb_grupoConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_grupoContaActionPerformed(evt);
@@ -126,7 +128,7 @@ public class Despesas extends javax.swing.JDialog {
         });
 
         cb_TipoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_TipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_TipoConta.setSelectedItem(cb_TipoConta);
         cb_TipoConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_TipoContaActionPerformed(evt);
@@ -335,9 +337,10 @@ public class Despesas extends javax.swing.JDialog {
             }
             
             oDespesa.setDocumento(textDocumento.getText());
-            oDespesa.setValorOriginal((float)textValor.getValue());
+            Object oValor = textValor.getValue();
+            oDespesa.setValorOriginal(Float.valueOf(oValor.toString()));
             oDespesa.setDataInclusao(Date.valueOf(dataAtual));
-            oDespesa.setDataVencimento(formatarData());
+            oDespesa.setDataVencimento(formatarData().getTime());
             oDespesa.setOrigem("Tela Despesas");
             if(APagar.isSelected()){
                 oDespesa.setSituacao(0);
@@ -474,11 +477,14 @@ public class Despesas extends javax.swing.JDialog {
         return true;
     }
     
-    private Date formatarData(){
+    private Calendar formatarData(){
+        
         int dia = Integer.parseInt(textDia.getText());
         int mes = Integer.parseInt(textMes.getText());
         int ano = Integer.parseInt(textAno.getText());
-        Date d = new Date(ano, mes, dia);
-        return d;
+        
+        Calendar c = Calendar.getInstance();
+        c.set(ano, mes, dia);
+        return c;
     }
 }
