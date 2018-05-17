@@ -28,10 +28,11 @@ public class DespesasDAO {
     }
     
     public long create(DespesasBEAN despesa) {
-        String query = "INSERT INTO ttCredito(Documento, ValorOriginal, Origem, Situacao, Parcela, DataInclusao, DataVencimento,"
+        String query = "INSERT INTO ttCredito(idttCredito, Documento, ValorOriginal, Origem, Situacao, Parcela, DataInclusao, DataVencimento,"
                 + " ICMS, PIS, COFINS, tcGrupoContas_idGrupoContas, tcTipoConta_idTipoConta) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        return MySQLDAO.executeQuery(query,  
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        return MySQLDAO.executeQuery(query, 
+                despesa.getIdttCredito(), 
                 despesa.getDocumento(), 
                 despesa.getValorOriginal(), 
                 despesa.getOrigem(),
