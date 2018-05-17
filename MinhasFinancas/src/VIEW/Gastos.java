@@ -11,9 +11,6 @@ package VIEW;
  */
 public class Gastos extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Gastos
-     */
     public Gastos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
