@@ -74,9 +74,4 @@ public class MySQLDAO {
         }
     }
     
-//    Teste da conexão com o servidor da aplicação
-//    public static void main(String[] args) {
-//        getConnection();
-//    }
-    
 }
