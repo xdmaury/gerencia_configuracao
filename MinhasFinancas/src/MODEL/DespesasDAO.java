@@ -91,6 +91,11 @@ public class DespesasDAO {
         return result;
     }
     
+    public void updateSituacao(DespesasBEAN despesa) {
+        String query = "UPDATE ttCredito SET Situacao = ? WHERE idttCredito = ?";
+        MySQLDAO.executeQuery(query, despesa.getSituacao(), despesa.getIdttCredito());
+    }
+    
     public Boolean isExist(int iddespesa) {
         Boolean result = false;
         ResultSet rs = null;
