@@ -1,15 +1,22 @@
 package VIEW;
 
-import javax.swing.JDesktopPane;
+import CONTROLLER.Controller;
+import MODEL.DespesasBEAN;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
 
+    private javax.swing.table.DefaultTableModel ttCredito;
+
     public InterfacePrincipal() {
+        Controller controle = new Controller();
         initComponents();
         this.setLocationRelativeTo(this);
+        ttCredito = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
+        preencher_Tabela_Produtos(controle.listarDespesas());
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -19,7 +26,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableContasPagar = new javax.swing.JTable();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -50,7 +57,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(java.awt.SystemColor.window);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Minhas Contas a Pagar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableContasPagar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -66,25 +73,25 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(5);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(20);
+        jScrollPane1.setViewportView(jTableContasPagar);
+        if (jTableContasPagar.getColumnModel().getColumnCount() > 0) {
+            jTableContasPagar.getColumnModel().getColumn(0).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTableContasPagar.getColumnModel().getColumn(1).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTableContasPagar.getColumnModel().getColumn(2).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(2).setPreferredWidth(5);
+            jTableContasPagar.getColumnModel().getColumn(3).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(3).setPreferredWidth(10);
+            jTableContasPagar.getColumnModel().getColumn(4).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(4).setPreferredWidth(20);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,13 +115,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 82, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,9 +162,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Despesas telaDespesas = new Despesas(this, true);
-       telaDespesas.setLocationRelativeTo(null);
-       telaDespesas.setVisible(true);
+        Despesas telaDespesas = new Despesas(this, true);
+        telaDespesas.setLocationRelativeTo(null);
+        telaDespesas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -166,7 +172,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         telaGastos.setLocationRelativeTo(null);
         telaGastos.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
+    public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
+        ttCredito.setNumRows(0);
+
+        try {
+            for (DespesasBEAN despesa : despesas) {
+                ttCredito.addRow(new Object[]{despesa.getDocumento(), despesa.getOrigem(), despesa.getParcela(), despesa.getValorOriginal(), despesa.getDataVencimento()});
+            }
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro ao listar dados - " + erro);
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -201,7 +219,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -211,7 +229,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableContasPagar;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

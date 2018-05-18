@@ -17,13 +17,8 @@ public class Controller {
         DespesasDAO.getInstance().create(despesa);
     }
     
-    public void listarDespesas(){
-        DespesasDAO.getInstance().findAlldespesas();
+    public ArrayList<DespesasBEAN> listarDespesas(){
+        return DespesasDAO.getInstance().findAlldespesas();
     }
-    
-//    public static void main(String[] args) {
-//        Controller c = new Controller();
-//        c.listaGrupoContas();
-//    }
     
 }
