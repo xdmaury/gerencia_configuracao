@@ -8,7 +8,6 @@ public class misc {
         //Retorna a data atual
         LocalDate dataAtual = LocalDate.now();
         return dataAtual;
-
     }
 
 }

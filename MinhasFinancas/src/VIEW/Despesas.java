@@ -1,21 +1,16 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import static CONTROLLER.Controller.listaTipoContas;
 import MODEL.GrupoContasBEAN;
 import MODEL.TipoContasBEAN;
 import MODEL.DespesasBEAN;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 
 
 public class Despesas extends javax.swing.JDialog {
-    public Misc m = new Misc();
+    public misc m = new misc();
     public LocalDate dataAtual = m.getDate();
 
     public Despesas(java.awt.Frame parent, boolean modal) {
@@ -333,10 +328,10 @@ public class Despesas extends javax.swing.JDialog {
             int dia = Integer.parseInt(textDia.getText());
             int mes = Integer.parseInt(textMes.getText());
             int ano = Integer.parseInt(textAno.getText());
-            
+            /*
             if(!m.validaData(dia, mes, ano)){
                 throw new Exception("Informe uma data válida");
-            }
+            }*/
             
             oDespesa.setDocumento(textDocumento.getText());
             Object oValor = textValor.getValue();
