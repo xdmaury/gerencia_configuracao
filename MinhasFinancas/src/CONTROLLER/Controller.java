@@ -4,21 +4,21 @@ import MODEL.*;
 import java.util.ArrayList;
 
 public class Controller {
-    
-    public static ArrayList<GrupoContasBEAN> listaGrupoContas(){
+
+    public static ArrayList<GrupoContasBEAN> listaGrupoContas() {
         return GrupoContasDAO.getInstance().list();
     }
-    
-    public static ArrayList<TipoContasBEAN> listaTipoContas(){
+
+    public static ArrayList<TipoContasBEAN> listaTipoContas() {
         return TipoContasDAO.getInstance().list();
     }
-    
-    public void addDespesa(DespesasBEAN despesa){
+
+    public static void addDespesa(DespesasBEAN despesa) {
         DespesasDAO.getInstance().create(despesa);
     }
-    
-    public ArrayList<DespesasBEAN> listarDespesas(){
+
+    public ArrayList<DespesasBEAN> listarDespesas() {
         return DespesasDAO.getInstance().findAlldespesas();
     }
-    
+
 }
