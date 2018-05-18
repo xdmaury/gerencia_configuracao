@@ -13,11 +13,11 @@ public class Controller {
         return TipoContasDAO.getInstance().list();
     }
     
-    public void addDespesa(DespesasBEAN despesa){
+    public static void addDespesa(DespesasBEAN despesa){
         DespesasDAO.getInstance().create(despesa);
     }
     
-    public void listarDespesas(){
+    public static void listarDespesas(){
         DespesasDAO.getInstance().findAlldespesas();
     }
     

@@ -261,9 +261,19 @@ public class Despesas extends javax.swing.JDialog {
 
         APagar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         APagar.setText("A pagar");
+        APagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                APagarActionPerformed(evt);
+            }
+        });
 
         Pago.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Pago.setText("Pago");
+        Pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -350,9 +360,9 @@ public class Despesas extends javax.swing.JDialog {
             oDespesa.setIdGrupoContas(cb_grupoConta.getSelectedIndex());
             oDespesa.setIdTipoConta(cb_TipoConta.getSelectedIndex());
             
-            Controller c = new Controller();
+//            Controller c = new Controller();
             
-            c.addDespesa(oDespesa);
+            Controller.addDespesa(oDespesa);
             
         }catch(Exception e){
             
@@ -366,6 +376,14 @@ public class Despesas extends javax.swing.JDialog {
     private void cb_grupoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_grupoContaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_grupoContaActionPerformed
+
+    private void APagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APagarActionPerformed
+        this.Pago.setSelected(false);
+    }//GEN-LAST:event_APagarActionPerformed
+
+    private void PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoActionPerformed
+        this.APagar.setSelected(false);
+    }//GEN-LAST:event_PagoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -451,14 +469,14 @@ public class Despesas extends javax.swing.JDialog {
     
     private void setGrupoContas() {
         this.listaGrupoContas = Controller.listaGrupoContas();
-        for (GrupoContasBEAN gc: listaGrupoContas) {
+        listaGrupoContas.forEach((gc) -> {
             cb_grupoConta.addItem(gc.getDescricao());
-        }
+        });
     }
     private void setTipoContas() {
         this.listaTipoContas = Controller.listaTipoContas();
-        for (TipoContasBEAN tc: listaTipoContas) {
+        listaTipoContas.forEach((tc) -> {
             cb_TipoConta.addItem(tc.getDescricao());
-        }
+        });
     }    
 }
