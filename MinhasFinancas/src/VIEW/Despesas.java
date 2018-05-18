@@ -6,6 +6,7 @@ import MODEL.GrupoContasBEAN;
 import MODEL.TipoContasBEAN;
 import MODEL.DespesasBEAN;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -126,7 +127,7 @@ public class Despesas extends javax.swing.JDialog {
         });
 
         cb_TipoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_TipoConta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_TipoConta.setToolTipText("");
         cb_TipoConta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_TipoContaActionPerformed(evt);
@@ -306,9 +307,7 @@ public class Despesas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotaoSalvar)))
+                    .addComponent(BotaoSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -330,14 +329,19 @@ public class Despesas extends javax.swing.JDialog {
         //Criando o objeto despesa
         DespesasBEAN oDespesa = new DespesasBEAN();
         try{
-            if(!validaData()){
+            
+            int dia = Integer.parseInt(textDia.getText());
+            int mes = Integer.parseInt(textMes.getText());
+            int ano = Integer.parseInt(textAno.getText());
+            
+            if(!m.validaData(dia, mes, ano)){
                 throw new Exception("Informe uma data válida");
             }
             
             oDespesa.setDocumento(textDocumento.getText());
-            oDespesa.setValorOriginal((float)textValor.getValue());
-            oDespesa.setDataInclusao(Date.valueOf(dataAtual));
-            oDespesa.setDataVencimento(formatarData());
+            Object oValor = textValor.getValue();
+            oDespesa.setValorOriginal(Float.valueOf(oValor.toString()));
+ //           oDespesa.setDataVencimento((Date) m.formatarData(dia, mes, ano).getCalendarType());
             oDespesa.setOrigem("Tela Despesas");
             if(APagar.isSelected()){
                 oDespesa.setSituacao(0);
@@ -461,24 +465,5 @@ public class Despesas extends javax.swing.JDialog {
         for (TipoContasBEAN tc: listaTipoContas) {
             cb_TipoConta.addItem(tc.getDescricao());
         }
-    }
-    private boolean validaData(){
-        int dia = Integer.parseInt(textDia.getText());
-        int mes = Integer.parseInt(textMes.getText());
-        int ano = Integer.parseInt(textAno.getText());
-        if(dia>31||dia<1)
-            return false;
-        if(mes>12||mes<1)
-            return false;
-        
-        return true;
-    }
-    
-    private Date formatarData(){
-        int dia = Integer.parseInt(textDia.getText());
-        int mes = Integer.parseInt(textMes.getText());
-        int ano = Integer.parseInt(textAno.getText());
-        Date d = new Date(ano, mes, dia);
-        return d;
-    }
+    }    
 }
