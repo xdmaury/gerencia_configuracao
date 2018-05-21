@@ -70,7 +70,7 @@ public class ReceitasDAO {
         try {
             if (rs.next()) {
                 result = new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getDate("DataInclusao"), rs.getDate("DataVencimento"), rs.getInt("ICMS"),
+                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
                         rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("idGrupoContas"), rs.getInt("idTipoConta"));
             }
             rs.close();

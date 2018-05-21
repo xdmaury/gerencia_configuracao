@@ -5,8 +5,6 @@
  */
 package MODEL;
 
-import java.sql.Date;
-
 /**
  *
  * @author Bruno
@@ -18,8 +16,8 @@ public class DespesasBEAN {
     private String Origem;
     private int Situacao;
     private int Parcela;
-    private Date DataInclusao;
-    private Date DataVencimento;
+    private String DataInclusao;
+    private String DataVencimento;
     private int ICMS;
     private int PIS;
     private int COFINS;
@@ -29,7 +27,7 @@ public class DespesasBEAN {
     public DespesasBEAN(){
         
     }
-    public DespesasBEAN(int idttCredito, String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, Date DataInclusao, Date DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
+    public DespesasBEAN(int idttCredito, String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, String DataInclusao, String DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
         this.idttCredito = idttCredito;
         this.Documento = Documento;
         this.ValorOriginal = ValorOriginal;
@@ -44,7 +42,7 @@ public class DespesasBEAN {
         this.idGrupoContas = idGrupoContas;
         this.idTipoConta = idTipoCOnta;
     }
-    public DespesasBEAN(String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, Date DataInclusao, Date DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
+    public DespesasBEAN(String Documento, float ValorOriginal, String Origem, int Situacao, int Parcela, String DataInclusao, String DataVencimento, int ICMS, int PIS, int COFINS, int idGrupoContas, int idTipoCOnta) {
         this.Documento = Documento;
         this.ValorOriginal = ValorOriginal;
         this.Origem = Origem;
@@ -107,19 +105,19 @@ public class DespesasBEAN {
         this.Parcela = Parcela;
     }
 
-    public Date getDataInclusao() {
+    public String getDataInclusao() {
         return DataInclusao;
     }
 
-    public void setDataInclusao(Date DataInclusao) {
+    public void setDataInclusao(String DataInclusao) {
         this.DataInclusao = DataInclusao;
     }
 
-    public Date getDataVencimento() {
+    public String getDataVencimento() {
         return DataVencimento;
     }
 
-    public void setDataVencimento(Date DataVencimento) {
+    public void setDataVencimento(String DataVencimento) {
         this.DataVencimento = DataVencimento;
     }
 

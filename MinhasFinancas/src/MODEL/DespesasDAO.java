@@ -28,9 +28,7 @@ public class DespesasDAO {
     }
     
     public long create(DespesasBEAN despesa) {
-        String query = "INSERT INTO ttCredito(idttCredito, Documento, ValorOriginal, Origem, Situacao, Parcela, DataInclusao, DataVencimento,"
-                + " ICMS, PIS, COFINS, tcGrupoContas_idGrupoContas, tcTipoConta_idTipoConta) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO ttCredito(Documento, ValorOriginal, Origem, Situacao, Parcela, DataInclusao, DataVencimento, ICMS, PIS, COFINS, tcGrupoContas_idGrupoContas, tcTipoConta_idTipoConta) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, 
                 despesa.getDocumento(), 
                 despesa.getValorOriginal(), 
@@ -63,7 +61,7 @@ public class DespesasDAO {
         try {
             while (rs.next()) {
                 lista.add(new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getDate("DataInclusao"), rs.getDate("DataVencimento"), rs.getInt("ICMS"),
+                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
                         rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("tcGrupoContas_idGrupoContas"), rs.getInt("tcTipoConta_idTipoConta")));
             }
             rs.close();
@@ -80,7 +78,7 @@ public class DespesasDAO {
         try {
             if (rs.next()) {
                 result = new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getDate("DataInclusao"), rs.getDate("DataVencimento"), rs.getInt("ICMS"),
+                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
                         rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("idGrupoContas"), rs.getInt("idTipoConta"));
             }
             rs.close();
