@@ -10,6 +10,146 @@ package MODEL;
  * @author Bruno
  */
 public class DespesasBEAN {
+
+    private int id;
+    private float valor;
+    private String descricao;
+    private int situacao;
+    private String vencimento;
+    private int parcelado;
+    private int vezes;
+    private float icms;
+    private float pis;
+    private float cofins;
+    private int id_usuario;
+    private int id_grupo;
+    private int id_tipo;
+
+    public DespesasBEAN(int id, float valor, String descricao, int situacao, String vencimento, int parcelado, int vezes, float icms, float pis, float cofins, int id_usuario, int id_grupo, int id_tipo) {
+        this.id = id;
+        this.valor = valor;
+        this.descricao = descricao;
+        this.situacao = situacao;
+        this.vencimento = vencimento;
+        this.parcelado = parcelado;
+        this.vezes = vezes;
+        this.icms = icms;
+        this.pis = pis;
+        this.cofins = cofins;
+        this.id_usuario = id_usuario;
+        this.id_grupo = id_grupo;
+        this.id_tipo = id_tipo;
+    }
+
+    public DespesasBEAN() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getValor() {
+        return valor;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public int getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(int situacao) {
+        this.situacao = situacao;
+    }
+
+    public String getVencimento() {
+        return vencimento;
+    }
+
+    public void setVencimento(String vencimento) {
+        this.vencimento = vencimento;
+    }
+
+    public int getParcelado() {
+        return parcelado;
+    }
+
+    public void setParcelado(int parcelado) {
+        this.parcelado = parcelado;
+    }
+
+    public int getVezes() {
+        return vezes;
+    }
+
+    public void setVezes(int vezes) {
+        this.vezes = vezes;
+    }
+
+    public float getIcms() {
+        return icms;
+    }
+
+    public void setIcms(float icms) {
+        this.icms = icms;
+    }
+
+    public float getPis() {
+        return pis;
+    }
+
+    public void setPis(float pis) {
+        this.pis = pis;
+    }
+
+    public float getCofins() {
+        return cofins;
+    }
+
+    public void setCofins(float cofins) {
+        this.cofins = cofins;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+    public int getId_grupo() {
+        return id_grupo;
+    }
+
+    public void setId_grupo(int id_grupo) {
+        this.id_grupo = id_grupo;
+    }
+
+    public int getId_tipo() {
+        return id_tipo;
+    }
+
+    public void setId_tipo(int id_tipo) {
+        this.id_tipo = id_tipo;
+    }
+
+    /*
     private int idttCredito;
     private String Documento;
     private float ValorOriginal;
@@ -24,6 +164,8 @@ public class DespesasBEAN {
     private int idGrupoContas;
     private int idTipoConta;
 
+    
+    
     public DespesasBEAN(){
         
     }
@@ -160,6 +302,5 @@ public class DespesasBEAN {
     public void setIdTipoConta(int idTipoConta) {
         this.idTipoConta = idTipoConta;
     }
-    
-    
+     */
 }

@@ -30,8 +30,8 @@ public class GrupoContasDAO {
         return instance;
     }
     
-    public ArrayList<GrupoContasBEAN> list(){
-        return list("SELECT * FROM `tcGrupoContas`");
+    public ArrayList<GrupoContasBEAN> findListGrupo(){
+        return list("SELECT * FROM grupo");
     }
     
     private ArrayList<GrupoContasBEAN> list(String query){
@@ -40,7 +40,7 @@ public class GrupoContasDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                list.add(new GrupoContasBEAN(rs.getInt("idGrupoContas"), rs.getString("Descricao")));
+                list.add(new GrupoContasBEAN(rs.getInt("id"), rs.getString("descricao")));
             }
             rs.close();
         } catch (SQLException ex) {

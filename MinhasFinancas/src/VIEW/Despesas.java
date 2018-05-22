@@ -20,6 +20,7 @@ public class Despesas extends javax.swing.JDialog {
         textPis.setText("0");
         textICMS.setText("0");
         textCofins.setText("0");
+        textParcela.setText("0");
     }
 
     @SuppressWarnings("unchecked")
@@ -73,7 +74,7 @@ public class Despesas extends javax.swing.JDialog {
         textDocumento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Documento:");
+        jLabel2.setText("Descrição:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Parcelas:");
@@ -129,9 +130,9 @@ public class Despesas extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -173,7 +174,7 @@ public class Despesas extends javax.swing.JDialog {
                             .addComponent(textPis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel12))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,35 +290,43 @@ public class Despesas extends javax.swing.JDialog {
         DespesasBEAN oDespesa = new DespesasBEAN();
         try {
 
-            oDespesa.setDocumento(textDocumento.getText());
+            oDespesa.setDescricao(textDocumento.getText());
             Object oValor = textValor.getValue();
-            oDespesa.setValorOriginal(Float.valueOf(oValor.toString()));
-
-            //O que é este metodo aqui
-            oDespesa.setOrigem("Tela Despesas");
-
+            oDespesa.setValor(Float.valueOf(oValor.toString()));
+            
             if (APagar.isSelected()) {
                 oDespesa.setSituacao(0);
             }
             if (Pago.isSelected()) {
                 oDespesa.setSituacao(-1);
             }
-            oDespesa.setParcela(Integer.parseInt(textParcela.getText()));
-            oDespesa.setICMS(Integer.parseInt(textICMS.getText()));
-            oDespesa.setPIS(Integer.parseInt(textPis.getText()));
-            oDespesa.setCOFINS(Integer.parseInt(textCofins.getText()));
+            
+            //Caso o numero de parcela seja difente de 0 o status de parcela muda
+            oDespesa.setVezes(Integer.parseInt(textParcela.getText()));
+            if(oDespesa.getVezes()!=0){
+                oDespesa.setParcelado(1);
+            }else{
+                oDespesa.setParcelado(0);
+            }
+            oDespesa.setIcms(Integer.parseInt(textICMS.getText()));
+            oDespesa.setPis(Integer.parseInt(textPis.getText()));
+            oDespesa.setCofins(Integer.parseInt(textCofins.getText()));
 
             // (iten + 1) ele pega a posicao da lista +1 porque ela comça do zero 
-            oDespesa.setIdGrupoContas(cb_grupoConta.getSelectedIndex() + 1);
-            oDespesa.setIdTipoConta(cb_TipoConta.getSelectedIndex() + 1);
+            oDespesa.setId_grupo(cb_grupoConta.getSelectedIndex() + 1);
+            oDespesa.setId_tipo(cb_TipoConta.getSelectedIndex() + 1);
 
             //Formantando a data para salvar no banco
             SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
             //Pegando a data atual do dia
             Date datah = new Date(System.currentTimeMillis());
 
-            oDespesa.setDataInclusao(formato.format(datah));
-            oDespesa.setDataVencimento(formato.format(jDataVencimento.getDate()));
+            //oDespesa.setDataInclusao(formato.format(datah));
+            oDespesa.setVencimento(formato.format(jDataVencimento.getDate()));
+            
+            // ATENÇAO ..........................................................
+            //Criar um metodo para pegar o id do usuario para inserir uma despesa
+            oDespesa.setId_usuario(1);
 
             Controller.addDespesa(oDespesa);
             JOptionPane.showMessageDialog(null, "Cadastro realizado!");

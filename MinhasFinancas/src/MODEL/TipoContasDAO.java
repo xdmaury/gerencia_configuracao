@@ -29,8 +29,8 @@ public class TipoContasDAO {
         return instance;
     }
     
-    public ArrayList<TipoContasBEAN> list(){
-        return list("SELECT * FROM `tcTipoConta`");
+    public ArrayList<TipoContasBEAN> findlistTipo(){
+        return list("SELECT * FROM tipo");
     }
     
     private ArrayList<TipoContasBEAN> list(String query){
@@ -39,7 +39,7 @@ public class TipoContasDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                list.add(new TipoContasBEAN(rs.getInt("idTipoConta"), rs.getString("descricao"), rs.getInt("tributos?")));
+                list.add(new TipoContasBEAN(rs.getInt("id"), rs.getString("descricao"), rs.getInt("id_grupo")));
             }
             rs.close();
         } catch (SQLException ex) {

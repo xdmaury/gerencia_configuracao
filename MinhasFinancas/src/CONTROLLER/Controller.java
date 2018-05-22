@@ -6,11 +6,11 @@ import java.util.ArrayList;
 public class Controller {
 
     public static ArrayList<GrupoContasBEAN> listaGrupoContas() {
-        return GrupoContasDAO.getInstance().list();
+        return GrupoContasDAO.getInstance().findListGrupo();
     }
 
     public static ArrayList<TipoContasBEAN> listaTipoContas() {
-        return TipoContasDAO.getInstance().list();
+        return TipoContasDAO.getInstance().findlistTipo();
     }
 
     public static void addDespesa(DespesasBEAN despesa) {

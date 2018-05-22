@@ -28,20 +28,20 @@ public class DespesasDAO {
     }
     
     public long create(DespesasBEAN despesa) {
-        String query = "INSERT INTO ttCredito(Documento, ValorOriginal, Origem, Situacao, Parcela, DataInclusao, DataVencimento, ICMS, PIS, COFINS, tcGrupoContas_idGrupoContas, tcTipoConta_idTipoConta) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Despesa(valor, descricao, situacao, vencimento, parcelado, vezes, icms, pis, cofins, id_usuario, id_grupo, id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, 
-                despesa.getDocumento(), 
-                despesa.getValorOriginal(), 
-                despesa.getOrigem(),
+                despesa.getValor(),
+                despesa.getDescricao(),
                 despesa.getSituacao(),
-                despesa.getParcela(),
-                despesa.getDataInclusao(),
-                despesa.getDataVencimento(),
-                despesa.getICMS(),
-                despesa.getPIS(),
-                despesa.getCOFINS(),
-                despesa.getIdGrupoContas(),
-                despesa.getIdTipoConta());
+                despesa.getVencimento(),
+                despesa.getParcelado(),
+                despesa.getVezes(),
+                despesa.getIcms(),
+                despesa.getPis(),
+                despesa.getCofins(),
+                despesa.getId_usuario(),
+                despesa.getId_grupo(),
+                despesa.getId_tipo());
     }
 
     /*public void update(DespesasBEAN despesa) {
@@ -51,7 +51,7 @@ public class DespesasDAO {
     */
     
     public ArrayList<DespesasBEAN> findAlldespesas(){
-        return listadespesas ("SELECT * FROM ttCredito ORDER BY idttCredito");
+        return listadespesas ("SELECT * FROM Despesa");
     }
     
     public ArrayList<DespesasBEAN> listadespesas(String query) {
@@ -60,9 +60,20 @@ public class DespesasDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
-                        rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("tcGrupoContas_idGrupoContas"), rs.getInt("tcTipoConta_idTipoConta")));
+                lista.add(new DespesasBEAN(
+                        rs.getInt("id"), 
+                        rs.getFloat("valor"),
+                        rs.getString("descricao"),
+                        rs.getInt("situacao"),
+                        rs.getString("vencimento"),
+                        rs.getInt("parcelado"),
+                        rs.getInt("vezes"),
+                        rs.getFloat("icms"),
+                        rs.getFloat("pis"),
+                        rs.getFloat("cofins"),
+                        rs.getInt("id_usuario"),
+                        rs.getInt("id_grupo"),
+                        rs.getInt("id_tipo")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -74,12 +85,23 @@ public class DespesasDAO {
     public DespesasBEAN finddespesa(int iddespesa) {
         DespesasBEAN result = null;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM despesaES WHERE iddespesa=?", iddespesa);
+        rs = MySQLDAO.getResultSet("SELECT * FROM Despesa WHERE id=?", iddespesa);
         try {
             if (rs.next()) {
-                result = new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
-                        rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("idGrupoContas"), rs.getInt("idTipoConta"));
+                result = new DespesasBEAN(
+                        rs.getInt("id"), 
+                        rs.getFloat("valor"),
+                        rs.getString("descricao"),
+                        rs.getInt("situacao"),
+                        rs.getString("vencimento"),
+                        rs.getInt("parcelado"),
+                        rs.getInt("vezes"),
+                        rs.getFloat("icms"),
+                        rs.getFloat("pis"),
+                        rs.getFloat("cofins"),
+                        rs.getInt("id_usuario"),
+                        rs.getInt("id_grupo"),
+                        rs.getInt("id_tipo"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -87,16 +109,18 @@ public class DespesasDAO {
         }
         return result;
     }
-    
+    /*
     public void updateSituacao(DespesasBEAN despesa) {
-        String query = "UPDATE ttCredito SET Situacao = ? WHERE idttCredito = ?";
-        MySQLDAO.executeQuery(query, despesa.getSituacao(), despesa.getIdttCredito());
+        String query = "UPDATE Despesa SET situacao = ? WHERE id = ?";
+        MySQLDAO.executeQuery(query, despesa.getSituacao(), despesa.getId());
     }
+    */
+    
     
     public Boolean isExist(int iddespesa) {
         Boolean result = false;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM despesaES WHERE iddespesa= ?", iddespesa);
+        rs = MySQLDAO.getResultSet("SELECT * FROM Despesa WHERE id= ?", iddespesa);
         try {
             if (rs.next()) {
                 result = true;

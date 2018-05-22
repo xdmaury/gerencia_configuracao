@@ -12,7 +12,13 @@ package MODEL;
 public class TipoContasBEAN {
     int idTipoConta;
     String descricao;
-    int tributos;
+    int id_grupo;
+
+    public TipoContasBEAN(int idTipoConta, String descricao, int id_grupo) {
+        this.idTipoConta = idTipoConta;
+        this.descricao = descricao;
+        this.id_grupo = id_grupo;
+    }
 
     public int getIdTipoConta() {
         return idTipoConta;
@@ -30,17 +36,13 @@ public class TipoContasBEAN {
         this.descricao = descricao;
     }
 
-    public int getTributos() {
-        return tributos;
+    public int getId_grupo() {
+        return id_grupo;
     }
 
-    public void setTributos(int tributos) {
-        this.tributos = tributos;
+    public void setId_grupo(int id_grupo) {
+        this.id_grupo = id_grupo;
     }
 
-    public TipoContasBEAN(int idTipoConta, String descricao, int tributos) {
-        this.idTipoConta = idTipoConta;
-        this.descricao = descricao;
-        this.tributos = tributos;
-    }
+    
 }

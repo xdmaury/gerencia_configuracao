@@ -7,13 +7,13 @@ import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
 
-    private javax.swing.table.DefaultTableModel ttCredito;
+    private javax.swing.table.DefaultTableModel ttDespesas;
 
     public InterfacePrincipal() {
         Controller controle = new Controller();
         initComponents();
         this.setLocationRelativeTo(this);
-        ttCredito = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
+        ttDespesas = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
         preencher_Tabela_Produtos(controle.listarDespesas());
     }
 
@@ -70,11 +70,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Documento", "Origem", "Parcela", "Valor Original", "Data Vencimento"
+                "Documento", "Valor", "Data Vencimento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -86,13 +86,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             jTableContasPagar.getColumnModel().getColumn(0).setResizable(false);
             jTableContasPagar.getColumnModel().getColumn(0).setPreferredWidth(100);
             jTableContasPagar.getColumnModel().getColumn(1).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTableContasPagar.getColumnModel().getColumn(1).setPreferredWidth(10);
             jTableContasPagar.getColumnModel().getColumn(2).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(2).setPreferredWidth(5);
-            jTableContasPagar.getColumnModel().getColumn(3).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(3).setPreferredWidth(10);
-            jTableContasPagar.getColumnModel().getColumn(4).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(4).setPreferredWidth(20);
+            jTableContasPagar.getColumnModel().getColumn(2).setPreferredWidth(20);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -252,11 +248,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
-        ttCredito.setNumRows(0);
+        ttDespesas.setNumRows(0);
 
         try {
             for (DespesasBEAN despesa : despesas) {
-                ttCredito.addRow(new Object[]{despesa.getDocumento(), despesa.getOrigem(), despesa.getParcela(), despesa.getValorOriginal(), despesa.getDataVencimento()});
+                ttDespesas.addRow(new Object[]{despesa.getDescricao(), despesa.getValor(), despesa.getVencimento()});
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro ao listar dados - " + erro);

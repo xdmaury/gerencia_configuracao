@@ -62,7 +62,7 @@ public class ReceitasDAO {
         }
         return lista;
     }
-
+/*
     public DespesasBEAN findReceita(int idReceita) {
         DespesasBEAN result = null;
         ResultSet rs = null;
@@ -79,7 +79,7 @@ public class ReceitasDAO {
         }
         return result;
     }
-
+*/
     public void updateSituacaoReceita(ReceitasBEAN receita) {
         String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
         MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
