@@ -54,7 +54,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Informe um senha:");
+        jLabel4.setText("Informe uma senha:");
 
         jButtonCadastroUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonCadastroUsuario.setText("Cadastrar");

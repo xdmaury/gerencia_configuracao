@@ -22,8 +22,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotaoDespesas = new javax.swing.JButton();
+        BotaoGastos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableContasPagar = new javax.swing.JTable();
@@ -38,27 +38,28 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        BotaoEstatisticas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(java.awt.SystemColor.window);
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("Despesas");
-        jButton1.setActionCommand("AdicionarDespesas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotaoDespesas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoDespesas.setText("Despesas");
+        BotaoDespesas.setActionCommand("AdicionarDespesas");
+        BotaoDespesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotaoDespesasActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Gastos");
-        jButton2.setActionCommand("AdicionarDespesas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotaoGastos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoGastos.setText("Gastos");
+        BotaoGastos.setActionCommand("AdicionarDespesas");
+        BotaoGastos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotaoGastosActionPerformed(evt);
             }
         });
 
@@ -99,7 +100,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -107,6 +108,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
 
+        BotãoTelaReceitas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BotãoTelaReceitas.setText("Receitas");
 
         jPanel3.setBackground(java.awt.SystemColor.window);
@@ -169,6 +171,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addGap(0, 28, Short.MAX_VALUE)
         );
 
+        BotaoEstatisticas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoEstatisticas.setText("Estatísticas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -179,9 +184,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addComponent(BotãoTelaReceitas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotaoGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BotaoEstatisticas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -204,9 +211,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(BotãoTelaReceitas))
+                        .addComponent(BotãoTelaReceitas)
+                        .addComponent(BotaoGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotaoEstatisticas)
+                        .addComponent(BotaoDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -235,17 +243,17 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotaoDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoDespesasActionPerformed
         Despesas telaDespesas = new Despesas(this, true);
         telaDespesas.setLocationRelativeTo(null);
         telaDespesas.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotaoDespesasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotaoGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGastosActionPerformed
         Gastos telaGastos = new Gastos(this, true);
         telaGastos.setLocationRelativeTo(null);
         telaGastos.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotaoGastosActionPerformed
 
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
         ttDespesas.setNumRows(0);
@@ -296,9 +304,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotaoDespesas;
+    private javax.swing.JButton BotaoEstatisticas;
+    private javax.swing.JButton BotaoGastos;
     private javax.swing.JButton BotãoTelaReceitas;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
