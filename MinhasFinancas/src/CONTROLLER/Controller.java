@@ -8,9 +8,13 @@ public class Controller {
     public static ArrayList<GrupoContasBEAN> listaGrupoContas() {
         return GrupoContasDAO.getInstance().findListGrupo();
     }
-
+    
     public static ArrayList<TipoContasBEAN> listaTipoContas() {
         return TipoContasDAO.getInstance().findlistTipo();
+    }
+    
+    public static ArrayList<TipoContasBEAN> listaTipoContas(int id) {
+        return TipoContasDAO.getInstance().findlistTipo(id);
     }
 
     public static void addDespesa(DespesasBEAN despesa) {

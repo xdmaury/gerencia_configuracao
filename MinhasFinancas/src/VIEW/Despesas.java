@@ -16,7 +16,7 @@ public class Despesas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setGrupoContas();
-        setTipoContas();
+//        setTipoContas();
         textPis.setText("0");
         textICMS.setText("0");
         textCofins.setText("0");
@@ -88,9 +88,9 @@ public class Despesas extends javax.swing.JDialog {
         jLabel8.setText("Grupo:");
 
         cb_grupoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_grupoConta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_grupoContaActionPerformed(evt);
+        cb_grupoConta.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_grupoContaItemStateChanged(evt);
             }
         });
 
@@ -293,19 +293,19 @@ public class Despesas extends javax.swing.JDialog {
             oDespesa.setDescricao(textDocumento.getText());
             Object oValor = textValor.getValue();
             oDespesa.setValor(Float.valueOf(oValor.toString()));
-            
+
             if (APagar.isSelected()) {
                 oDespesa.setSituacao(0);
             }
             if (Pago.isSelected()) {
                 oDespesa.setSituacao(-1);
             }
-            
+
             //Caso o numero de parcela seja difente de 0 o status de parcela muda
             oDespesa.setVezes(Integer.parseInt(textParcela.getText()));
-            if(oDespesa.getVezes()!=0){
+            if (oDespesa.getVezes() != 0) {
                 oDespesa.setParcelado(1);
-            }else{
+            } else {
                 oDespesa.setParcelado(0);
             }
             oDespesa.setIcms(Integer.parseInt(textICMS.getText()));
@@ -323,7 +323,7 @@ public class Despesas extends javax.swing.JDialog {
 
             //oDespesa.setDataInclusao(formato.format(datah));
             oDespesa.setVencimento(formato.format(jDataVencimento.getDate()));
-            
+
             // ATENÇAO ..........................................................
             //Criar um metodo para pegar o id do usuario para inserir uma despesa
             oDespesa.setId_usuario(1);
@@ -349,12 +349,15 @@ public class Despesas extends javax.swing.JDialog {
         cb_grupoConta.setSelectedIndex(0);
     }
     private void cb_TipoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_TipoContaActionPerformed
-        // TODO add your handling code here:
+        GrupoContasBEAN grupo = new GrupoContasBEAN();
+        grupo.setIdGrupoContas(-1);
+        for (GrupoContasBEAN lista : listaGrupoContas) {
+            lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString());
+            grupo = lista;
+            break;
+        }
+        setTipoContas(grupo);
     }//GEN-LAST:event_cb_TipoContaActionPerformed
-
-    private void cb_grupoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_grupoContaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_grupoContaActionPerformed
 
     private void APagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APagarActionPerformed
         this.Pago.setSelected(false);
@@ -363,6 +366,18 @@ public class Despesas extends javax.swing.JDialog {
     private void PagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagoActionPerformed
         this.APagar.setSelected(false);
     }//GEN-LAST:event_PagoActionPerformed
+
+    private void cb_grupoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_grupoContaItemStateChanged
+        GrupoContasBEAN grupo = new GrupoContasBEAN();
+        grupo.setIdGrupoContas(-1);
+        for (GrupoContasBEAN lista : listaGrupoContas) {
+            if (lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString())) {
+                grupo = lista;
+            }
+//            break;
+        }
+        setTipoContas(grupo);
+    }//GEN-LAST:event_cb_grupoContaItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -448,8 +463,8 @@ public class Despesas extends javax.swing.JDialog {
         });
     }
 
-    private void setTipoContas() {
-        this.listaTipoContas = Controller.listaTipoContas();
+    private void setTipoContas(GrupoContasBEAN grupo) {
+        this.listaTipoContas = Controller.listaTipoContas(grupo.getIdGrupoContas());
         listaTipoContas.forEach((tc) -> {
             cb_TipoConta.addItem(tc.getDescricao());
         });

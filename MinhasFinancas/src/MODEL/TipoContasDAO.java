@@ -33,6 +33,10 @@ public class TipoContasDAO {
         return list("SELECT * FROM tipo");
     }
     
+    public ArrayList<TipoContasBEAN> findlistTipo(int id){
+        return list("SELECT * FROM `tipo` WHERE `id_grupo` = " + id + " ORDER BY `id` ASC ");
+    }
+    
     private ArrayList<TipoContasBEAN> list(String query){
         ArrayList<TipoContasBEAN> list = new ArrayList<>();
         ResultSet rs = null;
@@ -47,4 +51,11 @@ public class TipoContasDAO {
         }
         return list;
     }
+    
+//    public static void main(String[] args) {
+//        TipoContasDAO tipo = new TipoContasDAO();
+//        tipo.findlistTipo(0);
+//        
+//    }
+    
 }
