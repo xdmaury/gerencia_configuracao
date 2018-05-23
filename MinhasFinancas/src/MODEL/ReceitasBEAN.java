@@ -8,119 +8,57 @@ import java.sql.Date;
  */
 public class ReceitasBEAN {
 
-    private int idttDebito;
-    private String Documento;
-    private float ValorOriginal;
-    private String Origem;
-    private int Situacao;
-    private int Parcela;
-    private Date DataInclusao;
-    private Date DataVencimento;
-    private Date DataPagamento;
-    private int idGrupoContas;
-    private int idTipoConta;
+    private int idReceita;
+    private double valor;
+    private Integer idUsuario;
+    private Integer idGrupo;
+    private Integer idTipo;
 
-    public ReceitasBEAN(int idttDebito, String Documento, float ValorOriginal, String Origem, int Situacao,
-            int Parcela, Date DataInclusao, Date DataVencimento, Date DataPagamento, int idGrupoContas, int idTipoCOnta) {
-        this.idttDebito = idttDebito;
-        this.Documento = Documento;
-        this.ValorOriginal = ValorOriginal;
-        this.Origem = Origem;
-        this.Situacao = Situacao;
-        this.Parcela = Parcela;
-        this.DataInclusao = DataInclusao;
-        this.DataVencimento = DataVencimento;
-        this.DataPagamento = DataPagamento;
-        this.idGrupoContas = idGrupoContas;
-        this.idTipoConta = idTipoCOnta;
+    public ReceitasBEAN(int idReceita, double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
+        this.idReceita = idReceita;
+        this.valor = valor;
+        this.idUsuario = idUsuario;
+        this.idGrupo = idGrupo;
+        this.idTipo = idTipo;
     }
 
-    public int getIdttDebito() {
-        return idttDebito;
+    public int getIdReceita() {
+        return idReceita;
     }
 
-    public void setIdttDebito(int idttDebito) {
-        this.idttDebito = idttDebito;
+    public void setIdReceita(int idReceita) {
+        this.idReceita = idReceita;
     }
 
-    public String getDocumento() {
-        return Documento;
+    public double getValor() {
+        return valor;
     }
 
-    public void setDocumento(String Documento) {
-        this.Documento = Documento;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    public float getValorOriginal() {
-        return ValorOriginal;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setValorOriginal(float ValorOriginal) {
-        this.ValorOriginal = ValorOriginal;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getOrigem() {
-        return Origem;
+    public Integer getIdGrupo() {
+        return idGrupo;
     }
 
-    public void setOrigem(String Origem) {
-        this.Origem = Origem;
+    public void setIdGrupo(Integer idGrupo) {
+        this.idGrupo = idGrupo;
     }
 
-    public int getSituacao() {
-        return Situacao;
+    public Integer getIdTipo() {
+        return idTipo;
     }
 
-    public void setSituacao(int Situacao) {
-        this.Situacao = Situacao;
-    }
-
-    public int getParcela() {
-        return Parcela;
-    }
-
-    public void setParcela(int Parcela) {
-        this.Parcela = Parcela;
-    }
-
-    public Date getDataInclusao() {
-        return DataInclusao;
-    }
-
-    public void setDataInclusao(Date DataInclusao) {
-        this.DataInclusao = DataInclusao;
-    }
-
-    public Date getDataVencimento() {
-        return DataVencimento;
-    }
-
-    public void setDataVencimento(Date DataVencimento) {
-        this.DataVencimento = DataVencimento;
-    }
-
-    public Date getDataPagamento() {
-        return DataPagamento;
-    }
-
-    public void setDataPagamento(Date DataPagamento) {
-        this.DataPagamento = DataPagamento;
-    }
-
-    public int getIdGrupoContas() {
-        return idGrupoContas;
-    }
-
-    public void setIdGrupoContas(int idGrupoContas) {
-        this.idGrupoContas = idGrupoContas;
-    }
-
-    public int getIdTipoConta() {
-        return idTipoConta;
-    }
-
-    public void setIdTipoConta(int idTipoConta) {
-        this.idTipoConta = idTipoConta;
-    }
-
+    public void setIdTipo(Integer idTipo) {
+        this.idTipo = idTipo;
+    }    
 }

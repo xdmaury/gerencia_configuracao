@@ -24,26 +24,10 @@ public class ReceitasDAO {
     }
 
     public long createReceita(ReceitasBEAN receita) {
-        String query = "INSERT INTO ttBebito(Documento, ValorOriginal, Origem, "
-                + "Situacao, parcela, DataInclusao, DataVencimento, DataPagamento, "
-                + "tcTipoConta_idTipoConta, tcGrupoContas_idGrupoContas) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO receita (id, valor, id_usuario, id_grupo, id_tipo) "
+                + "VALUES (?,?,?,?,?)";
         return MySQLDAO.executeQuery(query,
-                receita.getDocumento(),
-                receita.getValorOriginal(),
-                receita.getOrigem(),
-                receita.getSituacao(),
-                receita.getParcela(),
-                receita.getDataInclusao(),
-                receita.getDataVencimento(),
-                receita.getDataInclusao(),
-                receita.getDataPagamento(),
-                receita.getIdTipoConta(),
-                receita.getIdGrupoContas());
-    }
-
-    public ArrayList<ReceitasBEAN> findAllReceitas() {
-        return listaReceitas("SELECT * FROM ttDebito ORDER BY idttDebito");
+                receita.getValor(), receita.getIdUsuario(), receita.getIdGrupo(), receita.getIdTipo());
     }
 
     public ArrayList<ReceitasBEAN> listaReceitas(String query) {
@@ -52,9 +36,8 @@ public class ReceitasDAO {
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new ReceitasBEAN(rs.getInt("idttDedito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"),
-                        rs.getString("Origem"), rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getDate("DataInclusao"),
-                        rs.getDate("DataVencimento"), rs.getDate("DataPagamento"), rs.getInt("idGrupoContas"), rs.getInt("idTipoConta")));
+                lista.add(new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+                        rs.getInt("id_grupo"), rs.getInt("id_tipo")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -62,16 +45,19 @@ public class ReceitasDAO {
         }
         return lista;
     }
-/*
-    public DespesasBEAN findReceita(int idReceita) {
-        DespesasBEAN result = null;
+
+    public ArrayList<ReceitasBEAN> findAllReceitas() {
+        return listaReceitas("SELECT * FROM receita ORDER BY id");
+    }
+
+    public ReceitasBEAN findReceita(int idReceita) {
+        ReceitasBEAN result = null;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM ttDebito WHERE idttDebito=?", idReceita);
+        rs = MySQLDAO.getResultSet("SELECT * FROM receita WHERE id=?", idReceita);
         try {
             if (rs.next()) {
-                result = new DespesasBEAN(rs.getInt("idttCredito"), rs.getString("Documento"), rs.getFloat("ValorOriginal"), rs.getString("Origem"),
-                        rs.getInt("Situacao"), rs.getInt("Parcela"), rs.getString("DataInclusao"), rs.getString("DataVencimento"), rs.getInt("ICMS"),
-                        rs.getInt("PIS"), rs.getInt("COFINS"), rs.getInt("idGrupoContas"), rs.getInt("idTipoConta"));
+                result = new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+                        rs.getInt("id_grupo"), rs.getInt("id_tipo"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -79,16 +65,43 @@ public class ReceitasDAO {
         }
         return result;
     }
-*/
-    public void updateSituacaoReceita(ReceitasBEAN receita) {
-        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
-        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
-    }
-
+//    public boolean alterarReceita(double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
+//        PreparedStatement pst = null;
+//        String sql = "update receita set valor=?, id_usuario=?, id_grupo=?, id_tipo=? where idCliente=?";
+//        try {
+//            pst = MySQLDAO.getResultSet(sql);
+//            pst.setDouble(1, valor);
+//            pst.setInt(2, idUsuario);
+//            pst.setInt(3, idGrupo);
+//            pst.setInt(4, idTipo);
+//            if ((nome.isEmpty()) || (telefone.isEmpty())) {//validação dos campos obrigatorios
+//                JOptionPane.showMessageDialog(null, "Atenção!! Preencha todos os campos obrigatórios");
+//            } else {
+//                //atualizando a tabela(clientes) com os dados dos campos
+//                //confirmando a inserção
+//                int adicionado = pst.executeUpdate();
+//                //System.out.println(adicionado);
+//                if (adicionado > 0) {
+//                    JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
+//                    return true;
+//                }
+//            }
+//            //pst.executeUpdate();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//            return false;
+//        }
+//        return false;
+//    }
+    
+//    public void updateSituacaoReceita(ReceitasBEAN receita) {
+//        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
+//        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
+//    }
     public Boolean isExistReceita(int idReceita) {
         Boolean result = false;
         ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM ttDebito WHERE idttDebito = ?", idReceita);
+        rs = MySQLDAO.getResultSet("SELECT * FROM receita WHERE id = ?", idReceita);
         try {
             if (rs.next()) {
                 result = true;
