@@ -3,6 +3,7 @@ package VIEW;
 import CONTROLLER.Controller;
 import MODEL.DespesasBEAN;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
 
 public class InterfacePrincipal extends javax.swing.JFrame {
@@ -37,6 +38,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         BotaoVerificarEtGas = new javax.swing.JButton();
         lblVlrEtanol = new javax.swing.JLabel();
         lblVlrGasolina = new javax.swing.JLabel();
+        printResult = new java.awt.Label();
         jPanel4 = new javax.swing.JPanel();
         BotaoTelaEstatisticas = new javax.swing.JButton();
 
@@ -115,10 +117,18 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), " Etanol ou Gasolina ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         BotaoVerificarEtGas.setText("Verificar");
+        BotaoVerificarEtGas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoVerificarEtGasActionPerformed(evt);
+            }
+        });
 
         lblVlrEtanol.setText("Valor Etanol");
 
         lblVlrGasolina.setText("Valor Gasolina");
+
+        printResult.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        printResult.setForeground(new java.awt.Color(0, 255, 51));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -138,7 +148,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(BotaoVerificarEtGas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(printResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -154,7 +165,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                     .addComponent(textVlrGasolina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(BotaoVerificarEtGas)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addComponent(printResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(java.awt.SystemColor.window);
@@ -255,6 +268,34 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         telaGastos.setVisible(true);
     }//GEN-LAST:event_BotaoTelaGastosActionPerformed
 
+    private void BotaoVerificarEtGasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVerificarEtGasActionPerformed
+        // TODO add your handling code here:
+        try {
+            float valorGasolina = Float.parseFloat(textVlrGasolina.getText().toString());
+            float valorEtanol = Float.parseFloat(textVlrEtanol.getText().toString());
+
+            if ((valorGasolina * 0.70) > valorEtanol) {
+                printResult.setText("");
+                textVlrEtanol.setText("");
+                textVlrGasolina.setText("");
+                printResult.setText("Abasteça com etanol!");
+
+            } else {
+                printResult.setText("");
+                textVlrEtanol.setText("");
+                textVlrGasolina.setText("");
+                printResult.setText("Abasteça com gasolina!");
+
+            }
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "Erro " + erro);
+            printResult.setText("");
+            textVlrEtanol.setText("");
+            textVlrGasolina.setText("");
+        }
+    }//GEN-LAST:event_BotaoVerificarEtGasActionPerformed
+
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
         ttDespesas.setNumRows(0);
 
@@ -319,6 +360,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblVlrEtanol;
     private javax.swing.JLabel lblVlrGasolina;
+    private java.awt.Label printResult;
     private javax.swing.JTextField textSaldo;
     private javax.swing.JTextField textVlrEtanol;
     private javax.swing.JTextField textVlrGasolina;
