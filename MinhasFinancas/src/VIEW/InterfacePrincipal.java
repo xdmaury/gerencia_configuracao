@@ -22,44 +22,44 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        BotaoDespesas = new javax.swing.JButton();
-        BotaoGastos = new javax.swing.JButton();
+        BotaoTelasDespesas = new javax.swing.JButton();
+        BotaoTelaGastos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableContasPagar = new javax.swing.JTable();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        BotãoTelaReceitas = new javax.swing.JButton();
+        jDataSaldo = new com.toedter.calendar.JDateChooser();
+        lblSaldo = new javax.swing.JLabel();
+        textSaldo = new javax.swing.JTextField();
+        BotaoTelaReceitas = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        textVlrEtanol = new javax.swing.JTextField();
+        textVlrGasolina = new javax.swing.JTextField();
+        BotaoVerificarEtGas = new javax.swing.JButton();
+        lblVlrEtanol = new javax.swing.JLabel();
+        lblVlrGasolina = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        BotaoEstatisticas = new javax.swing.JButton();
+        BotaoTelaEstatisticas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(java.awt.SystemColor.window);
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        BotaoDespesas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BotaoDespesas.setText("Despesas");
-        BotaoDespesas.setActionCommand("AdicionarDespesas");
-        BotaoDespesas.addActionListener(new java.awt.event.ActionListener() {
+        BotaoTelasDespesas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoTelasDespesas.setText("Despesas");
+        BotaoTelasDespesas.setActionCommand("AdicionarDespesas");
+        BotaoTelasDespesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoDespesasActionPerformed(evt);
+                BotaoTelasDespesasActionPerformed(evt);
             }
         });
 
-        BotaoGastos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BotaoGastos.setText("Gastos");
-        BotaoGastos.setActionCommand("AdicionarDespesas");
-        BotaoGastos.addActionListener(new java.awt.event.ActionListener() {
+        BotaoTelaGastos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoTelaGastos.setText("Gastos");
+        BotaoTelaGastos.setActionCommand("AdicionarDespesas");
+        BotaoTelaGastos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoGastosActionPerformed(evt);
+                BotaoTelaGastosActionPerformed(evt);
             }
         });
 
@@ -100,25 +100,25 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Saldo:");
+        lblSaldo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblSaldo.setText("Saldo:");
 
-        jTextField1.setEditable(false);
+        textSaldo.setEditable(false);
 
-        BotãoTelaReceitas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BotãoTelaReceitas.setText("Receitas");
+        BotaoTelaReceitas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoTelaReceitas.setText("Receitas");
 
         jPanel3.setBackground(java.awt.SystemColor.window);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), " Etanol ou Gasolina ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jButton3.setText("Verificar");
+        BotaoVerificarEtGas.setText("Verificar");
 
-        jLabel3.setText("Valor Etanol");
+        lblVlrEtanol.setText("Valor Etanol");
 
-        jLabel4.setText("Valor Gasolina");
+        lblVlrGasolina.setText("Valor Gasolina");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -129,15 +129,15 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(textVlrEtanol, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVlrEtanol))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(textVlrGasolina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVlrGasolina, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotaoVerificarEtGas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -146,14 +146,14 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblVlrEtanol)
+                    .addComponent(lblVlrGasolina))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textVlrEtanol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textVlrGasolina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(BotaoVerificarEtGas)
                 .addContainerGap(185, Short.MAX_VALUE))
         );
 
@@ -171,8 +171,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addGap(0, 28, Short.MAX_VALUE)
         );
 
-        BotaoEstatisticas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BotaoEstatisticas.setText("Estatísticas");
+        BotaoTelaEstatisticas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BotaoTelaEstatisticas.setText("Estatísticas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,19 +182,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(BotãoTelaReceitas)
+                        .addComponent(BotaoTelaReceitas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotaoTelaGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BotaoTelasDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoEstatisticas)
+                        .addComponent(BotaoTelaEstatisticas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDataSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
+                        .addComponent(lblSaldo)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,16 +210,16 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotaoTelaGastos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BotãoTelaReceitas)
-                        .addComponent(BotaoGastos, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotaoEstatisticas)
-                        .addComponent(BotaoDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(BotaoTelaReceitas)
+                        .addComponent(BotaoTelaEstatisticas)
+                        .addComponent(BotaoTelasDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblSaldo)
+                            .addComponent(textSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDataSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -243,17 +243,17 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoDespesasActionPerformed
+    private void BotaoTelasDespesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelasDespesasActionPerformed
         Despesas telaDespesas = new Despesas(this, true);
         telaDespesas.setLocationRelativeTo(null);
         telaDespesas.setVisible(true);
-    }//GEN-LAST:event_BotaoDespesasActionPerformed
+    }//GEN-LAST:event_BotaoTelasDespesasActionPerformed
 
-    private void BotaoGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGastosActionPerformed
+    private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed
         Gastos telaGastos = new Gastos(this, true);
         telaGastos.setLocationRelativeTo(null);
         telaGastos.setVisible(true);
-    }//GEN-LAST:event_BotaoGastosActionPerformed
+    }//GEN-LAST:event_BotaoTelaGastosActionPerformed
 
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
         ttDespesas.setNumRows(0);
@@ -304,23 +304,23 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoDespesas;
-    private javax.swing.JButton BotaoEstatisticas;
-    private javax.swing.JButton BotaoGastos;
-    private javax.swing.JButton BotãoTelaReceitas;
-    private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton BotaoTelaEstatisticas;
+    private javax.swing.JButton BotaoTelaGastos;
+    private javax.swing.JButton BotaoTelaReceitas;
+    private javax.swing.JButton BotaoTelasDespesas;
+    private javax.swing.JButton BotaoVerificarEtGas;
+    private com.toedter.calendar.JDateChooser jDataSaldo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableContasPagar;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblVlrEtanol;
+    private javax.swing.JLabel lblVlrGasolina;
+    private javax.swing.JTextField textSaldo;
+    private javax.swing.JTextField textVlrEtanol;
+    private javax.swing.JTextField textVlrGasolina;
     // End of variables declaration//GEN-END:variables
 }
