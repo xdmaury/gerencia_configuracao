@@ -16,7 +16,6 @@ public class Despesas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setGrupoContas();
-//        setTipoContas();
         textPis.setText("0");
         textICMS.setText("0");
         textCofins.setText("0");
@@ -96,11 +95,6 @@ public class Despesas extends javax.swing.JDialog {
 
         cb_TipoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cb_TipoConta.setToolTipText("");
-        cb_TipoConta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_TipoContaActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Item:");
@@ -348,17 +342,6 @@ public class Despesas extends javax.swing.JDialog {
         cb_TipoConta.setSelectedIndex(0);
         cb_grupoConta.setSelectedIndex(0);
     }
-    private void cb_TipoContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_TipoContaActionPerformed
-        GrupoContasBEAN grupo = new GrupoContasBEAN();
-        grupo.setIdGrupoContas(-1);
-        for (GrupoContasBEAN lista : listaGrupoContas) {
-            lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString());
-            grupo = lista;
-            break;
-        }
-        setTipoContas(grupo);
-    }//GEN-LAST:event_cb_TipoContaActionPerformed
-
     private void APagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_APagarActionPerformed
         this.Pago.setSelected(false);
     }//GEN-LAST:event_APagarActionPerformed
@@ -373,8 +356,8 @@ public class Despesas extends javax.swing.JDialog {
         for (GrupoContasBEAN lista : listaGrupoContas) {
             if (lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString())) {
                 grupo = lista;
+                break;  
             }
-//            break;
         }
         setTipoContas(grupo);
     }//GEN-LAST:event_cb_grupoContaItemStateChanged
@@ -465,6 +448,7 @@ public class Despesas extends javax.swing.JDialog {
 
     private void setTipoContas(GrupoContasBEAN grupo) {
         this.listaTipoContas = Controller.listaTipoContas(grupo.getIdGrupoContas());
+        cb_TipoConta.removeAllItems();
         listaTipoContas.forEach((tc) -> {
             cb_TipoConta.addItem(tc.getDescricao());
         });
