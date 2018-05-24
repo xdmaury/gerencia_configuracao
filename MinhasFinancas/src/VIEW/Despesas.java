@@ -17,10 +17,10 @@ public class Despesas extends javax.swing.JDialog {
         initComponents();
         setGrupoContas();
         setLocationRelativeTo(null);
-        textPis.setText("0");
-        textICMS.setText("0");
-        textCofins.setText("0");
-        textParcela.setText("0");
+        txtPis.setText("0");
+        txtIcms.setText("0");
+        txtCofins.setText("0");
+        txtParcela.setText("0");
     }
 
     @SuppressWarnings("unchecked")
@@ -32,30 +32,30 @@ public class Despesas extends javax.swing.JDialog {
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblValor = new javax.swing.JLabel();
-        textDocumento = new javax.swing.JTextField();
+        txtDecricao = new javax.swing.JTextField();
         lblDescricao = new javax.swing.JLabel();
         lblParcelas = new javax.swing.JLabel();
-        textParcela = new javax.swing.JTextField();
+        txtParcela = new javax.swing.JTextField();
         lblVencimento = new javax.swing.JLabel();
         lblGrupo = new javax.swing.JLabel();
-        cb_grupoConta = new javax.swing.JComboBox<>();
-        cb_TipoConta = new javax.swing.JComboBox<>();
+        cbGrupoConta = new javax.swing.JComboBox<>();
+        cbTipoConta = new javax.swing.JComboBox<>();
         lblItem = new javax.swing.JLabel();
         lblICMS = new javax.swing.JLabel();
-        textICMS = new javax.swing.JTextField();
+        txtIcms = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        textPis = new javax.swing.JTextField();
+        txtPis = new javax.swing.JTextField();
         lblPIS = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        textCofins = new javax.swing.JTextField();
+        txtCofins = new javax.swing.JTextField();
         lblCofins = new javax.swing.JLabel();
-        textValor = new javax.swing.JFormattedTextField(new DecimalFormat("#,##0.00"));
+        txtValor = new javax.swing.JFormattedTextField(new DecimalFormat("#,##0.00"));
         jDataVencimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
-        rbAPagar = new javax.swing.JRadioButton();
+        rbApagar = new javax.swing.JRadioButton();
         rbPago = new javax.swing.JRadioButton();
-        BotaoSalvar = new javax.swing.JButton();
+        btnSalva = new javax.swing.JButton();
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("%");
@@ -71,7 +71,7 @@ public class Despesas extends javax.swing.JDialog {
         lblValor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblValor.setText("Valor:");
 
-        textDocumento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtDecricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lblDescricao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblDescricao.setText("Descrição:");
@@ -79,7 +79,7 @@ public class Despesas extends javax.swing.JDialog {
         lblParcelas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblParcelas.setText("Parcelas:");
 
-        textParcela.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtParcela.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         lblVencimento.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblVencimento.setText("Vencimento:");
@@ -87,15 +87,15 @@ public class Despesas extends javax.swing.JDialog {
         lblGrupo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblGrupo.setText("Grupo:");
 
-        cb_grupoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_grupoConta.addItemListener(new java.awt.event.ItemListener() {
+        cbGrupoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbGrupoConta.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_grupoContaItemStateChanged(evt);
+                cbGrupoContaItemStateChanged(evt);
             }
         });
 
-        cb_TipoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        cb_TipoConta.setToolTipText("");
+        cbTipoConta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbTipoConta.setToolTipText("");
 
         lblItem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblItem.setText("Item:");
@@ -118,6 +118,12 @@ public class Despesas extends javax.swing.JDialog {
         lblCofins.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCofins.setText("COFINS:");
 
+        txtValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtValorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,42 +137,42 @@ public class Despesas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(textParcela)
+                        .addComponent(txtParcela)
                         .addGap(18, 18, 18)
                         .addComponent(lblVencimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textDocumento)
+                    .addComponent(txtDecricao)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblGrupo)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cb_grupoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbGrupoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cb_TipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblICMS)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(textICMS, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtIcms, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel11))))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lblCofins)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(textCofins, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCofins, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel16))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addComponent(lblPIS)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(textPis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel12))))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -178,42 +184,42 @@ public class Despesas extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblValor)
                     .addComponent(lblGrupo)
-                    .addComponent(cb_grupoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbGrupoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblItem)
-                    .addComponent(cb_TipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDescricao)
-                    .addComponent(textDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDecricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblICMS)
-                    .addComponent(textICMS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIcms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblParcelas)
-                        .addComponent(textParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblVencimento)
                         .addComponent(lblPIS)
-                        .addComponent(textPis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12))
                     .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCofins)
-                    .addComponent(textCofins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCofins, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Situação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        rbAPagar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        rbAPagar.setText("A pagar");
-        rbAPagar.addActionListener(new java.awt.event.ActionListener() {
+        rbApagar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        rbApagar.setText("A pagar");
+        rbApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbAPagarActionPerformed(evt);
+                rbApagarActionPerformed(evt);
             }
         });
 
@@ -231,7 +237,7 @@ public class Despesas extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rbAPagar)
+                .addComponent(rbApagar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbPago)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -241,15 +247,15 @@ public class Despesas extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbAPagar)
+                    .addComponent(rbApagar)
                     .addComponent(rbPago)))
         );
 
-        BotaoSalvar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        BotaoSalvar.setText("Salvar");
-        BotaoSalvar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalva.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSalva.setText("Salvar");
+        btnSalva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoSalvarActionPerformed(evt);
+                btnSalvaActionPerformed(evt);
             }
         });
 
@@ -262,7 +268,7 @@ public class Despesas extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotaoSalvar, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnSalva, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -273,23 +279,23 @@ public class Despesas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(BotaoSalvar)
+                .addComponent(btnSalva)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarActionPerformed
+    private void btnSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvaActionPerformed
         //Criando o objeto despesa
         DespesasBEAN oDespesa = new DespesasBEAN();
         try {
 
-            oDespesa.setDescricao(textDocumento.getText());
-            Object oValor = textValor.getValue();
+            oDespesa.setDescricao(txtDecricao.getText());
+            Object oValor = txtValor.getValue();
             oDespesa.setValor(Float.valueOf(oValor.toString()));
 
-            if (rbAPagar.isSelected()) {
+            if (rbApagar.isSelected()) {
                 oDespesa.setSituacao(0);
             }
             if (rbPago.isSelected()) {
@@ -297,19 +303,19 @@ public class Despesas extends javax.swing.JDialog {
             }
 
             //Caso o numero de parcela seja difente de 0 o status de parcela muda
-            oDespesa.setVezes(Integer.parseInt(textParcela.getText()));
+            oDespesa.setVezes(Integer.parseInt(txtParcela.getText()));
             if (oDespesa.getVezes() != 0) {
                 oDespesa.setParcelado(1);
             } else {
                 oDespesa.setParcelado(0);
             }
-            oDespesa.setIcms(Integer.parseInt(textICMS.getText()));
-            oDespesa.setPis(Integer.parseInt(textPis.getText()));
-            oDespesa.setCofins(Integer.parseInt(textCofins.getText()));
+            oDespesa.setIcms(Integer.parseInt(txtIcms.getText()));
+            oDespesa.setPis(Integer.parseInt(txtPis.getText()));
+            oDespesa.setCofins(Integer.parseInt(txtCofins.getText()));
 
             // (item + 1) ele pega a posicao da lista +1 porque ela comça do zero 
-            oDespesa.setId_grupo(cb_grupoConta.getSelectedIndex() + 1);
-            oDespesa.setId_tipo(cb_TipoConta.getSelectedIndex() + 1);
+            oDespesa.setId_grupo(cbGrupoConta.getSelectedIndex() + 1);
+            oDespesa.setId_tipo(cbTipoConta.getSelectedIndex() + 1);
 
             //Formantando a data para salvar no banco
             SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
@@ -329,41 +335,45 @@ public class Despesas extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao realizar cadastro!");
         }
-    }//GEN-LAST:event_BotaoSalvarActionPerformed
+    }//GEN-LAST:event_btnSalvaActionPerformed
 
     public void limparTela() {
-        textValor.setText("");
-        textCofins.setText("0");
-        textDocumento.setText("");
-        textICMS.setText("0");
-        textPis.setText("0");
-        textValor.setText("0");
+        txtValor.setText("");
+        txtCofins.setText("0");
+        txtDecricao.setText("");
+        txtIcms.setText("0");
+        txtPis.setText("0");
+        txtValor.setText("0");
         rbPago.setSelected(false);
-        rbAPagar.setSelected(false);
-        cb_TipoConta.setSelectedIndex(0);
-        cb_grupoConta.setSelectedIndex(0);
+        rbApagar.setSelected(false);
+        cbTipoConta.setSelectedIndex(0);
+        cbGrupoConta.setSelectedIndex(0);
     }
-    private void rbAPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAPagarActionPerformed
+    private void rbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbApagarActionPerformed
         this.rbPago.setSelected(false);
-    }//GEN-LAST:event_rbAPagarActionPerformed
+    }//GEN-LAST:event_rbApagarActionPerformed
 
     private void rbPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPagoActionPerformed
-        this.rbAPagar.setSelected(false);
+        this.rbApagar.setSelected(false);
     }//GEN-LAST:event_rbPagoActionPerformed
 
-    private void cb_grupoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_grupoContaItemStateChanged
+    private void cbGrupoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGrupoContaItemStateChanged
 
         GrupoContasBEAN grupo = new GrupoContasBEAN();
         grupo.setIdGrupoContas(-1);
         
         for (GrupoContasBEAN lista : listaGrupoContas) {
-            if (lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString())) {
+            if (lista.getDescricao().equals(cbGrupoConta.getSelectedItem().toString())) {
                 grupo = lista;
                 break;  
             }
         }
         setTipoContas(grupo);
-    }//GEN-LAST:event_cb_grupoContaItemStateChanged
+    }//GEN-LAST:event_cbGrupoContaItemStateChanged
+
+    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,9 +419,9 @@ public class Despesas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoSalvar;
-    private javax.swing.JComboBox<String> cb_TipoConta;
-    private javax.swing.JComboBox<String> cb_grupoConta;
+    private javax.swing.JButton btnSalva;
+    private javax.swing.JComboBox<String> cbGrupoConta;
+    private javax.swing.JComboBox<String> cbTipoConta;
     private com.toedter.calendar.JDateChooser jDataVencimento;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -430,14 +440,14 @@ public class Despesas extends javax.swing.JDialog {
     private javax.swing.JLabel lblParcelas;
     private javax.swing.JLabel lblValor;
     private javax.swing.JLabel lblVencimento;
-    private javax.swing.JRadioButton rbAPagar;
+    private javax.swing.JRadioButton rbApagar;
     private javax.swing.JRadioButton rbPago;
-    private javax.swing.JTextField textCofins;
-    private javax.swing.JTextField textDocumento;
-    private javax.swing.JTextField textICMS;
-    private javax.swing.JTextField textParcela;
-    private javax.swing.JTextField textPis;
-    private javax.swing.JFormattedTextField textValor;
+    private javax.swing.JTextField txtCofins;
+    private javax.swing.JTextField txtDecricao;
+    private javax.swing.JTextField txtIcms;
+    private javax.swing.JTextField txtParcela;
+    private javax.swing.JTextField txtPis;
+    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
     private ArrayList<GrupoContasBEAN> listaGrupoContas;
     private ArrayList<TipoContasBEAN> listaTipoContas;
@@ -445,16 +455,15 @@ public class Despesas extends javax.swing.JDialog {
     private void setGrupoContas() {
         this.listaGrupoContas = Controller.listaGrupoContas();
         listaGrupoContas.forEach((gc) -> {
-            cb_grupoConta.addItem(gc.getDescricao());
+            cbGrupoConta.addItem(gc.getDescricao());
         });
     }
 
     private void setTipoContas(GrupoContasBEAN grupo) {
-        cb_TipoConta.removeAllItems();
+        cbTipoConta.removeAllItems();
         this.listaTipoContas = Controller.listaTipoContas(grupo.getIdGrupoContas());
-        cb_TipoConta.removeAllItems();
         listaTipoContas.forEach((tc) -> {
-            cb_TipoConta.addItem(tc.getDescricao());
+            cbTipoConta.addItem(tc.getDescricao());
         });
     }
 }

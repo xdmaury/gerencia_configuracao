@@ -48,7 +48,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="BotaoSalvar" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSalva" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -62,7 +62,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-              <Component id="BotaoSalvar" min="-2" max="-2" attributes="0"/>
+              <Component id="btnSalva" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -98,32 +98,32 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="textParcela" max="32767" attributes="0"/>
+                          <Component id="txtParcela" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblVencimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jDataVencimento" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="textDocumento" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtDecricao" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="textValor" min="-2" pref="134" max="-2" attributes="0"/>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
+                          <Component id="txtValor" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblGrupo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="cb_grupoConta" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="cbGrupoConta" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="lblItem" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="cb_TipoConta" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="cbTipoConta" min="-2" pref="100" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="lblICMS" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="textICMS" min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="txtIcms" min="-2" pref="24" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -133,14 +133,14 @@
                           <Group type="102" attributes="0">
                               <Component id="lblCofins" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="textCofins" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="txtCofins" min="-2" pref="24" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblPIS" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="textPis" min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="txtPis" min="-2" pref="24" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -157,27 +157,27 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblGrupo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_grupoConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbGrupoConta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblItem" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_TipoConta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textValor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbTipoConta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDescricao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDecricao" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblICMS" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textICMS" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIcms" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblParcelas" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textParcela" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtParcela" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVencimento" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPIS" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="textPis" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPis" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jDataVencimento" min="-2" max="-2" attributes="0"/>
@@ -185,7 +185,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblCofins" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textCofins" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCofins" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -202,7 +202,7 @@
             <Property name="text" type="java.lang.String" value="Valor:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textDocumento">
+        <Component class="javax.swing.JTextField" name="txtDecricao">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -225,7 +225,7 @@
             <Property name="text" type="java.lang.String" value="Parcelas:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textParcela">
+        <Component class="javax.swing.JTextField" name="txtParcela">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -248,7 +248,7 @@
             <Property name="text" type="java.lang.String" value="Grupo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_grupoConta">
+        <Component class="javax.swing.JComboBox" name="cbGrupoConta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -258,13 +258,13 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cb_grupoContaItemStateChanged"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbGrupoContaItemStateChanged"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cb_TipoConta">
+        <Component class="javax.swing.JComboBox" name="cbTipoConta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -294,7 +294,7 @@
             <Property name="text" type="java.lang.String" value="ICMS:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textICMS">
+        <Component class="javax.swing.JTextField" name="txtIcms">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -312,7 +312,7 @@
             <Property name="text" type="java.lang.String" value="%"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textPis">
+        <Component class="javax.swing.JTextField" name="txtPis">
         </Component>
         <Component class="javax.swing.JLabel" name="lblPIS">
           <Properties>
@@ -330,7 +330,7 @@
             <Property name="text" type="java.lang.String" value="%"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textCofins">
+        <Component class="javax.swing.JTextField" name="txtCofins">
         </Component>
         <Component class="javax.swing.JLabel" name="lblCofins">
           <Properties>
@@ -340,7 +340,10 @@
             <Property name="text" type="java.lang.String" value="COFINS:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="textValor">
+        <Component class="javax.swing.JFormattedTextField" name="txtValor">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new DecimalFormat(&quot;#,##0.00&quot;))"/>
           </AuxValues>
@@ -368,7 +371,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="rbAPagar" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbApagar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="rbPago" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -380,7 +383,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rbAPagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rbApagar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbPago" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -388,7 +391,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="rbAPagar">
+        <Component class="javax.swing.JRadioButton" name="rbApagar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="0"/>
@@ -396,7 +399,7 @@
             <Property name="text" type="java.lang.String" value="A pagar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbAPagarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbApagarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbPago">
@@ -412,7 +415,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="BotaoSalvar">
+    <Component class="javax.swing.JButton" name="btnSalva">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="12" style="0"/>
@@ -420,7 +423,7 @@
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoSalvarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
