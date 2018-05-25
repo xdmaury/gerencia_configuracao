@@ -4,6 +4,7 @@ import CONTROLLER.Controller;
 import MODEL.GrupoContasBEAN;
 import MODEL.TipoContasBEAN;
 import MODEL.DespesasBEAN;
+import MODEL.UsuarioBEAN;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
@@ -51,7 +52,7 @@ public class Despesas extends javax.swing.JDialog {
         txtCofins = new javax.swing.JTextField();
         lblCofins = new javax.swing.JLabel();
         txtValor = new javax.swing.JFormattedTextField(new DecimalFormat("#,##0.00"));
-        JDataVencimento = new com.toedter.calendar.JDateChooser();
+        jDataVencimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         rbApagar = new javax.swing.JRadioButton();
         rbPago = new javax.swing.JRadioButton();
@@ -137,11 +138,11 @@ public class Despesas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtParcela)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblVencimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(JDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtDecricao)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +176,7 @@ public class Despesas extends javax.swing.JDialog {
                             .addComponent(txtPis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel12))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +205,7 @@ public class Despesas extends javax.swing.JDialog {
                         .addComponent(lblPIS)
                         .addComponent(txtPis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12))
-                    .addComponent(JDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCofins)
@@ -292,7 +293,6 @@ public class Despesas extends javax.swing.JDialog {
 
             //Criando o objeto despesa
             DespesasBEAN oDespesa = new DespesasBEAN();
-
             
             oDespesa.setDescricao(txtDecricao.getText());
             Object oValor = txtValor.getValue();
@@ -326,11 +326,11 @@ public class Despesas extends javax.swing.JDialog {
             Date datah = new Date(System.currentTimeMillis());
 
             //oDespesa.setDataInclusao(formato.format(datah));
-            oDespesa.setVencimento(formato.format(JDataVencimento.getDate()));
+            oDespesa.setVencimento(formato.format(jDataVencimento.getDate()));
 
             // ATENÇAO ..........................................................
             //Criar um metodo para pegar o id do usuario para inserir uma despesa
-            oDespesa.setId_usuario(1);
+            oDespesa.setId_usuario(usuario.getId());
 
             try {
                 Controller.addDespesa(oDespesa);
@@ -428,10 +428,10 @@ public class Despesas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser JDataVencimento;
     private javax.swing.JButton btnSalva;
     private javax.swing.JComboBox<String> cbGrupoConta;
     private javax.swing.JComboBox<String> cbTipoConta;
+    private com.toedter.calendar.JDateChooser jDataVencimento;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -460,6 +460,11 @@ public class Despesas extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private ArrayList<GrupoContasBEAN> listaGrupoContas;
     private ArrayList<TipoContasBEAN> listaTipoContas;
+    private UsuarioBEAN usuario = null;
+
+    public void setUsuario(UsuarioBEAN usuario) {
+        this.usuario = usuario;
+    }
 
     private void setGrupoContas() {
         this.listaGrupoContas = Controller.listaGrupoContas();
@@ -477,6 +482,7 @@ public class Despesas extends javax.swing.JDialog {
     }
 
     private boolean verificaCamposPreenchidos() {
-        return (txtValor.getText().isEmpty() && txtParcela.getText().isEmpty() && txtDecricao.getText().isEmpty() && (rbApagar.isSelected() || rbPago.isSelected()));
+        return !(txtValor.getText().isEmpty() || txtParcela.getText().isEmpty() || txtDecricao.getText().isEmpty() || !(rbPago.isSelected() || rbApagar.isSelected()));
     }
+  
 }

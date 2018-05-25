@@ -98,11 +98,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="txtParcela" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtParcela" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblVencimento" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="JDataVencimento" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDataVencimento" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="txtDecricao" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -146,7 +146,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -180,7 +180,7 @@
                           <Component id="txtPis" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="JDataVencimento" min="-2" max="-2" attributes="0"/>
+                      <Component id="jDataVencimento" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -348,7 +348,7 @@
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JFormattedTextField(new DecimalFormat(&quot;#,##0.00&quot;))"/>
           </AuxValues>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="JDataVencimento">
+        <Component class="com.toedter.calendar.JDateChooser" name="jDataVencimento">
         </Component>
       </SubComponents>
     </Container>
