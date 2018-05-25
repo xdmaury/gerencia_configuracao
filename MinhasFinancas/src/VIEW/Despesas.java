@@ -51,7 +51,7 @@ public class Despesas extends javax.swing.JDialog {
         txtCofins = new javax.swing.JTextField();
         lblCofins = new javax.swing.JLabel();
         txtValor = new javax.swing.JFormattedTextField(new DecimalFormat("#,##0.00"));
-        jDataVencimento = new com.toedter.calendar.JDateChooser();
+        JDataVencimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         rbApagar = new javax.swing.JRadioButton();
         rbPago = new javax.swing.JRadioButton();
@@ -141,7 +141,7 @@ public class Despesas extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(lblVencimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtDecricao)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +204,7 @@ public class Despesas extends javax.swing.JDialog {
                         .addComponent(lblPIS)
                         .addComponent(txtPis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12))
-                    .addComponent(jDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JDataVencimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCofins)
@@ -287,9 +287,11 @@ public class Despesas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvaActionPerformed
-        //Criando o objeto despesa
-        DespesasBEAN oDespesa = new DespesasBEAN();
-        try {
+
+        if (verificaCamposPreenchidos()) {
+
+            //Criando o objeto despesa
+            DespesasBEAN oDespesa = new DespesasBEAN();
 
             oDespesa.setDescricao(txtDecricao.getText());
             Object oValor = txtValor.getValue();
@@ -323,18 +325,24 @@ public class Despesas extends javax.swing.JDialog {
             Date datah = new Date(System.currentTimeMillis());
 
             //oDespesa.setDataInclusao(formato.format(datah));
-            oDespesa.setVencimento(formato.format(jDataVencimento.getDate()));
+            oDespesa.setVencimento(formato.format(JDataVencimento.getDate()));
 
             // ATENÇAO ..........................................................
             //Criar um metodo para pegar o id do usuario para inserir uma despesa
             oDespesa.setId_usuario(1);
 
-            Controller.addDespesa(oDespesa);
-            JOptionPane.showMessageDialog(null, "Cadastro realizado!");
-            limparTela();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao realizar cadastro!");
+            try {
+                Controller.addDespesa(oDespesa);
+                JOptionPane.showMessageDialog(null, "Cadastro realizado!");
+                limparTela();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao realizar cadastro!");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
         }
+
     }//GEN-LAST:event_btnSalvaActionPerformed
 
     public void limparTela() {
@@ -361,11 +369,11 @@ public class Despesas extends javax.swing.JDialog {
 
         GrupoContasBEAN grupo = new GrupoContasBEAN();
         grupo.setIdGrupoContas(-1);
-        
+
         for (GrupoContasBEAN lista : listaGrupoContas) {
             if (lista.getDescricao().equals(cbGrupoConta.getSelectedItem().toString())) {
                 grupo = lista;
-                break;  
+                break;
             }
         }
         setTipoContas(grupo);
@@ -419,10 +427,10 @@ public class Despesas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser JDataVencimento;
     private javax.swing.JButton btnSalva;
     private javax.swing.JComboBox<String> cbGrupoConta;
     private javax.swing.JComboBox<String> cbTipoConta;
-    private com.toedter.calendar.JDateChooser jDataVencimento;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -465,5 +473,9 @@ public class Despesas extends javax.swing.JDialog {
         listaTipoContas.forEach((tc) -> {
             cbTipoConta.addItem(tc.getDescricao());
         });
+    }
+
+    private boolean verificaCamposPreenchidos() {
+        return (txtValor.getText().isEmpty() && txtParcela.getText().isEmpty() && txtDecricao.getText().isEmpty() && (rbApagar.isSelected() || rbPago.isSelected()));
     }
 }
