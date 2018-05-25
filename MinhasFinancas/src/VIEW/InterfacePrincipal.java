@@ -2,6 +2,7 @@ package VIEW;
 
 import CONTROLLER.Controller;
 import MODEL.DespesasBEAN;
+import MODEL.UsuarioBEAN;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import javax.swing.JOptionPane;
@@ -365,4 +366,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField textVlrEtanol;
     private javax.swing.JTextField textVlrGasolina;
     // End of variables declaration//GEN-END:variables
+    private UsuarioBEAN usuario = null;
+
+    public void setUsuario(UsuarioBEAN usuario) {
+        this.usuario = usuario;
+    }
+
 }
+
+
