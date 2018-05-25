@@ -24,5 +24,9 @@ public class Controller {
     public ArrayList<DespesasBEAN> listarDespesas() {
         return DespesasDAO.getInstance().findAlldespesas();
     }
+    
+    public ArrayList<DespesasBEAN> listarDespesasVencidas(String data){
+        return DespesasDAO.getInstance().findDespesasVencimento(data);
+    }
 
 }
