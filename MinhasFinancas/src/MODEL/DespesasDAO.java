@@ -96,6 +96,10 @@ public class DespesasDAO {
         return listadespesas ("SELECT * FROM Despesa");
     }
     
+    public ArrayList<DespesasBEAN> findAlldespesas(int id){
+        return listadespesas ("SELECT * FROM Despesa WHERE id_usuario = " + id);
+    }
+    
     public ArrayList<DespesasBEAN> listadespesas(String query) {
         ArrayList<DespesasBEAN> lista = new ArrayList<DespesasBEAN>();
         ResultSet rs = null;

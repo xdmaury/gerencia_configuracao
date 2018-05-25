@@ -11,11 +11,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.table.DefaultTableModel ttDespesas;
 
     public InterfacePrincipal() {
-        Controller controle = new Controller();
+//        Controller controle = new Controller();
         initComponents();
         this.setLocationRelativeTo(this);
         ttDespesas = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
-        preencher_Tabela_Produtos(controle.listarDespesas());
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -368,6 +368,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     public void setUsuario(UsuarioBEAN usuario) {
         this.usuario = usuario;
+        preencher_Tabela_Produtos(Controller.listarDespesas(usuario.getId()));   
     }
 
 }

@@ -24,11 +24,15 @@ public class Controller {
         DespesasDAO.getInstance().create(despesa);
     }
 
-    public ArrayList<DespesasBEAN> listarDespesas() {
+    public static ArrayList<DespesasBEAN> listarDespesas() {
         return DespesasDAO.getInstance().findAlldespesas();
     }
+    
+    public static ArrayList<DespesasBEAN> listarDespesas(int id) {
+        return DespesasDAO.getInstance().findAlldespesas(id);
+    }
 
-    public ArrayList<DespesasBEAN> listarDespesasVencidas(String data) {
+    public static ArrayList<DespesasBEAN> listarDespesasVencidas(String data) {
         return DespesasDAO.getInstance().findDespesasVencimento(data);
     }
     
