@@ -10,6 +10,7 @@ import MODEL.DespesasBEAN;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,13 +83,26 @@ public class Gastos extends javax.swing.JDialog {
         // TODO add your handling code here:
         ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
         Controller controle = new Controller();
-        
+
         SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM");
         Date dataDia = new Date(System.currentTimeMillis());
-        System.out.println(formato.format(dataDia));
+        //Convertendo a data para string
         String dat = (String) formato.format(dataDia);
-        listaDespesas = controle.listarDespesasVencidas("'2018-05%'");
+        //Trocar este metodo que lista as contas com busca somente a deste mes
+        listaDespesas = controle.listarDespesas();
+        if (!listaDespesas.isEmpty()) {
+            float resultado = 0;
+            for (DespesasBEAN despesas : listaDespesas) {
+                resultado = resultado +  (1000 * (despesas.getValor()/100));
+            }
+            System.out.println("Total das contas: " + resultado);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você não possui contas vencidas :)");
+        }
         System.out.println(listaDespesas.size());
+
+        //porcentagem = Salario * (contas/100)
+       
     }//GEN-LAST:event_jButtonSalarioCompremetidoActionPerformed
 
     /**
