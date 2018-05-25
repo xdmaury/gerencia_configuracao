@@ -28,13 +28,14 @@ public class Controller {
         return DespesasDAO.getInstance().findAlldespesas();
     }
 
+    public ArrayList<DespesasBEAN> listarDespesasVencidas(String data) {
+        return DespesasDAO.getInstance().findDespesasVencimento(data);
+    }
+    
 //    Usuarios
     public static UsuarioBEAN buscaUsuario(String nome_usuario, String senha) {
         return UsuarioDAO.getInstance().find(nome_usuario, senha);
     }
 
-    public ArrayList<DespesasBEAN> listarDespesasVencidas(String data) {
-        return DespesasDAO.getInstance().findDespesasVencimento(data);
-    }
 
 }
