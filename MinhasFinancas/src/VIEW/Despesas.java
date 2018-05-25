@@ -293,6 +293,7 @@ public class Despesas extends javax.swing.JDialog {
             //Criando o objeto despesa
             DespesasBEAN oDespesa = new DespesasBEAN();
 
+            
             oDespesa.setDescricao(txtDecricao.getText());
             Object oValor = txtValor.getValue();
             oDespesa.setValor(Float.valueOf(oValor.toString()));
