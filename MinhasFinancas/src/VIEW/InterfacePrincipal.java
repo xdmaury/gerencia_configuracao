@@ -259,6 +259,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         telaDespesas.setLocationRelativeTo(null);
         telaDespesas.setUsuario(usuario);
         telaDespesas.setVisible(true);
+        preencher_Tabela_Produtos(Controller.listarDespesas(usuario.getId()));
     }//GEN-LAST:event_BotaoTelasDespesasActionPerformed
 
     private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed

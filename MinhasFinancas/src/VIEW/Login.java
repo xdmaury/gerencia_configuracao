@@ -142,7 +142,6 @@ public class Login extends javax.swing.JFrame {
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         UsuarioBEAN usuario = new UsuarioBEAN();
         usuario.setId(-1);
-        
         if (!verificaCamposPreenchidos()) {
             usuario = Controller.buscaUsuario(txtUsuario.getText(), txtSenha.getText());
             if (usuario.getId() > -1) {
