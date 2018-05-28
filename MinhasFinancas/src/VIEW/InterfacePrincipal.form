@@ -52,15 +52,15 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="BotaoTelaReceitas" min="-2" max="-2" attributes="0"/>
+                          <Component id="BotaoTelaReceitas" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BotaoTelaGastos" min="-2" pref="82" max="-2" attributes="0"/>
+                          <Component id="BotaoTelaGastos" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BotaoTelasDespesas" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="BotaoTelasDespesas" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BotaoTelaEstatisticas" min="-2" max="-2" attributes="0"/>
+                          <Component id="BotaoTelaEstatisticas" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jDataSaldo" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDataSaldo" min="-2" pref="140" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblSaldo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -231,6 +231,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Receitas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoTelaReceitasActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>

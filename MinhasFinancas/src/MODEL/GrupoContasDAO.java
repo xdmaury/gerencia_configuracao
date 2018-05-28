@@ -34,6 +34,10 @@ public class GrupoContasDAO {
         return list("SELECT * FROM grupo");
     }
     
+    public ArrayList<GrupoContasBEAN> findListGrupo(int id){
+        return list("SELECT * FROM `grupo` WHERE `id` = " + id);
+    }
+    
     private ArrayList<GrupoContasBEAN> list(String query){
         ArrayList<GrupoContasBEAN> list = new ArrayList<>();
         ResultSet rs = null;

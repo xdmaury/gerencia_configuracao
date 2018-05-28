@@ -469,7 +469,9 @@ public class Despesas extends javax.swing.JDialog {
     private void setGrupoContas() {
         this.listaGrupoContas = Controller.listaGrupoContas();
         listaGrupoContas.forEach((gc) -> {
-            cbGrupoConta.addItem(gc.getDescricao());
+            if (!gc.getDescricao().equals("Receitas")) {
+                cbGrupoConta.addItem(gc.getDescricao());
+            }
         });
     }
 

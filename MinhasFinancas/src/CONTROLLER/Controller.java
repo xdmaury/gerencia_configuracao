@@ -9,6 +9,10 @@ public class Controller {
     public static ArrayList<GrupoContasBEAN> listaGrupoContas() {
         return GrupoContasDAO.getInstance().findListGrupo();
     }
+    
+    public static ArrayList<GrupoContasBEAN> listaGrupoContas(int id) {
+        return GrupoContasDAO.getInstance().findListGrupo(id);
+    }
 
 //    Tipos de contas
     public static ArrayList<TipoContasBEAN> listaTipoContas() {
