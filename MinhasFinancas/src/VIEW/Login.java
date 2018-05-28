@@ -54,7 +54,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Usuário"));
 
         lblUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -158,7 +158,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoNovoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoUsuarioActionPerformed
-        
+        NovoUsuario tela = new NovoUsuario(this, true);
+        tela.setVisible(true);
     }//GEN-LAST:event_botaoNovoUsuarioActionPerformed
 
     /**

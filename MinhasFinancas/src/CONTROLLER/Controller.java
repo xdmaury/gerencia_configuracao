@@ -40,6 +40,9 @@ public class Controller {
     public static UsuarioBEAN buscaUsuario(String nome_usuario, String senha) {
         return UsuarioDAO.getInstance().find(nome_usuario, senha);
     }
-
-
+    
+    public static void addUsuario(UsuarioBEAN u){
+        UsuarioDAO.getInstance().create(u);
+    }
+    
 }

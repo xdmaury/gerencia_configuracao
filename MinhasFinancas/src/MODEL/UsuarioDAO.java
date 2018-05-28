@@ -48,10 +48,25 @@ public class UsuarioDAO {
         return usuario;
     }
     
-//    public static void main(String[] args) {
-//        UsuarioBEAN usuario = null;
-//        usuario = UsuarioDAO.getInstance().find("Usuario 1", "123");
-//        
-//    }
+    public void create(UsuarioBEAN u){
+        u.setId(UsuarioDAO.getInstance().selecionaMaiorValor() + 1);
+        String query = "INSERT INTO `usuario` (`id`, `nome`, `nome_usuario`, `senha`) VALUES ('"+u.getId()+"' , '"+ u.getNome() +"', '"+u.getNome_usuario()+"', '"+u.getSenha()+"')";
+        MySQLDAO.executeQuery(query);
+    }
+    
+    private int selecionaMaiorValor(){
+        String query = "SELECT max(id) FROM usuario";
+        int id = -1;
+        ResultSet rs = MySQLDAO.getResultSet(query);
+        try {
+            if (rs.next()) {
+                id = rs.getInt("max(id)");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
     
 }
