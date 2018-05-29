@@ -5,10 +5,8 @@
  */
 package MODEL;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -51,46 +49,7 @@ public class DespesasDAO {
         MySQLDAO.executeQuery(query, despesa.getNome(), despesa.getStatus(), despesa.getIddespesa());
     }
     */
-    /**
-            //Pegando a data atual do dia
-            Date datah = new Date(System.currentTimeMillis());
-
-            //oDespesa.setDataInclusao(formato.format(datah));
-     * 
-     * @param data
-     * @return 
-     */
-    
-    //pegar lista de despesas de vencimento do mes
-       
-    public ArrayList<DespesasBEAN> findDespesasVencimento(String data) {
-        ArrayList<DespesasBEAN> lista = new ArrayList<DespesasBEAN>();
-        ResultSet rs = null;
-        rs = MySQLDAO.getResultSet("SELECT * FROM Despesa WHERE vencimento"+data+"");
-        try {
-            while (rs.next()) {
-                lista.add(new DespesasBEAN(
-                        rs.getInt("id"), 
-                        rs.getFloat("valor"),
-                        rs.getString("descricao"),
-                        rs.getInt("situacao"),
-                        rs.getString("vencimento"),
-                        rs.getInt("parcelado"),
-                        rs.getInt("vezes"),
-                        rs.getFloat("icms"),
-                        rs.getFloat("pis"),
-                        rs.getFloat("cofins"),
-                        rs.getInt("id_usuario"),
-                        rs.getInt("id_grupo"),
-                        rs.getInt("id_tipo")));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return lista;
-    }
-    
+  
     
     public ArrayList<DespesasBEAN> findAlldespesas(){
         return listadespesas ("SELECT * FROM Despesa");
@@ -99,7 +58,9 @@ public class DespesasDAO {
     public ArrayList<DespesasBEAN> findAlldespesas(int id){
         return listadespesas ("SELECT * FROM Despesa WHERE id_usuario = " + id);
     }
-    
+    public ArrayList<DespesasBEAN> findData(int IdUsuario,String data){
+        return listadespesas ("SELECT * FROM Despesa WHERE id_usuario ="+IdUsuario+" and vencimento LIKE '%" + data +"%'and situacao ="+ -1);
+    }
     public ArrayList<DespesasBEAN> listadespesas(String query) {
         ArrayList<DespesasBEAN> lista = new ArrayList<DespesasBEAN>();
         ResultSet rs = null;

@@ -84,25 +84,36 @@ public class Gastos extends javax.swing.JDialog {
         ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
         Controller controle = new Controller();
 
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM");
+        SimpleDateFormat formatoY = new SimpleDateFormat("yyyy");
+        SimpleDateFormat formatoM = new SimpleDateFormat("MM");
+
+        //Pegando a data do dia
         Date dataDia = new Date(System.currentTimeMillis());
+
         //Convertendo a data para string
-        String dat = (String) formato.format(dataDia);
+        String ano = (String) formatoY.format(dataDia);
+        String mes = (String) formatoM.format(dataDia);
+
+        //Formatando a data do dia para consultar no banco as contas desse mes
+        String data = ano + "-" + mes;
+
         //Trocar este metodo que lista as contas com busca somente a deste mes
-        listaDespesas = controle.listarDespesas();
+        //Temos que pegar a lista de despesas do usuario longado
+        /*
+        Aqui eu peguei uma lista de todas as contas e coloquei ali manulmente o 
+        salario/receitas do usuario
+         */
+        listaDespesas = controle.listarDespesasVencidas(3,data);
+        
         if (!listaDespesas.isEmpty()) {
             float resultado = 0;
             for (DespesasBEAN despesas : listaDespesas) {
-                resultado = resultado +  (1000 * (despesas.getValor()/100));
+                resultado = resultado + ((despesas.getValor() * 100) / 1000);
             }
-            System.out.println("Total das contas: " + resultado);
+            JOptionPane.showMessageDialog(null, "% De seu salario consulmido deste mes\n" + resultado + " %");
         } else {
             JOptionPane.showMessageDialog(null, "Você não possui contas vencidas :)");
         }
-        System.out.println(listaDespesas.size());
-
-        //porcentagem = Salario * (contas/100)
-       
     }//GEN-LAST:event_jButtonSalarioCompremetidoActionPerformed
 
     /**

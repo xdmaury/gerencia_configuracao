@@ -36,8 +36,8 @@ public class Controller {
         return DespesasDAO.getInstance().findAlldespesas(id);
     }
 
-    public static ArrayList<DespesasBEAN> listarDespesasVencidas(String data) {
-        return DespesasDAO.getInstance().findDespesasVencimento(data);
+    public static ArrayList<DespesasBEAN> listarDespesasVencidas(int id,String data) {
+        return DespesasDAO.getInstance().findData(id, data);
     }
     
 //    Usuarios
