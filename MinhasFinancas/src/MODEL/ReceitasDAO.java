@@ -50,6 +50,10 @@ public class ReceitasDAO {
         return listaReceitas("SELECT * FROM receita ORDER BY id");
     }
 
+    public ArrayList<ReceitasBEAN> findAllReceitasUsuario(int IdUsuario) {
+        return listaReceitas("SELECT * FROM receita WHERE id_usuario=" + IdUsuario);
+    }
+
     public ReceitasBEAN findReceita(int idReceita) {
         ReceitasBEAN result = null;
         ResultSet rs = null;
@@ -93,7 +97,7 @@ public class ReceitasDAO {
 //        }
 //        return false;
 //    }
-    
+
 //    public void updateSituacaoReceita(ReceitasBEAN receita) {
 //        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
 //        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());

@@ -9,7 +9,7 @@ public class Controller {
     public static ArrayList<GrupoContasBEAN> listaGrupoContas() {
         return GrupoContasDAO.getInstance().findListGrupo();
     }
-    
+
     public static ArrayList<GrupoContasBEAN> listaGrupoContas(int id) {
         return GrupoContasDAO.getInstance().findListGrupo(id);
     }
@@ -31,22 +31,27 @@ public class Controller {
     public static ArrayList<DespesasBEAN> listarDespesas() {
         return DespesasDAO.getInstance().findAlldespesas();
     }
-    
+
     public static ArrayList<DespesasBEAN> listarDespesas(int id) {
         return DespesasDAO.getInstance().findAlldespesas(id);
     }
 
-    public static ArrayList<DespesasBEAN> listarDespesasVencidas(int id,String data) {
+    public static ArrayList<DespesasBEAN> listarDespesasVencidas(int id, String data) {
         return DespesasDAO.getInstance().findData(id, data);
     }
-    
+
 //    Usuarios
     public static UsuarioBEAN buscaUsuario(String nome_usuario, String senha) {
         return UsuarioDAO.getInstance().find(nome_usuario, senha);
     }
-    
-    public static void addUsuario(UsuarioBEAN u){
+
+    public static void addUsuario(UsuarioBEAN u) {
         UsuarioDAO.getInstance().create(u);
     }
-    
+
+    //Receitas
+    public ArrayList<ReceitasBEAN> listaReceitasIDusuario(int idUsuario) {
+        return ReceitasDAO.getInstance().findAllReceitasUsuario(idUsuario);
+    }
+
 }

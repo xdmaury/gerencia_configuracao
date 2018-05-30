@@ -272,6 +272,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed
         Gastos telaGastos = new Gastos(this, true);
         telaGastos.setLocationRelativeTo(null);
+        telaGastos.setUsuario(usuario);
         telaGastos.setVisible(true);
     }//GEN-LAST:event_BotaoTelaGastosActionPerformed
 

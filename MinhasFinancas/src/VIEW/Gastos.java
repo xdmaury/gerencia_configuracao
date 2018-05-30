@@ -7,6 +7,8 @@ package VIEW;
 
 import CONTROLLER.Controller;
 import MODEL.DespesasBEAN;
+import MODEL.ReceitasBEAN;
+import MODEL.UsuarioBEAN;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -74,16 +76,15 @@ public class Gastos extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabeProgression2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabeProgression, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabeProgression, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabeProgression2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -142,6 +143,7 @@ public class Gastos extends javax.swing.JDialog {
     private void jButtonSalarioCompremetidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalarioCompremetidoActionPerformed
         // TODO add your handling code here:
         ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
+        ArrayList<ReceitasBEAN> listaReceitas = new ArrayList<ReceitasBEAN>();
         Controller controle = new Controller();
 
         SimpleDateFormat formatoY = new SimpleDateFormat("yyyy");
@@ -156,37 +158,43 @@ public class Gastos extends javax.swing.JDialog {
 
         //Formatando a data do dia para consultar no banco as contas desse mes
         String data = ano + "-" + mes;
-        
+
         //Exibir painel 
         jPanel2.setVisible(true);
-        
+
         //Trocar este metodo que lista as contas com busca somente a deste mes
         //Temos que pegar a lista de despesas do usuario longado
         /*
         Aqui eu peguei uma lista de todas as contas e coloquei ali manulmente o 
         salario/receitas do usuario
          */
-        listaDespesas = controle.listarDespesasVencidas(3,data);
-        
-        
+        listaDespesas = controle.listarDespesasVencidas(usuario.getId(), data);
+        listaReceitas = controle.listaReceitasIDusuario(usuario.getId());
+
         if (!listaDespesas.isEmpty()) {
-            float resultado = 0;
-            for (DespesasBEAN despesas : listaDespesas) {
-                resultado = resultado + ((despesas.getValor() * 100) / 1000);
-                jProgressBar.setValue((int) resultado);
-                jProgressBar2.setValue((int) (100-resultado));
+            //Metodo para pegar todo saldo do usuario
+            double saldo = 0;
+            for (ReceitasBEAN receitas : listaReceitas) {
+                saldo = saldo + receitas.getValor();
             }
             
+            float resultado = 0;
+            for (DespesasBEAN despesas : listaDespesas) {
+                resultado = (float) (resultado + ((despesas.getValor() * 100) / saldo));
+                jProgressBar.setValue((int) resultado);
+                jProgressBar2.setValue((int) (100 - resultado));
+            }
+
             String perc = resultado + "%";
-            String percDisp = (100-resultado) + "%";
+            String percDisp = (100 - resultado) + "%";
             jLabeProgression.setText(perc);
             jLabeProgression2.setText(percDisp);
-           
+
             //JOptionPane.showMessageDialog(null, "% De seu salario consulmido deste mes\n" + resultado + " %");
         } else {
             JOptionPane.showMessageDialog(null, "Você não possui contas vencidas :)");
         }
-        
+
     }//GEN-LAST:event_jButtonSalarioCompremetidoActionPerformed
 
     /**
@@ -242,4 +250,9 @@ public class Gastos extends javax.swing.JDialog {
     private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JProgressBar jProgressBar2;
     // End of variables declaration//GEN-END:variables
+  private UsuarioBEAN usuario = null;
+
+    public void setUsuario(UsuarioBEAN usuario) {
+        this.usuario = usuario;
+    }
 }

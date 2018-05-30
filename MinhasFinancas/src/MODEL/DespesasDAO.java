@@ -59,7 +59,7 @@ public class DespesasDAO {
         return listadespesas ("SELECT * FROM Despesa WHERE id_usuario = " + id);
     }
     public ArrayList<DespesasBEAN> findData(int IdUsuario,String data){
-        return listadespesas ("SELECT * FROM Despesa WHERE id_usuario ="+IdUsuario+" and vencimento LIKE '%" + data +"%'and situacao ="+ -1);
+        return listadespesas ("SELECT * FROM Despesa WHERE id_usuario ="+IdUsuario+" and vencimento LIKE '%" + data +"%'and situacao ="+ 0);
     }
     public ArrayList<DespesasBEAN> listadespesas(String query) {
         ArrayList<DespesasBEAN> lista = new ArrayList<DespesasBEAN>();
