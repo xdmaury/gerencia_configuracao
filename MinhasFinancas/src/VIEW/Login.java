@@ -140,7 +140,7 @@ public class Login extends javax.swing.JFrame {
         usuario.setId(-1);
         if (!verificaCamposPreenchidos()) {
             usuario = Controller.buscaUsuario(txtUsuario.getText(), txtSenha.getText());
-            if (usuario.getId() > -1) {
+            if (Controller.vericaUsuario(usuario.getId())) {
                 InterfacePrincipal tela = new InterfacePrincipal();
                 tela.setUsuario(usuario);
                 tela.setVisible(true);

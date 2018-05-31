@@ -69,4 +69,24 @@ public class UsuarioDAO {
         return id;
     }
     
+    public Boolean isExistUsuario(int id) {
+        String query = "SELECT * FROM `usuario` WHERE `id` = " + id;
+        Boolean result = false;
+        ResultSet rs = MySQLDAO.getResultSet(query);
+        try {
+            if (rs.next()) {
+                result = true;
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+//    public static void main(String[] args) {
+//        System.out.println(UsuarioDAO.getInstance().isExistUsuario(3));
+////        UsuarioDAO.getInstance().isExistUsuario(3);
+//    }
+    
 }

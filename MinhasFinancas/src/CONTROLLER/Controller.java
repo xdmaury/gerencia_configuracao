@@ -35,6 +35,10 @@ public class Controller {
     public static ArrayList<DespesasBEAN> listarDespesas(int id) {
         return DespesasDAO.getInstance().findAlldespesas(id);
     }
+    
+    public static ArrayList<DespesasBEAN> listarDespesasApagar(int id) {
+        return DespesasDAO.getInstance().findAlldespesasApagar(id);
+    }
 
     public static ArrayList<DespesasBEAN> listarDespesasVencidas(int id, String data) {
         return DespesasDAO.getInstance().findData(id, data);
@@ -47,6 +51,10 @@ public class Controller {
 
     public static void addUsuario(UsuarioBEAN u) {
         UsuarioDAO.getInstance().create(u);
+    }
+    
+    public static Boolean vericaUsuario(int id){
+        return UsuarioDAO.getInstance().isExistUsuario(id);
     }
 
     //Receitas
