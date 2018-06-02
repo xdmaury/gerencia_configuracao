@@ -3,6 +3,8 @@ package MODEL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,11 +25,11 @@ public class ReceitasDAO {
         return instance;
     }
 
-    public long createReceita(ReceitasBEAN receita) {
-        String query = "INSERT INTO receita (id, valor, id_usuario, id_grupo, id_tipo) "
-                + "VALUES (?,?,?,?,?)";
-        return MySQLDAO.executeQuery(query,
-                receita.getValor(), receita.getIdUsuario(), receita.getIdGrupo(), receita.getIdTipo());
+    public long createReceita(ReceitasBEAN r) {
+        r.setIdTipo(selecionaMaiorValor() + 1);
+        String query = "INSERT INTO `receita` (`id`, `valor`, `id_usuario`, `DataInclusao`, `id_grupo`, `id_tipo`, `documento`) "
+                + "VALUES ('"+r.getIdReceita()+"', '"+r.getValor()+"', '"+r.getIdUsuario()+"', '"+r.getData()+"', '"+r.getIdGrupo()+"', '"+r.getIdTipo()+"', '"+r.getDocumento()+"')";
+        return MySQLDAO.executeQuery(query);
     }
 
     public ArrayList<ReceitasBEAN> listaReceitas(String query) {
@@ -69,6 +71,22 @@ public class ReceitasDAO {
         }
         return result;
     }
+    
+    private int selecionaMaiorValor(){
+        String query = "SELECT max(id) FROM receita";
+        int id = -1;
+        ResultSet rs = MySQLDAO.getResultSet(query);
+        try {
+            if (rs.next()) {
+                id = rs.getInt("max(id)");
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
+    
 //    public boolean alterarReceita(double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
 //        PreparedStatement pst = null;
 //        String sql = "update receita set valor=?, id_usuario=?, id_grupo=?, id_tipo=? where idCliente=?";
@@ -116,4 +134,17 @@ public class ReceitasDAO {
         }
         return result;
     }
+//    
+    public static void main(String[] args) {
+        ReceitasBEAN r = new ReceitasBEAN();
+        r.setDocumento("Teste");
+        r.setIdGrupo(3);
+        r.setIdReceita(3);
+        r.setIdTipo(3);
+        r.setIdUsuario(3);
+        r.setValor(5000);
+        r.setData("2018-05-31");
+        ReceitasDAO.getInstance().createReceita(r);
+    }
+    
 }

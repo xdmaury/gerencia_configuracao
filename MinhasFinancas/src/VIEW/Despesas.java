@@ -317,8 +317,8 @@ public class Despesas extends javax.swing.JDialog {
             oDespesa.setCofins(Integer.parseInt(txtCofins.getText()));
 
             // (item + 1) ele pega a posicao da lista +1 porque ela comça do zero 
-            oDespesa.setId_grupo(cbGrupoConta.getSelectedIndex() + 1);
-            oDespesa.setId_tipo(cbTipoConta.getSelectedIndex() + 1);
+            oDespesa.setId_grupo(listaGrupoContas.get(cbGrupoConta.getSelectedIndex()).getIdGrupoContas());
+            oDespesa.setId_tipo(listaTipoContas.get(cbTipoConta.getSelectedIndex()).getIdTipoConta());
 
             //Formantando a data para salvar no banco
             SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");

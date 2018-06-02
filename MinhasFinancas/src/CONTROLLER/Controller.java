@@ -61,5 +61,9 @@ public class Controller {
     public ArrayList<ReceitasBEAN> listaReceitasIDusuario(int idUsuario) {
         return ReceitasDAO.getInstance().findAllReceitasUsuario(idUsuario);
     }
+    
+    public static void addReceita(ReceitasBEAN r){
+        ReceitasDAO.getInstance().createReceita(r);
+    }
 
 }
