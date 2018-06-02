@@ -32,14 +32,23 @@ public class ReceitasDAO {
         return MySQLDAO.executeQuery(query);
     }
 
-    public ArrayList<ReceitasBEAN> listaReceitas(String query) {
+    private ArrayList<ReceitasBEAN> listaReceitas(String query) {
         ArrayList<ReceitasBEAN> lista = new ArrayList<ReceitasBEAN>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
-                        rs.getInt("id_grupo"), rs.getInt("id_tipo")));
+                ReceitasBEAN r = new ReceitasBEAN();
+                r.setData(rs.getString("DataInclusao"));
+                r.setDocumento(rs.getString("documento"));
+                r.setIdGrupo(rs.getInt("id_grupo"));
+                r.setIdReceita(rs.getInt("id"));
+                r.setIdTipo(rs.getInt("id_tipo"));
+                r.setIdUsuario(rs.getInt("id_usuario"));
+                r.setValor(rs.getFloat("valor"));
+                lista.add(r);
+//                lista.add(new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+//                        rs.getInt("id_grupo"), rs.getInt("id_tipo")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -53,7 +62,7 @@ public class ReceitasDAO {
     }
 
     public ArrayList<ReceitasBEAN> findAllReceitasUsuario(int IdUsuario) {
-        return listaReceitas("SELECT * FROM receita WHERE id_usuario=" + IdUsuario);
+        return listaReceitas("SELECT * FROM `receita` WHERE `id_usuario` = " + IdUsuario);
     }
 
     public ReceitasBEAN findReceita(int idReceita) {
@@ -62,8 +71,8 @@ public class ReceitasDAO {
         rs = MySQLDAO.getResultSet("SELECT * FROM receita WHERE id=?", idReceita);
         try {
             if (rs.next()) {
-                result = new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
-                        rs.getInt("id_grupo"), rs.getInt("id_tipo"));
+//                result = new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+//                        rs.getInt("id_grupo"), rs.getInt("id_tipo"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -134,17 +143,10 @@ public class ReceitasDAO {
         }
         return result;
     }
-//    
-    public static void main(String[] args) {
-        ReceitasBEAN r = new ReceitasBEAN();
-        r.setDocumento("Teste");
-        r.setIdGrupo(3);
-        r.setIdReceita(3);
-        r.setIdTipo(3);
-        r.setIdUsuario(3);
-        r.setValor(5000);
-        r.setData("2018-05-31");
-        ReceitasDAO.getInstance().createReceita(r);
-    }
+   
+//    public static void main(String[] args) {
+//        
+//        ReceitasDAO.getInstance().findAllReceitasUsuario(3);
+//    }
     
 }

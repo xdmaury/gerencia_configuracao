@@ -16,21 +16,14 @@ public class ReceitasBEAN {
     private String documento;
     private String data;
 
-    public ReceitasBEAN(int idReceita, double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
-        this.idReceita = idReceita;
-        this.valor = valor;
-        this.idUsuario = idUsuario;
-        this.idGrupo = idGrupo;
-        this.idTipo = idTipo;
-    }
-
-    public ReceitasBEAN(int idReceita, double valor, Integer idUsuario, Integer idGrupo, Integer idTipo, String documento) {
+    public ReceitasBEAN(int idReceita, double valor, Integer idUsuario, Integer idGrupo, Integer idTipo, String documento, String data) {
         this.idReceita = idReceita;
         this.valor = valor;
         this.idUsuario = idUsuario;
         this.idGrupo = idGrupo;
         this.idTipo = idTipo;
         this.documento = documento;
+        this.data = data;
     }
 
     public ReceitasBEAN() {
