@@ -24,6 +24,7 @@ public class Gastos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         jPanel2.setVisible(false);
+        jPanel3.setVisible(false);
     }
 
     /**
@@ -44,6 +45,14 @@ public class Gastos extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jProgressBar2 = new javax.swing.JProgressBar();
         jLabeProgression2 = new javax.swing.JLabel();
+        jButtonImpostos = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelDespesas = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelTotalImpostos = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -105,6 +114,62 @@ public class Gastos extends javax.swing.JDialog {
                 .addGap(89, 89, 89))
         );
 
+        jButtonImpostos.setText("Impostos pagos");
+        jButtonImpostos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonImpostosActionPerformed(evt);
+            }
+        });
+
+        jPanel3.setBackground(java.awt.SystemColor.window);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estáticas de impostos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        jLabel3.setText("Total despesas:");
+
+        jLabel5.setText("R$");
+
+        jLabel4.setText("% Impostos: ");
+
+        jLabel7.setText("%");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTotalImpostos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(24, 24, 24))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabelDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabelTotalImpostos, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,18 +177,28 @@ public class Gastos extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSalarioCompremetido))
-                .addContainerGap(379, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonSalarioCompremetido)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonImpostos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonSalarioCompremetido)
-                .addGap(51, 51, 51)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalarioCompremetido)
+                    .addComponent(jButtonImpostos))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,9 +234,6 @@ public class Gastos extends javax.swing.JDialog {
         //Formatando a data do dia para consultar no banco as contas desse mes
         String data = ano + "-" + mes;
 
-        //Exibir painel 
-        jPanel2.setVisible(true);
-
         //Trocar este metodo que lista as contas com busca somente a deste mes
         //Temos que pegar a lista de despesas do usuario longado
         /*
@@ -171,82 +243,80 @@ public class Gastos extends javax.swing.JDialog {
         listaDespesas = controle.listarDespesasVencidas(usuario.getId(), data);
         listaReceitas = controle.listaReceitasIDusuario(usuario.getId());
 
-        if (!listaDespesas.isEmpty()) {
-            //Metodo para pegar todo saldo do usuario
-            double saldo = 0;
-            for (ReceitasBEAN receitas : listaReceitas) {
-                saldo = saldo + receitas.getValor();
-            }
-            
-            float resultado = 0;
-            for (DespesasBEAN despesas : listaDespesas) {
-                resultado = (float) (resultado + ((despesas.getValor() * 100) / saldo));
-                jProgressBar.setValue((int) resultado);
-                jProgressBar2.setValue((int) (100 - resultado));
-            }
+        if (!listaReceitas.isEmpty()) {
+            if (!listaDespesas.isEmpty()) {
+                //Exibir painel 
+                jPanel2.setVisible(true);
+                //Metodo para pegar todo saldo do usuario
+                double saldo = 0;
+                for (ReceitasBEAN receitas : listaReceitas) {
+                    saldo = saldo + receitas.getValor();
+                }
 
-            String perc = resultado + "%";
-            String percDisp = (100 - resultado) + "%";
-            jLabeProgression.setText(perc);
-            jLabeProgression2.setText(percDisp);
+                float resultado = 0;
+                for (DespesasBEAN despesas : listaDespesas) {
+                    resultado = (float) (resultado + ((despesas.getValor() * 100) / saldo));
+                    jProgressBar.setValue((int) resultado);
+                    jProgressBar2.setValue((int) (100 - resultado));
+                }
 
-            //JOptionPane.showMessageDialog(null, "% De seu salario consulmido deste mes\n" + resultado + " %");
+                String perc = resultado + "%";
+                String percDisp = (100 - resultado) + "%";
+                jLabeProgression.setText(perc);
+                jLabeProgression2.setText(percDisp);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Você não possui contas vencidas :)");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Você não possui contas vencidas :)");
+            JOptionPane.showMessageDialog(null, "Você não possui receitas!");
         }
+
 
     }//GEN-LAST:event_jButtonSalarioCompremetidoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButtonImpostosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImpostosActionPerformed
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Gastos dialog = new Gastos(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+        ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
+        Controller controle = new Controller();
+
+        //Buscando no banco todas as despesas pagas
+        listaDespesas = controle.listarDespesasPagas(usuario.getId());
+        if (!listaDespesas.isEmpty()) {
+            //Exibir o painel 
+            jPanel3.setVisible(true);
+            //Soma % de impostos
+            float impostos = 0;
+            float despesas = 0;
+            for (DespesasBEAN despesa : listaDespesas) {
+                impostos = impostos + (despesa.getCofins() + despesa.getIcms() + despesa.getPis());
+                despesas = despesas + despesa.getValor();
             }
-        });
-    }
+            jLabelDespesas.setText(String.valueOf(despesas));
+            jLabelTotalImpostos.setText(String.valueOf(impostos));
+        } else {
+            JOptionPane.showMessageDialog(null, "Voce não possui despesas pagas!");
+        }
+
+
+    }//GEN-LAST:event_jButtonImpostosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonImpostos;
     private javax.swing.JButton jButtonSalarioCompremetido;
     private javax.swing.JLabel jLabeProgression;
     private javax.swing.JLabel jLabeProgression2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelDespesas;
+    private javax.swing.JLabel jLabelTotalImpostos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JProgressBar jProgressBar2;
     // End of variables declaration//GEN-END:variables
