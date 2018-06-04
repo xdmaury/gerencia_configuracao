@@ -10,13 +10,16 @@ public class ReceitasBEAN {
 
     private int idReceita;
     private double valor;
-    private Integer idUsuario;
-    private Integer idGrupo;
-    private Integer idTipo;
+    private int idUsuario;
+    private int idGrupo;
+    private int idTipo;
     private String documento;
     private String data;
 
-    public ReceitasBEAN(int idReceita, double valor, Integer idUsuario, Integer idGrupo, Integer idTipo, String documento, String data) {
+    public ReceitasBEAN() {
+    }
+
+    public ReceitasBEAN(int idReceita, double valor, int idUsuario, int idGrupo, int idTipo, String documento, String data) {
         this.idReceita = idReceita;
         this.valor = valor;
         this.idUsuario = idUsuario;
@@ -24,9 +27,6 @@ public class ReceitasBEAN {
         this.idTipo = idTipo;
         this.documento = documento;
         this.data = data;
-    }
-
-    public ReceitasBEAN() {
     }
 
     public int getIdReceita() {
@@ -45,29 +45,29 @@ public class ReceitasBEAN {
         this.valor = valor;
     }
 
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
-    public Integer getIdGrupo() {
+    public int getIdGrupo() {
         return idGrupo;
     }
 
-    public void setIdGrupo(Integer idGrupo) {
+    public void setIdGrupo(int idGrupo) {
         this.idGrupo = idGrupo;
     }
 
-    public Integer getIdTipo() {
+    public int getIdTipo() {
         return idTipo;
     }
 
-    public void setIdTipo(Integer idTipo) {
+    public void setIdTipo(int idTipo) {
         this.idTipo = idTipo;
-    }    
+    }
 
     public String getDocumento() {
         return documento;

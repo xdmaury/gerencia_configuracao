@@ -261,7 +261,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         telaDespesas.setLocationRelativeTo(null);
         telaDespesas.setUsuario(usuario);
         telaDespesas.setVisible(true);
-        preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
+        atualizaSaldoDisponivel();
     }//GEN-LAST:event_BotaoTelasDespesasActionPerformed
 
     private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed
@@ -303,8 +303,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         Receitas tela = new Receitas(this, true);
         tela.setUsuario(usuario);
         tela.setVisible(true);
-        setSaldo();
-        textSaldo.setText(Float.toString(saldo));
+        atualizaSaldoDisponivel();
     }//GEN-LAST:event_BotaoTelaReceitasActionPerformed
 
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
@@ -379,7 +378,9 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private UsuarioBEAN usuario = null;
     private float saldo;
+    private float despesas;
     private ArrayList<ReceitasBEAN> listaReceitas = null;
+    private ArrayList<DespesasBEAN> listaDespesas = null;
     
     private void setSaldo(){
         this.saldo = 0;
@@ -389,13 +390,31 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 saldo += lista.getValor();
             }
         }
+        
+    }
+    
+    private void setDespesas(){
+        this.despesas = 0;
+        listaDespesas = Controller.listarDespesasApagar(usuario.getId());
+        if (listaDespesas != null) {
+            for (DespesasBEAN lista: listaDespesas) {
+                despesas += lista.getValor();
+            }
+            preencher_Tabela_Produtos(listaDespesas);
+        }
+        
+    }
+    
+    private void atualizaSaldoDisponivel(){
+        setSaldo();
+        setDespesas();
+        textSaldo.setText(Float.toString(saldo - despesas));
     }
    
     public void setUsuario(UsuarioBEAN usuario) {
         this.usuario = usuario;
         preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
-        setSaldo();
-        textSaldo.setText(Float.toString(saldo));
+        atualizaSaldoDisponivel();
     }
 
 }

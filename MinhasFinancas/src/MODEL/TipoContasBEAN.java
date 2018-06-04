@@ -11,7 +11,7 @@ package MODEL;
  */
 public class TipoContasBEAN {
     int idTipoConta;
-    String descricao;
+    private String descricao;
     int id_grupo;
 
     public TipoContasBEAN(int idTipoConta, String descricao, int id_grupo) {

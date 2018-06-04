@@ -26,10 +26,23 @@ public class ReceitasDAO {
     }
 
     public long createReceita(ReceitasBEAN r) {
-        r.setIdTipo(selecionaMaiorValor() + 1);
-        String query = "INSERT INTO `receita` (`id`, `valor`, `id_usuario`, `DataInclusao`, `id_grupo`, `id_tipo`, `documento`) "
-                + "VALUES ('"+r.getIdReceita()+"', '"+r.getValor()+"', '"+r.getIdUsuario()+"', '"+r.getData()+"', '"+r.getIdGrupo()+"', '"+r.getIdTipo()+"', '"+r.getDocumento()+"')";
-        return MySQLDAO.executeQuery(query);
+        int id = selecionaMaiorValor() + 1;
+        String query = "INSERT INTO `receita` "
+                                 +"(`id`, "
+                                 + "`valor`, "
+                                 + "`id_usuario`, "
+                                 + "`DataInclusao`, "
+                                 + "`id_grupo`, "
+                                 + "`id_tipo`, "
+                                 + "`documento`) "
+                         + "VALUES ('"+id+"', "
+                                 + "'"+r.getValor()+"', "
+                                 + "'"+r.getIdUsuario()+"', "
+                                 + "'"+r.getData()+"', "
+                                 + "'"+r.getIdGrupo()+"', "
+                                 + "'"+r.getIdTipo()+"', "
+                                 + "'"+r.getDocumento()+"')";
+        return  MySQLDAO.executeQuery(query);
     }
 
     private ArrayList<ReceitasBEAN> listaReceitas(String query) {
@@ -144,9 +157,9 @@ public class ReceitasDAO {
         return result;
     }
    
-//    public static void main(String[] args) {
-//        
-//        ReceitasDAO.getInstance().findAllReceitasUsuario(3);
-//    }
+    public static void main(String[] args) {
+        
+        ReceitasDAO.getInstance().createReceita(null);
+    }
     
 }

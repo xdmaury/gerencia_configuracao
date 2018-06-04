@@ -112,7 +112,7 @@ public class Receitas extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Item:");
 
-        txt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,7 +233,9 @@ public class Receitas extends javax.swing.JDialog {
             r.setIdGrupo(listaGrupoContas.get(cb_grupoConta.getSelectedIndex()).getIdGrupoContas());
             r.setIdTipo(listaTipoContas.get(cb_TipoConta.getSelectedIndex()).getIdTipoConta());
             r.setValor(Float.valueOf(txt_valor.getText()));
+            r.setIdReceita(-1);
             r.setIdUsuario(usuario.getId());
+            Controller.addReceita(r);
             try {
                 Controller.addReceita(r);
                 JOptionPane.showMessageDialog(null, "Cadastro realizado!");
@@ -335,7 +337,6 @@ public class Receitas extends javax.swing.JDialog {
     }
 
     private boolean verificaCamposPreenchidos() {
-//        return !(txtValor.getText().isEmpty() || txtParcela.getText().isEmpty() || txtDecricao.getText().isEmpty() || !(rbPago.isSelected() || rbApagar.isSelected()));
         return !(txt_valor.getText().isEmpty() || txt_documento.getText().isEmpty());
     }
 
