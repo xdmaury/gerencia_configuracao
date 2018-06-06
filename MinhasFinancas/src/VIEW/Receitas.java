@@ -57,7 +57,7 @@ public class Receitas extends javax.swing.JDialog {
         cb_TipoConta = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jDataInclusao = new com.toedter.calendar.JDateChooser();
-        txt_valor = new javax.swing.JFormattedTextField();
+        txtValor = new javax.swing.JFormattedTextField();
         butaoSalvar = new javax.swing.JButton();
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -112,7 +112,7 @@ public class Receitas extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Item:");
 
-        txt_valor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,7 +134,7 @@ public class Receitas extends javax.swing.JDialog {
                         .addComponent(jDataInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txt_documento)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -155,7 +155,7 @@ public class Receitas extends javax.swing.JDialog {
                     .addComponent(cb_grupoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(cb_TipoConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -225,19 +225,19 @@ public class Receitas extends javax.swing.JDialog {
     }//GEN-LAST:event_cb_grupoContaItemStateChanged
 
     private void butaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoSalvarActionPerformed
-        ReceitasBEAN r = new ReceitasBEAN();
+        ReceitasBEAN oReceita = new ReceitasBEAN();
         if (verificaCamposPreenchidos()) {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-            r.setData(formato.format(jDataInclusao.getDate()));
-            r.setDocumento(txt_documento.getText());
-            r.setIdGrupo(listaGrupoContas.get(cb_grupoConta.getSelectedIndex()).getIdGrupoContas());
-            r.setIdTipo(listaTipoContas.get(cb_TipoConta.getSelectedIndex()).getIdTipoConta());
-            r.setValor(Float.valueOf(txt_valor.getText()));
-            r.setIdReceita(-1);
-            r.setIdUsuario(usuario.getId());
-            Controller.addReceita(r);
+            oReceita.setData(formato.format(jDataInclusao.getDate()));
+            oReceita.setDocumento(txt_documento.getText());
+            oReceita.setIdGrupo(listaGrupoContas.get(cb_grupoConta.getSelectedIndex()).getIdGrupoContas());
+            oReceita.setIdTipo(listaTipoContas.get(cb_TipoConta.getSelectedIndex()).getIdTipoConta());
+            Object oValor = txtValor.getValue();
+            oReceita.setValor(Float.valueOf(oValor.toString()));            
+            oReceita.setIdReceita(-1);
+            oReceita.setIdUsuario(usuario.getId());
             try {
-                Controller.addReceita(r);
+                Controller.addReceita(oReceita);
                 JOptionPane.showMessageDialog(null, "Cadastro realizado!");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Não foi possivel realizar o cadastro");
@@ -327,8 +327,8 @@ public class Receitas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JFormattedTextField txtValor;
     private javax.swing.JTextField txt_documento;
-    private javax.swing.JFormattedTextField txt_valor;
     // End of variables declaration//GEN-END:variables
     private UsuarioBEAN usuario = new UsuarioBEAN();
 
@@ -337,7 +337,7 @@ public class Receitas extends javax.swing.JDialog {
     }
 
     private boolean verificaCamposPreenchidos() {
-        return !(txt_valor.getText().isEmpty() || txt_documento.getText().isEmpty());
+        return !(txtValor.getText().isEmpty() || txt_documento.getText().isEmpty());
     }
 
 }

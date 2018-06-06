@@ -75,7 +75,7 @@ public class ReceitasDAO {
     }
 
     public ArrayList<ReceitasBEAN> findAllReceitasUsuario(int IdUsuario) {
-        return listaReceitas("SELECT * FROM `receita` WHERE `id_usuario` = " + IdUsuario);
+        return listaReceitas("SELECT * FROM receita WHERE id_usuario = " + IdUsuario);
     }
 
     public ReceitasBEAN findReceita(int idReceita) {

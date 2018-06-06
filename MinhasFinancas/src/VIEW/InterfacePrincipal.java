@@ -415,7 +415,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         this.usuario = usuario;
         preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
         atualizaSaldoDisponivel();
+        misc m = new misc();
+        m.avisarDespesasVencimento(usuario);
     }
+    
+   
 
 }
 

@@ -100,7 +100,7 @@
                       </Group>
                       <Component id="txt_documento" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="txt_valor" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="txtValor" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -125,7 +125,7 @@
                       <Component id="cb_grupoConta" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cb_TipoConta" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txt_valor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtValor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -244,10 +244,10 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDataInclusao">
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txt_valor">
+        <Component class="javax.swing.JFormattedTextField" name="txtValor">
           <Properties>
-            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format format="#0.00" subtype="-1" type="0"/>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(&quot;#,##0.00&quot;)))" type="code"/>
             </Property>
           </Properties>
         </Component>

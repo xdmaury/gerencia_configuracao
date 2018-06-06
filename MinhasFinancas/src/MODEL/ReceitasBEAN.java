@@ -9,7 +9,7 @@ import java.sql.Date;
 public class ReceitasBEAN {
 
     private int idReceita;
-    private double valor;
+    private float valor;
     private int idUsuario;
     private int idGrupo;
     private int idTipo;
@@ -19,7 +19,7 @@ public class ReceitasBEAN {
     public ReceitasBEAN() {
     }
 
-    public ReceitasBEAN(int idReceita, double valor, int idUsuario, int idGrupo, int idTipo, String documento, String data) {
+    public ReceitasBEAN(int idReceita, float valor, int idUsuario, int idGrupo, int idTipo, String documento, String data) {
         this.idReceita = idReceita;
         this.valor = valor;
         this.idUsuario = idUsuario;
@@ -41,7 +41,7 @@ public class ReceitasBEAN {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 
