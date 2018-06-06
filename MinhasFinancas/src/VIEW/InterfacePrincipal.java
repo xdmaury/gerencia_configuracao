@@ -3,6 +3,7 @@ package VIEW;
 import CONTROLLER.Controller;
 import MODEL.DespesasBEAN;
 import MODEL.ReceitasBEAN;
+import MODEL.TabelModel;
 import MODEL.UsuarioBEAN;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -10,12 +11,13 @@ import javax.swing.JOptionPane;
 public class InterfacePrincipal extends javax.swing.JFrame {
 
     private javax.swing.table.DefaultTableModel ttDespesas;
-
+//    private TabelModel model = new TabelModel();
     public InterfacePrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
         ttDespesas = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
         
+//        jTableContasPagar.setModel(model);
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +46,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(java.awt.SystemColor.window);
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         BotaoTelasDespesas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -64,6 +67,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
+        jPanel2.setBackground(java.awt.SystemColor.window);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " Contas apagar ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jTableContasPagar.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,25 +75,41 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Documento", "Valor", "Data Vencimento"
+                "Pago?", "Id", "Documento", "Valor", "Vencimento"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            Class[] types = new Class [] {
+                java.lang.Boolean.class, java.lang.Long.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableContasPagar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTableContasPagarMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableContasPagar);
         if (jTableContasPagar.getColumnModel().getColumnCount() > 0) {
             jTableContasPagar.getColumnModel().getColumn(0).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTableContasPagar.getColumnModel().getColumn(0).setPreferredWidth(1);
             jTableContasPagar.getColumnModel().getColumn(1).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(1).setPreferredWidth(10);
+            jTableContasPagar.getColumnModel().getColumn(1).setPreferredWidth(5);
             jTableContasPagar.getColumnModel().getColumn(2).setResizable(false);
-            jTableContasPagar.getColumnModel().getColumn(2).setPreferredWidth(20);
+            jTableContasPagar.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTableContasPagar.getColumnModel().getColumn(3).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(3).setPreferredWidth(5);
+            jTableContasPagar.getColumnModel().getColumn(4).setResizable(false);
+            jTableContasPagar.getColumnModel().getColumn(4).setPreferredWidth(20);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -116,6 +136,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(java.awt.SystemColor.window);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), " Etanol ou Gasolina ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         BotaoVerificarEtGas.setText("Verificar");
@@ -172,6 +193,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(java.awt.SystemColor.window);
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), " Cotação do dia "));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -306,16 +328,37 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         atualizaSaldoDisponivel();
     }//GEN-LAST:event_BotaoTelaReceitasActionPerformed
 
+    private void jTableContasPagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContasPagarMousePressed
+        int index = jTableContasPagar.getSelectedRow();
+        int situacao = listaDespesas.get(index).getSituacao();
+        if (situacao == 0) {
+            situacao = -1;
+        }else if (situacao == -1) {
+            situacao = 0;
+        }
+        Controller.atualizarSituacao(situacao, listaDespesas.get(index).getId());
+    }//GEN-LAST:event_jTableContasPagarMousePressed
+
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
         ttDespesas.setNumRows(0);
-
         try {
             for (DespesasBEAN despesa : despesas) {
-                ttDespesas.addRow(new Object[]{despesa.getDescricao(), despesa.getValor(), despesa.getVencimento()});
+                Boolean oPago = false;
+                if (despesa.getSituacao() == -1) {
+                    oPago = true;
+                }
+                ttDespesas.addRow(new Object[]{oPago, despesa.getId(), despesa.getDescricao(), despesa.getValor(), despesa.getVencimento()});
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro ao listar dados - " + erro);
         }
+//        for (DespesasBEAN despesa : despesas) {
+//            Boolean oPago = false;
+//            if (despesa.getSituacao() == -1) {
+//                oPago = true;
+//            }
+//            model.adicionaLinha(new Object[]{oPago, despesa.getId(), despesa.getDescricao(), despesa.getValor(), despesa.getVencimento()});
+//        }
     }
   
     public static void main(String args[]) {

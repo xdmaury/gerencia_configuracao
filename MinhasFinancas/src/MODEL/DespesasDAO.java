@@ -97,6 +97,11 @@ public class DespesasDAO {
         return lista;
     }
     
+    public void atualizarSituacao(int situacao, int id){
+        String query = "UPDATE `Despesa` SET `situacao` = '"+situacao+"' WHERE `Despesa`.`id` = " + id;
+        MySQLDAO.executeQuery(query);
+    }
+    
     public DespesasBEAN finddespesa(int iddespesa) {
         DespesasBEAN result = null;
         ResultSet rs = null;

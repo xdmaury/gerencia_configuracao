@@ -39,6 +39,10 @@ public class Controller {
     public static ArrayList<DespesasBEAN> listarDespesasApagar(int id) {
         return DespesasDAO.getInstance().findAlldespesasApagar(id);
     }
+
+    public static void atualizarSituacao(int situacao, int id) {
+        DespesasDAO.getInstance().atualizarSituacao(situacao, id);
+    }
     
     public ArrayList<DespesasBEAN> listarDespesasPagas(int idUsuario){
         return DespesasDAO.getInstance().findAlldespesasPagas(idUsuario);

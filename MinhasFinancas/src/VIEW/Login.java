@@ -138,7 +138,7 @@ public class Login extends javax.swing.JFrame {
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         UsuarioBEAN usuario = new UsuarioBEAN();
         usuario.setId(-1);
-        if (!verificaCamposPreenchidos()) {
+        if (verificaCamposPreenchidos()) {
             usuario = Controller.buscaUsuario(txtUsuario.getText(), txtSenha.getText());
             if (Controller.vericaUsuario(usuario.getId())) {
                 InterfacePrincipal tela = new InterfacePrincipal();
@@ -205,6 +205,6 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private boolean verificaCamposPreenchidos() {
-        return (txtSenha.getText().isEmpty() || txtUsuario.getText().isEmpty());
+        return !(txtSenha.getText().isEmpty() || txtUsuario.getText().isEmpty());
     }
 }
