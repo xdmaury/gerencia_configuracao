@@ -31,6 +31,7 @@ public class Receitas extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         initComponents();
         setGrupoContas();
+        jDataInclusao.setDate(new java.util.Date());
     }
 
     /**
@@ -50,7 +51,7 @@ public class Receitas extends javax.swing.JDialog {
         txt_documento = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txt_Parcela = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cb_grupoConta = new javax.swing.JComboBox<>();
@@ -82,7 +83,7 @@ public class Receitas extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Parcelas:");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txt_Parcela.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Inclusão:");
@@ -127,7 +128,7 @@ public class Receitas extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_Parcela, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -165,7 +166,7 @@ public class Receitas extends javax.swing.JDialog {
                     .addComponent(jDataInclusao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_Parcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -237,10 +238,13 @@ public class Receitas extends javax.swing.JDialog {
             oReceita.setIdReceita(-1);
             oReceita.setIdUsuario(usuario.getId());
             try {
-                Controller.addReceita(oReceita);
                 JOptionPane.showMessageDialog(null, "Cadastro realizado!");
+                txtValor.setText("");
+                txt_documento.setText("");
+                txt_Parcela.setText("");
+                Controller.addReceita(oReceita);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Não foi possivel realizar o cadastro");
+                JOptionPane.showMessageDialog(null, "Não foi possivel realizar o cadastro" + e.getMessage());
             }
 
         } else {
@@ -325,9 +329,9 @@ public class Receitas extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JFormattedTextField txtValor;
+    private javax.swing.JTextField txt_Parcela;
     private javax.swing.JTextField txt_documento;
     // End of variables declaration//GEN-END:variables
     private UsuarioBEAN usuario = new UsuarioBEAN();
