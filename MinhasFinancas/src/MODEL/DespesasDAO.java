@@ -28,7 +28,7 @@ public class DespesasDAO {
     }
     
     public long create(DespesasBEAN despesa) {
-        String query = "INSERT INTO Despesa(valor, descricao, situacao, vencimento, parcelado, vezes, icms, pis, cofins, id_usuario, id_grupo, id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Despesa(valor, descricao, situacao, vencimento, parcela, vezes, icms, pis, cofins, id_usuario, id_grupo, id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, 
                 despesa.getValor(),
                 despesa.getDescricao(),
@@ -81,7 +81,7 @@ public class DespesasDAO {
                         rs.getString("descricao"),
                         rs.getInt("situacao"),
                         rs.getString("vencimento"),
-                        rs.getInt("parcelado"),
+                        rs.getInt("parcela"),
                         rs.getInt("vezes"),
                         rs.getFloat("icms"),
                         rs.getFloat("pis"),
@@ -114,7 +114,7 @@ public class DespesasDAO {
                         rs.getString("descricao"),
                         rs.getInt("situacao"),
                         rs.getString("vencimento"),
-                        rs.getInt("parcelado"),
+                        rs.getInt("parcela"),
                         rs.getInt("vezes"),
                         rs.getFloat("icms"),
                         rs.getFloat("pis"),
