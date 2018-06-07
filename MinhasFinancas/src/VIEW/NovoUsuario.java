@@ -146,6 +146,8 @@ public class NovoUsuario extends javax.swing.JDialog {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Senhas diferentes");
+            txtSenha.setText("");
+            txtConfirmaSenha.setText("");
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
