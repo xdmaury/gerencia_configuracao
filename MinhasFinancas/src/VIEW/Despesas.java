@@ -365,6 +365,7 @@ public class Despesas extends javax.swing.JDialog {
                     for (int i = 1; i <= oDespesa.getVezes(); i++) {
                         oDespesa.setParcelado(i);
                         Controller.addDespesa(oDespesa);
+                        oDespesa.setVencimento(atualizaDataVencimento(oDespesa.getVencimento()));
                     }
                 } else {
                     oDespesa.setParcelado(1);
@@ -538,6 +539,30 @@ public class Despesas extends javax.swing.JDialog {
 
     private boolean verificaCamposPreenchidos() {
         return !(txtValor.getText().isEmpty() || txtParcela.getText().isEmpty() || txtDecricao.getText().isEmpty() || !(rbPago.isSelected() || rbApagar.isSelected()));
+    }
+
+    private String atualizaDataVencimento(String vencimento) {
+//        "yyyy/MM/dd"
+        String sAno = vencimento.substring(0, 4);
+        String sMes = vencimento.substring(5, 7);
+        String sDia = vencimento.substring(8);
+        int iAno = Integer.valueOf(sAno);
+        int iMes = Integer.valueOf(sMes);
+        if (iMes == 12) {
+            sMes = "01";
+            iAno += 1;
+            sAno = Integer.toString(iAno);
+        } else {
+            if (iMes < 9) {
+                sMes = "0";
+                iMes += 1;
+                sMes += iMes;
+            } else {
+                iMes += 1;
+                sMes = Integer.toString(iMes);
+            }
+        }
+        return sAno + "/" + sMes + "/" + sDia;
     }
 
 }
