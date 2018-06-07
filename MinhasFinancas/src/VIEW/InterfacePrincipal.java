@@ -444,8 +444,16 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 despesas += lista.getValor();
             }
             preencher_Tabela_Produtos(listaDespesas);
+            misc m = new misc();
+            m.avisarDespesasVencimento(usuario);
         }
         
+    }
+    
+    private void checarDespesas(UsuarioBEAN usuario){
+        this.usuario = usuario;
+        misc m = new misc();
+        m.avisarDespesasVencimento(usuario);
     }
     
     private void atualizaSaldoDisponivel(){
@@ -458,8 +466,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         this.usuario = usuario;
         preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
         atualizaSaldoDisponivel();
-        misc m = new misc();
-        m.avisarDespesasVencimento(usuario);
     }
     
    
