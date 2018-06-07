@@ -147,6 +147,8 @@ public class Login extends javax.swing.JFrame {
                 dispose();
             }else{
                 JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+                txtUsuario.setText("");
+                txtSenha.setText("");
             }
         }else{
             JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
