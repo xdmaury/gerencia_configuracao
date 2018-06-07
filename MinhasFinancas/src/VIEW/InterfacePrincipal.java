@@ -5,6 +5,8 @@ import MODEL.DespesasBEAN;
 import MODEL.ReceitasBEAN;
 import MODEL.TabelModel;
 import MODEL.UsuarioBEAN;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -12,11 +14,12 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private javax.swing.table.DefaultTableModel ttDespesas;
 //    private TabelModel model = new TabelModel();
+
     public InterfacePrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
         ttDespesas = (javax.swing.table.DefaultTableModel) jTableContasPagar.getModel();
-        
+
 //        jTableContasPagar.setModel(model);
     }
 
@@ -24,6 +27,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         BotaoTelasDespesas = new javax.swing.JButton();
         BotaoTelaGastos = new javax.swing.JButton();
@@ -43,6 +47,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         printResult = new java.awt.Label();
         jPanel4 = new javax.swing.JPanel();
         BotaoTelaEstatisticas = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        rbApagar = new javax.swing.JRadioButton();
+        rbPago = new javax.swing.JRadioButton();
+        jDataDe = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        jDataAte = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,11 +127,11 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
         );
 
         lblSaldo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -190,7 +201,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addComponent(BotaoVerificarEtGas)
                 .addGap(59, 59, 59)
                 .addComponent(printResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(java.awt.SystemColor.window);
@@ -209,6 +220,31 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         BotaoTelaEstatisticas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BotaoTelaEstatisticas.setText("Estatísticas");
+
+        jButton1.setText("Atualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        rbApagar.setText("A pagar");
+        rbApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbApagarActionPerformed(evt);
+            }
+        });
+
+        rbPago.setText("Pago");
+        rbPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPagoActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("De");
+
+        jLabel2.setText("Até");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,11 +267,27 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addComponent(lblSaldo)
                         .addGap(18, 18, 18)
                         .addComponent(textSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbApagar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbPago)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -258,9 +310,21 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton1)
+                                .addComponent(rbApagar)
+                                .addComponent(rbPago)
+                                .addComponent(jLabel1))
+                            .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2)
+                                .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -283,7 +347,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         telaDespesas.setLocationRelativeTo(null);
         telaDespesas.setUsuario(usuario);
         telaDespesas.setVisible(true);
-        atualizaSaldoDisponivel();
+        setUsuario(usuario);
     }//GEN-LAST:event_BotaoTelasDespesasActionPerformed
 
     private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed
@@ -325,7 +389,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         Receitas tela = new Receitas(this, true);
         tela.setUsuario(usuario);
         tela.setVisible(true);
-        atualizaSaldoDisponivel();
+        setUsuario(usuario);
     }//GEN-LAST:event_BotaoTelaReceitasActionPerformed
 
     private void jTableContasPagarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableContasPagarMousePressed
@@ -333,11 +397,37 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         int situacao = listaDespesas.get(index).getSituacao();
         if (situacao == 0) {
             situacao = -1;
-        }else if (situacao == -1) {
+        } else if (situacao == -1) {
             situacao = 0;
         }
         Controller.atualizarSituacao(situacao, listaDespesas.get(index).getId());
     }//GEN-LAST:event_jTableContasPagarMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (verificaCamposPreenchidos()) {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+            String inicio = formato.format(jDataDe.getDate());
+            String fim = formato.format(jDataAte.getDate());
+            byte situacao = 0;
+            if (rbApagar.isSelected()) {
+                situacao = 0;
+            }
+            if (rbPago.isSelected()) {
+                situacao = -1;
+            }
+            atualizaSaldoDisponivel(situacao, inicio, fim);
+        }else{
+            JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rbApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbApagarActionPerformed
+        this.rbPago.setSelected(false);
+    }//GEN-LAST:event_rbApagarActionPerformed
+
+    private void rbPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPagoActionPerformed
+        this.rbApagar.setSelected(false);
+    }//GEN-LAST:event_rbPagoActionPerformed
 
     public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
         ttDespesas.setNumRows(0);
@@ -360,7 +450,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 //            model.adicionaLinha(new Object[]{oPago, despesa.getId(), despesa.getDescricao(), despesa.getValor(), despesa.getVencimento()});
 //        }
     }
-  
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -397,14 +487,19 @@ public class InterfacePrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoTelaEstatisticas;
     private javax.swing.JButton BotaoTelaGastos;
     private javax.swing.JButton BotaoTelaReceitas;
     private javax.swing.JButton BotaoTelasDespesas;
     private javax.swing.JButton BotaoVerificarEtGas;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser jDataAte;
+    private com.toedter.calendar.JDateChooser jDataDe;
     private com.toedter.calendar.JDateChooser jDataSaldo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -415,6 +510,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVlrEtanol;
     private javax.swing.JLabel lblVlrGasolina;
     private java.awt.Label printResult;
+    private javax.swing.JRadioButton rbApagar;
+    private javax.swing.JRadioButton rbPago;
     private javax.swing.JTextField textSaldo;
     private javax.swing.JTextField textVlrEtanol;
     private javax.swing.JTextField textVlrGasolina;
@@ -424,8 +521,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private float despesas;
     private ArrayList<ReceitasBEAN> listaReceitas = null;
     private ArrayList<DespesasBEAN> listaDespesas = null;
-    
-    private void setSaldo(){
+
+    private void setSaldo() {
         this.saldo = 0;
         listaReceitas = Controller.listaReceitasIDusuario(usuario.getId());
         if (listaReceitas != null) {
@@ -433,43 +530,59 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 saldo += lista.getValor();
             }
         }
-        
+
     }
-    
-    private void setDespesas(){
+
+    private void setDespesas(int situacao, String inicio, String fim) {
         this.despesas = 0;
-        listaDespesas = Controller.listarDespesasApagar(usuario.getId());
+        listaDespesas = Controller.listarDespesas(usuario.getId(), situacao, inicio, fim);
         if (listaDespesas != null) {
-            for (DespesasBEAN lista: listaDespesas) {
+            for (DespesasBEAN lista : listaDespesas) {
                 despesas += lista.getValor();
             }
             preencher_Tabela_Produtos(listaDespesas);
             misc m = new misc();
             m.avisarDespesasVencimento(usuario);
         }
-        
     }
-    
-    private void checarDespesas(UsuarioBEAN usuario){
+
+    private void checarDespesas(UsuarioBEAN usuario) {
         this.usuario = usuario;
         misc m = new misc();
         m.avisarDespesasVencimento(usuario);
     }
-    
-    private void atualizaSaldoDisponivel(){
+
+    private void atualizaSaldoDisponivel(int situacao, String inicio, String fim) {
         setSaldo();
-        setDespesas();
+        setDespesas(situacao, inicio, fim);
         textSaldo.setText(Float.toString(saldo - despesas));
     }
-   
+
     public void setUsuario(UsuarioBEAN usuario) {
         this.usuario = usuario;
         preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
-        atualizaSaldoDisponivel();
+        String[] periodo = periodoAtual();
+        atualizaSaldoDisponivel(0, periodo[0], periodo[1]);
+    }
+
+    private boolean verificaCamposPreenchidos() {
+        String inicio = "", fim = "";
+        try{
+            inicio = jDataAte.getDate().toString();
+            fim = jDataDe.getDate().toString();
+        }catch(java.lang.NullPointerException e){
+            
+        }
+        return !(inicio.isEmpty() || fim.isEmpty()|| !(rbApagar.isSelected() || rbPago.isSelected()));
     }
     
-   
+    private String[] periodoAtual(){
+        Date datah = new Date(System.currentTimeMillis());
+        String inicio = null, fim = null;
+        inicio = fim = datah.toString();
+        inicio = inicio.substring(0, 8) + "01";
+        fim = fim.substring(0, 8) + "30";
+        return new String[]{inicio, fim};
+    }
 
 }
-
-

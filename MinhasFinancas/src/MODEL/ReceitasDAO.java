@@ -157,9 +157,9 @@ public class ReceitasDAO {
         return result;
     }
    
-    public static void main(String[] args) {
-        
-        ReceitasDAO.getInstance().createReceita(null);
-    }
+//    public static void main(String[] args) {
+//        
+//        ReceitasDAO.getInstance().createReceita(null);
+//    }
     
 }
