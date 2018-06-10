@@ -3,7 +3,6 @@ package VIEW;
 import CONTROLLER.Controller;
 import MODEL.DespesasBEAN;
 import MODEL.ReceitasBEAN;
-import MODEL.TabelModel;
 import MODEL.UsuarioBEAN;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
