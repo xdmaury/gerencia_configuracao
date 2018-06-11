@@ -10,6 +10,7 @@ public class Controller {
         return GrupoContasDAO.getInstance().findListGrupo();
     }
 
+    
     public static ArrayList<GrupoContasBEAN> listaGrupoContas(int id) {
         return GrupoContasDAO.getInstance().findListGrupo(id);
     }
@@ -76,6 +77,12 @@ public class Controller {
     
     public static void addReceita(ReceitasBEAN r){
         ReceitasDAO.getInstance().createReceita(r);
+    }
+
+    public static class listarDespesas {
+
+        public listarDespesas() {
+        }
     }
 
 }
