@@ -380,6 +380,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private void BotaoTelaReceitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaReceitasActionPerformed
         Receitas tela = new Receitas(this, true);
+        tela.setLocationRelativeTo(null);
         tela.setUsuario(usuario);
         tela.setVisible(true);
         setUsuario(usuario);
