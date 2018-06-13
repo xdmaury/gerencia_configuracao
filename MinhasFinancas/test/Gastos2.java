@@ -1,19 +1,23 @@
 
 import MODEL.DespesasBEAN;
+import MODEL.UsuarioBEAN;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 
 public class Gastos2 extends javax.swing.JDialog {
 
     public Gastos2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +33,7 @@ public class Gastos2 extends javax.swing.JDialog {
         rbApagar = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        planoGrafico = new javax.swing.JPanel();
+        Quadro = new javax.swing.JInternalFrame();
         jTabbedPane2 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -59,15 +63,17 @@ public class Gastos2 extends javax.swing.JDialog {
 
         jLabel2.setText("Até");
 
-        javax.swing.GroupLayout planoGraficoLayout = new javax.swing.GroupLayout(planoGrafico);
-        planoGrafico.setLayout(planoGraficoLayout);
-        planoGraficoLayout.setHorizontalGroup(
-            planoGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        Quadro.setVisible(true);
+
+        javax.swing.GroupLayout QuadroLayout = new javax.swing.GroupLayout(Quadro.getContentPane());
+        Quadro.getContentPane().setLayout(QuadroLayout);
+        QuadroLayout.setHorizontalGroup(
+            QuadroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        planoGraficoLayout.setVerticalGroup(
-            planoGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
+        QuadroLayout.setVerticalGroup(
+            QuadroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 301, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout planoFundoLayout = new javax.swing.GroupLayout(planoFundo);
@@ -77,7 +83,7 @@ public class Gastos2 extends javax.swing.JDialog {
             .addGroup(planoFundoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(planoFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(planoGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Quadro)
                     .addGroup(planoFundoLayout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -87,12 +93,12 @@ public class Gastos2 extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 113, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         planoFundoLayout.setVerticalGroup(
@@ -109,11 +115,11 @@ public class Gastos2 extends javax.swing.JDialog {
                         .addComponent(rbPago)
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(planoGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Quadro)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Gastos", planoFundo);
+        jTabbedPane1.addTab("Grupos", planoFundo);
         jTabbedPane1.addTab("tab2", jTabbedPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,26 +151,22 @@ public class Gastos2 extends javax.swing.JDialog {
     }//GEN-LAST:event_rbApagarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        if (verificaCamposPreenchidos()) {
-//            SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-//            String inicio = formato.format(jDataDe.getDate());
-//            String fim = formato.format(jDataAte.getDate());
-//            byte situacao = 0;
-//            if (rbApagar.isSelected()) {
-//                situacao = 0;
-//            }
-//            if (rbPago.isSelected()) {
-//                situacao = -1;
-//            }
-//            lista = CONTROLLER.Controller.listarDespesas(3, 0, "2000-01-01", "2030-12-30");
-//            setDefaultPieDataset();
-//            geraGrafico();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
-//        }
-
-        setDefaultPieDataset();
-        geraGrafico();
+        if (verificaCamposPreenchidos()) {
+            SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+            String inicio = formato.format(jDataDe.getDate());
+            String fim = formato.format(jDataAte.getDate());
+            byte situacao = 0;
+            if (rbApagar.isSelected()) {
+                situacao = 0;
+            }
+            if (rbPago.isSelected()) {
+                situacao = -1;
+            }
+            lista = CONTROLLER.Controller.listarDespesas(3, situacao, inicio, fim);
+            Quadro.setContentPane(CriaPainel());
+        } else {
+            JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -225,6 +227,7 @@ public class Gastos2 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JInternalFrame Quadro;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDataAte;
     private com.toedter.calendar.JDateChooser jDataDe;
@@ -233,25 +236,57 @@ public class Gastos2 extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JPanel planoFundo;
-    private javax.swing.JPanel planoGrafico;
     private javax.swing.JRadioButton rbApagar;
     private javax.swing.JRadioButton rbPago;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<DespesasBEAN> lista;
+    private UsuarioBEAN usuario;
 
-    private DefaultPieDataset dpd;
-
-    private void setDefaultPieDataset() {
-        dpd = new DefaultPieDataset();
-        dpd.setValue("Valor 1", 10);
-        dpd.setValue("Valor 2", 20);
-        dpd.setValue("Valor 3", 30);
-        dpd.setValue("Valor 4", 40);
+    private PieDataset CriaDataset() {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        double fixos = 0, investimentos = 0, outros = 0;
+        for (DespesasBEAN l : lista) {
+            switch (l.getId_grupo()) {
+                case 0:
+                    fixos = l.getValor();
+                    break;
+                case 1:
+                    investimentos = l.getValor();
+                    break;
+                case 2:
+                    outros = l.getValor();
+                    break;
+                default:
+                    break;
+            }
+        }
+        dataset.setValue("Gastos Fixos", new Double(fixos));
+        dataset.setValue("Investimentos", new Double(investimentos));
+        dataset.setValue("Outros", new Double(outros));
+        return dataset;
     }
 
-    private void geraGrafico() {
-        JFreeChart grafico = ChartFactory.createPieChart("Nome do Gráfico", dpd, true, true, true);
-        ChartPanel chartPanel = new ChartPanel(grafico);
-        planoGrafico.add(chartPanel);
-        planoGrafico.validate();
+    private JFreeChart CriaGrafico(PieDataset dataset) {
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Gastos por Grupos", // chart title 
+                dataset, // data    
+                true, // include legend   
+                true,
+                false);
+
+        return chart;
     }
+
+    public JPanel CriaPainel() {
+        JFreeChart chart = CriaGrafico(CriaDataset());
+        return new ChartPanel(chart);
+    }
+
+    public void setUsuario(UsuarioBEAN usuario) {
+        this.usuario = usuario;
+        String[] periodo = periodoAtual();
+        lista = CONTROLLER.Controller.listarDespesas(usuario.getId(), 0, periodo[0], periodo[1]);
+        Quadro.setContentPane(CriaPainel());
+    }
+
 }
