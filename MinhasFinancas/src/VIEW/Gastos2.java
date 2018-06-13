@@ -110,7 +110,7 @@ public class Gastos2 extends javax.swing.JDialog {
                     .addGroup(planoFundoLayout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbGrupo, 0, 100, Short.MAX_VALUE)
+                        .addComponent(cbGrupo, 0, 46, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbApagar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,11 +118,11 @@ public class Gastos2 extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jDataAte, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         planoFundoLayout.setVerticalGroup(
@@ -145,7 +145,7 @@ public class Gastos2 extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Grupos", planoFundo);
+        jTabbedPane1.addTab("Gastos", planoFundo);
 
         jPanel2.setBackground(java.awt.SystemColor.window);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()));
@@ -277,7 +277,7 @@ public class Gastos2 extends javax.swing.JDialog {
                         .addComponent(jButtonSalarioCompremetido)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonImpostos, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,7 +304,7 @@ public class Gastos2 extends javax.swing.JDialog {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab2", jPanel1);
+        jTabbedPane1.addTab("Estatisticas", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,7 +312,7 @@ public class Gastos2 extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -534,13 +534,13 @@ public class Gastos2 extends javax.swing.JDialog {
             for (DespesasBEAN l : lista) {
                 switch (l.getId_grupo()) {
                     case 0:
-                        fixos = l.getValor();
+                        fixos += l.getValor();
                         break;
                     case 1:
-                        investimentos = l.getValor();
+                        investimentos += l.getValor();
                         break;
                     case 2:
-                        outros = l.getValor();
+                        outros += l.getValor();
                         break;
                     default:
                         break;
