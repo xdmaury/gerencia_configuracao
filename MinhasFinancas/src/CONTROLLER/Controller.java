@@ -84,5 +84,9 @@ public class Controller {
         public listarDespesas() {
         }
     }
-
+    
+    //Tipos
+    public static String getDescricao(int id){
+        return TipoDAO.getInstance().getDescricao(id);
+    }
 }

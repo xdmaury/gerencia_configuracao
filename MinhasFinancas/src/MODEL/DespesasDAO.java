@@ -59,9 +59,8 @@ public class DespesasDAO {
         return listadespesas ("SELECT * FROM Despesa WHERE id_usuario = " + id);
     }
     
-    
-    public ArrayList<DespesasBEAN> findAlldespesas(int id, int sutuacao, String inicio, String fim){
-        return listadespesas ("SELECT * FROM `Despesa` WHERE `situacao` = "+sutuacao+" AND `vencimento` >= '"+inicio+"' AND `vencimento` <= '"+fim+"' AND `id_usuario` = " + id);
+    public ArrayList<DespesasBEAN> findAlldespesas(int id, int situacao, String inicio, String fim){
+        return listadespesas ("SELECT * FROM `Despesa` WHERE `situacao` = "+situacao+" AND `vencimento` >= '"+inicio+"' AND `vencimento` <= '"+fim+"' AND `id_usuario` = " + id + " ORDER BY `Despesa`.`id_tipo` ASC");
     }
     
     public ArrayList<DespesasBEAN> findAlldespesasApagar(int id){
