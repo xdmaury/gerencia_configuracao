@@ -6,7 +6,7 @@ import java.sql.Date;
  *
  * @author Bruno
  */
-public class ReceitasBEAN {
+public class BEANReceitas {
 
     private int idReceita;
     private float valor;
@@ -16,10 +16,10 @@ public class ReceitasBEAN {
     private String documento;
     private String data;
 
-    public ReceitasBEAN() {
+    public BEANReceitas() {
     }
 
-    public ReceitasBEAN(int idReceita, float valor, int idUsuario, int idGrupo, int idTipo, String documento, String data) {
+    public BEANReceitas(int idReceita, float valor, int idUsuario, int idGrupo, int idTipo, String documento, String data) {
         this.idReceita = idReceita;
         this.valor = valor;
         this.idUsuario = idUsuario;

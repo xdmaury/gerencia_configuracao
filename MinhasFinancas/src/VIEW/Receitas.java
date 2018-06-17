@@ -6,10 +6,10 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.GrupoContasBEAN;
-import MODEL.ReceitasBEAN;
-import MODEL.TipoContasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANGrupoContas;
+import MODEL.BEANReceitas;
+import MODEL.BEANTipoContas;
+import MODEL.BEANUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,8 +20,8 @@ import javax.swing.JOptionPane;
  */
 public class Receitas extends javax.swing.JDialog {
 
-    private ArrayList<GrupoContasBEAN> listaGrupoContas;
-    private ArrayList<TipoContasBEAN> listaTipoContas;
+    private ArrayList<BEANGrupoContas> listaGrupoContas;
+    private ArrayList<BEANTipoContas> listaTipoContas;
 
     /**
      * Creates new form Despesas2
@@ -211,10 +211,10 @@ public class Receitas extends javax.swing.JDialog {
 
     private void cb_grupoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_grupoContaItemStateChanged
         // TODO add your handling code here:
-        GrupoContasBEAN grupo = new GrupoContasBEAN();
+        BEANGrupoContas grupo = new BEANGrupoContas();
         grupo.setIdGrupoContas(-1);
 
-        for (GrupoContasBEAN lista : listaGrupoContas) {
+        for (BEANGrupoContas lista : listaGrupoContas) {
             if (lista.getDescricao().equals(cb_grupoConta.getSelectedItem().toString())) {
                 grupo = lista;
                 break;
@@ -226,7 +226,7 @@ public class Receitas extends javax.swing.JDialog {
     }//GEN-LAST:event_cb_grupoContaItemStateChanged
 
     private void butaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butaoSalvarActionPerformed
-        ReceitasBEAN oReceita = new ReceitasBEAN();
+        BEANReceitas oReceita = new BEANReceitas();
         if (verificaCamposPreenchidos()) {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
             oReceita.setData(formato.format(jDataInclusao.getDate()));
@@ -261,7 +261,7 @@ public class Receitas extends javax.swing.JDialog {
         cb_grupoConta.setEnabled(false);
     }
 
-    private void setTipoContas(GrupoContasBEAN grupo) {
+    private void setTipoContas(BEANGrupoContas grupo) {
         cb_TipoConta.removeAllItems();
         this.listaTipoContas = Controller.listaTipoContas(grupo.getIdGrupoContas());
         cb_TipoConta.removeAllItems();
@@ -287,13 +287,13 @@ public class Receitas extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -334,9 +334,9 @@ public class Receitas extends javax.swing.JDialog {
     private javax.swing.JTextField txt_Parcela;
     private javax.swing.JTextField txt_documento;
     // End of variables declaration//GEN-END:variables
-    private UsuarioBEAN usuario = new UsuarioBEAN();
+    private BEANUsuario usuario = new BEANUsuario();
 
-    public void setUsuario(UsuarioBEAN usuario) {
+    public void setUsuario(BEANUsuario usuario) {
         this.usuario = usuario;
     }
 

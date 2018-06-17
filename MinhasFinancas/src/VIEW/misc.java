@@ -1,8 +1,8 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.DespesasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANDespesas;
+import MODEL.BEANUsuario;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,11 +16,11 @@ public class misc {
         return dataAtual;
     }
     
-    public void avisarDespesasVencimento(UsuarioBEAN usuario){
-        ArrayList<DespesasBEAN> listaDespesas = Controller.listarDespesasApagar(usuario.getId());
+    public void avisarDespesasVencimento(BEANUsuario usuario){
+        ArrayList<BEANDespesas> listaDespesas = Controller.listarDespesasApagar(usuario.getId());
         
         if (listaDespesas != null) {
-            for (DespesasBEAN lista: listaDespesas) {
+            for (BEANDespesas lista: listaDespesas) {
                 if(dataProxima(lista.getVencimento()))
                     JOptionPane.showMessageDialog(null, "Conta a vencer:\n" + lista.getDescricao());
             }

@@ -1,9 +1,9 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.DespesasBEAN;
-import MODEL.ReceitasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANDespesas;
+import MODEL.BEANReceitas;
+import MODEL.BEANUsuario;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -344,7 +344,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private void BotaoTelaGastosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoTelaGastosActionPerformed
 //        Gastos telaGastos = new Gastos(this, true);
-        Gastos2 telaGastos = new Gastos2(this, true);
+        Gasto telaGastos = new Gasto(this, true);
         telaGastos.setLocationRelativeTo(null);
         telaGastos.setUsuario(usuario);
         telaGastos.setVisible(true);
@@ -423,10 +423,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         this.rbApagar.setSelected(false);
     }//GEN-LAST:event_rbPagoActionPerformed
 
-    public void preencher_Tabela_Produtos(ArrayList<DespesasBEAN> despesas) {
+    public void preencher_Tabela_Produtos(ArrayList<BEANDespesas> despesas) {
         ttDespesas.setNumRows(0);
         try {
-            for (DespesasBEAN despesa : despesas) {
+            for (BEANDespesas despesa : despesas) {
                 Boolean oPago = false;
                 if (despesa.getSituacao() == -1) {
                     oPago = true;
@@ -459,13 +459,13 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -509,17 +509,17 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField textVlrEtanol;
     private javax.swing.JTextField textVlrGasolina;
     // End of variables declaration//GEN-END:variables
-    private UsuarioBEAN usuario = null;
+    private BEANUsuario usuario = null;
     private float saldo;
     private float despesas;
-    private ArrayList<ReceitasBEAN> listaReceitas = null;
-    private ArrayList<DespesasBEAN> listaDespesas = null;
+    private ArrayList<BEANReceitas> listaReceitas = null;
+    private ArrayList<BEANDespesas> listaDespesas = null;
 
     private void setSaldo() {
         this.saldo = 0;
         listaReceitas = Controller.listaReceitasIDusuario(usuario.getId());
         if (listaReceitas != null) {
-            for (ReceitasBEAN lista : listaReceitas) {
+            for (BEANReceitas lista : listaReceitas) {
                 saldo += lista.getValor();
             }
         }
@@ -530,7 +530,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         this.despesas = 0;
         listaDespesas = Controller.listarDespesas(usuario.getId(), situacao, inicio, fim);
         if (listaDespesas != null) {
-            for (DespesasBEAN lista : listaDespesas) {
+            for (BEANDespesas lista : listaDespesas) {
                 despesas += lista.getValor();
             }
             preencher_Tabela_Produtos(listaDespesas);
@@ -539,7 +539,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         }
     }
 
-    private void checarDespesas(UsuarioBEAN usuario) {
+    private void checarDespesas(BEANUsuario usuario) {
         this.usuario = usuario;
         misc m = new misc();
         m.avisarDespesasVencimento(usuario);
@@ -551,7 +551,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         textSaldo.setText(Float.toString(saldo - despesas));
     }
 
-    public void setUsuario(UsuarioBEAN usuario) {
+    public void setUsuario(BEANUsuario usuario) {
         this.usuario = usuario;
         preencher_Tabela_Produtos(Controller.listarDespesasApagar(usuario.getId()));
         String[] periodo = periodoAtual();

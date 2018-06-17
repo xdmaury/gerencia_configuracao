@@ -9,17 +9,17 @@ package MODEL;
  *
  * @author marco
  */
-public class GrupoContasBEAN {
+public class BEANGrupoContas {
     
     private int idGrupoContas;
     private String descrição;
 
-    public GrupoContasBEAN(int idGrupoContas, String descrição) {
+    public BEANGrupoContas(int idGrupoContas, String descrição) {
         this.idGrupoContas = idGrupoContas;
         this.descrição = descrição;
     }
     
-    public GrupoContasBEAN() {
+    public BEANGrupoContas() {
     }
 
     public int getIdGrupoContas() {

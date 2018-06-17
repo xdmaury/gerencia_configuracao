@@ -13,21 +13,21 @@ import java.util.ArrayList;
  *
  * @author Bruno
  */
-public class DespesasDAO {
-    private static DespesasDAO instance;
+public class DAODespesas {
+    private static DAODespesas instance;
     
-    private DespesasDAO(){
+    private DAODespesas(){
         MySQLDAO.getConnection();
     }
     
-    public static DespesasDAO getInstance() {
+    public static DAODespesas getInstance() {
         if (instance == null) {
-            instance = new DespesasDAO();
+            instance = new DAODespesas();
         }
         return instance;
     }
     
-    public long create(DespesasBEAN despesa) {
+    public long create(BEANDespesas despesa) {
         String query = "INSERT INTO Despesa(valor, descricao, situacao, vencimento, parcela, vezes, icms, pis, cofins, id_usuario, id_grupo, id_tipo) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         return MySQLDAO.executeQuery(query, 
                 despesa.getValor(),
@@ -51,35 +51,35 @@ public class DespesasDAO {
     */
   
     
-    public ArrayList<DespesasBEAN> findAlldespesas(){
+    public ArrayList<BEANDespesas> findAlldespesas(){
         return listadespesas ("SELECT * FROM Despesa");
     }
     
-    public ArrayList<DespesasBEAN> findAlldespesas(int id){
+    public ArrayList<BEANDespesas> findAlldespesas(int id){
         return listadespesas ("SELECT * FROM Despesa WHERE id_usuario = " + id);
     }
     
-    public ArrayList<DespesasBEAN> findAlldespesas(int id, int situacao, String inicio, String fim){
+    public ArrayList<BEANDespesas> findAlldespesas(int id, int situacao, String inicio, String fim){
         return listadespesas ("SELECT * FROM `Despesa` WHERE `situacao` = "+situacao+" AND `vencimento` >= '"+inicio+"' AND `vencimento` <= '"+fim+"' AND `id_usuario` = " + id + " ORDER BY `Despesa`.`id_tipo` ASC");
     }
     
-    public ArrayList<DespesasBEAN> findAlldespesasApagar(int id){
+    public ArrayList<BEANDespesas> findAlldespesasApagar(int id){
         return listadespesas ("SELECT * FROM `Despesa` WHERE `situacao` = 0 AND `id_usuario` = " + id);
     }
-      public ArrayList<DespesasBEAN> findAlldespesasPagas(int id){
+      public ArrayList<BEANDespesas> findAlldespesasPagas(int id){
         return listadespesas ("SELECT * FROM `Despesa` WHERE `situacao` = -1 AND `id_usuario` = " + id);
     }
     
-    public ArrayList<DespesasBEAN> findData(int IdUsuario,String data){
+    public ArrayList<BEANDespesas> findData(int IdUsuario,String data){
         return listadespesas ("SELECT * FROM Despesa WHERE id_usuario ="+IdUsuario+" and vencimento LIKE '%" + data +"%'and situacao ="+ 0);
     }
-    public ArrayList<DespesasBEAN> listadespesas(String query) {
-        ArrayList<DespesasBEAN> lista = new ArrayList<DespesasBEAN>();
+    public ArrayList<BEANDespesas> listadespesas(String query) {
+        ArrayList<BEANDespesas> lista = new ArrayList<BEANDespesas>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                lista.add(new DespesasBEAN(
+                lista.add(new BEANDespesas(
                         rs.getInt("id"), 
                         rs.getFloat("valor"),
                         rs.getString("descricao"),
@@ -106,13 +106,13 @@ public class DespesasDAO {
         MySQLDAO.executeQuery(query);
     }
     
-    public DespesasBEAN finddespesa(int iddespesa) {
-        DespesasBEAN result = null;
+    public BEANDespesas finddespesa(int iddespesa) {
+        BEANDespesas result = null;
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet("SELECT * FROM Despesa WHERE id=?", iddespesa);
         try {
             if (rs.next()) {
-                result = new DespesasBEAN(
+                result = new BEANDespesas(
                         rs.getInt("id"), 
                         rs.getFloat("valor"),
                         rs.getString("descricao"),
