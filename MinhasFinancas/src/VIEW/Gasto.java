@@ -1,9 +1,9 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.DespesasBEAN;
-import MODEL.ReceitasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANDespesas;
+import MODEL.BEANReceitas;
+import MODEL.BEANUsuario;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
-public class Gastos2 extends javax.swing.JDialog {
+public class Gasto extends javax.swing.JDialog {
 
-    public Gastos2(java.awt.Frame parent, boolean modal) {
+    public Gasto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
@@ -355,8 +355,8 @@ public class Gastos2 extends javax.swing.JDialog {
 
     private void jButtonSalarioCompremetidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalarioCompremetidoActionPerformed
         // TODO add your handling code here:
-        ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
-        ArrayList<ReceitasBEAN> listaReceitas = new ArrayList<ReceitasBEAN>();
+        ArrayList<BEANDespesas> listaDespesas = new ArrayList<BEANDespesas>();
+        ArrayList<BEANReceitas> listaReceitas = new ArrayList<BEANReceitas>();
         Controller controle = new Controller();
 
         SimpleDateFormat formatoY = new SimpleDateFormat("yyyy");
@@ -387,12 +387,12 @@ public class Gastos2 extends javax.swing.JDialog {
                 jPanel2.setVisible(true);
                 //Metodo para pegar todo saldo do usuario
                 double saldo = 0;
-                for (ReceitasBEAN receitas : listaReceitas) {
+                for (BEANReceitas receitas : listaReceitas) {
                     saldo = saldo + receitas.getValor();
                 }
 
                 float resultado = 0;
-                for (DespesasBEAN despesas : listaDespesas) {
+                for (BEANDespesas despesas : listaDespesas) {
                     resultado = (float) (resultado + ((despesas.getValor() * 100) / saldo));
                     jProgressBar.setValue((int) resultado);
                     jProgressBar2.setValue((int) (100 - resultado));
@@ -414,7 +414,7 @@ public class Gastos2 extends javax.swing.JDialog {
 
     private void jButtonImpostosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonImpostosActionPerformed
 
-        ArrayList<DespesasBEAN> listaDespesas = new ArrayList<DespesasBEAN>();
+        ArrayList<BEANDespesas> listaDespesas = new ArrayList<BEANDespesas>();
         Controller controle = new Controller();
 
         //Buscando no banco todas as despesas pagas
@@ -425,7 +425,7 @@ public class Gastos2 extends javax.swing.JDialog {
             //Soma % de impostos
             float impostos = 0;
             float despesas = 0;
-            for (DespesasBEAN despesa : listaDespesas) {
+            for (BEANDespesas despesa : listaDespesas) {
                 impostos = impostos + (despesa.getCofins() + despesa.getIcms() + despesa.getPis());
                 despesas = despesas + despesa.getValor();
             }
@@ -467,21 +467,23 @@ public class Gastos2 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Gastos2 dialog = new Gastos2(new javax.swing.JFrame(), true);
+                Gasto dialog = new Gasto(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -524,14 +526,14 @@ public class Gastos2 extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbApagar;
     private javax.swing.JRadioButton rbPago;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<DespesasBEAN> lista;
-    private UsuarioBEAN usuario;
+    private ArrayList<BEANDespesas> lista;
+    private BEANUsuario usuario;
 
     private PieDataset CriaDataset() {
         DefaultPieDataset dataset = new DefaultPieDataset();
         if (cbGrupo.getSelectedIndex() == 0) {
             double fixos = 0, investimentos = 0, outros = 0;
-            for (DespesasBEAN l : lista) {
+            for (BEANDespesas l : lista) {
                 switch (l.getId_grupo()) {
                     case 0:
                         fixos += l.getValor();
@@ -554,7 +556,7 @@ public class Gastos2 extends javax.swing.JDialog {
             ArrayList<Double> listaDouble = new ArrayList<>();
             int id = -1;
             double valor = 0;
-            for (DespesasBEAN l : lista) {
+            for (BEANDespesas l : lista) {
                 if (id != l.getId_tipo()) {
                     id = l.getId_tipo();
                     listaDescricao.add(Controller.getDescricao(id));
@@ -592,7 +594,7 @@ public class Gastos2 extends javax.swing.JDialog {
         return new ChartPanel(chart);
     }
 
-    public void setUsuario(UsuarioBEAN usuario) {
+    public void setUsuario(BEANUsuario usuario) {
         this.usuario = usuario;
         String[] periodo = periodoAtual();
         lista = CONTROLLER.Controller.listarDespesas(usuario.getId(), 0, periodo[0], periodo[1]);

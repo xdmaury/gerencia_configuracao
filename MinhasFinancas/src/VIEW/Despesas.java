@@ -1,10 +1,10 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.GrupoContasBEAN;
-import MODEL.TipoContasBEAN;
-import MODEL.DespesasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANGrupoContas;
+import MODEL.BEANTipoContas;
+import MODEL.BEANDespesas;
+import MODEL.BEANUsuario;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.text.DecimalFormat;
@@ -319,7 +319,7 @@ public class Despesas extends javax.swing.JDialog {
         if (verificaCamposPreenchidos()) {
 
             //Criando o objeto despesa
-            DespesasBEAN oDespesa = new DespesasBEAN();
+            BEANDespesas oDespesa = new BEANDespesas();
 
             oDespesa.setDescricao(txtDecricao.getText());
 
@@ -420,10 +420,10 @@ public class Despesas extends javax.swing.JDialog {
 
     private void cbGrupoContaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbGrupoContaItemStateChanged
 
-        GrupoContasBEAN grupo = new GrupoContasBEAN();
+        BEANGrupoContas grupo = new BEANGrupoContas();
         grupo.setIdGrupoContas(-1);
 
-        for (GrupoContasBEAN lista : listaGrupoContas) {
+        for (BEANGrupoContas lista : listaGrupoContas) {
             if (lista.getDescricao().equals(cbGrupoConta.getSelectedItem().toString())) {
                 grupo = lista;
                 break;
@@ -453,13 +453,13 @@ public class Despesas extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -512,11 +512,11 @@ public class Despesas extends javax.swing.JDialog {
     private javax.swing.JTextField txtPis;
     private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<GrupoContasBEAN> listaGrupoContas;
-    private ArrayList<TipoContasBEAN> listaTipoContas;
-    private UsuarioBEAN usuario = null;
+    private ArrayList<BEANGrupoContas> listaGrupoContas;
+    private ArrayList<BEANTipoContas> listaTipoContas;
+    private BEANUsuario usuario = null;
 
-    public void setUsuario(UsuarioBEAN usuario) {
+    public void setUsuario(BEANUsuario usuario) {
         this.usuario = usuario;
     }
 
@@ -529,7 +529,7 @@ public class Despesas extends javax.swing.JDialog {
         });
     }
 
-    private void setTipoContas(GrupoContasBEAN grupo) {
+    private void setTipoContas(BEANGrupoContas grupo) {
         cbTipoConta.removeAllItems();
         this.listaTipoContas = Controller.listaTipoContas(grupo.getIdGrupoContas());
         listaTipoContas.forEach((tc) -> {

@@ -9,17 +9,17 @@ package MODEL;
  *
  * @author marcos
  */
-public class UsuarioBEAN {
+public class BEANUsuario {
 
     private int id;
     private String nome;
     private String nome_usuario;
     private String senha;
 
-    public UsuarioBEAN() {
+    public BEANUsuario() {
     }
 
-    public UsuarioBEAN(int id, String nome, String nome_usuario, String senha) {
+    public BEANUsuario(int id, String nome, String nome_usuario, String senha) {
         this.id = id;
         this.nome = nome;
         this.nome_usuario = nome_usuario;

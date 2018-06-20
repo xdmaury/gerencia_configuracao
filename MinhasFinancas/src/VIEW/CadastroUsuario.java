@@ -58,6 +58,11 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         jButtonCadastroUsuario.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButtonCadastroUsuario.setText("Cadastrar");
+        jButtonCadastroUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastroUsuarioActionPerformed(evt);
+            }
+        });
 
         TipoContaCadastro.setText("Conta Conjunta");
 
@@ -131,6 +136,10 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCadastroUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCadastroUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

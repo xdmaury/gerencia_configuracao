@@ -15,45 +15,45 @@ import java.util.logging.Logger;
  *
  * @author Bruno
  */
-public class TipoContasDAO {
-    private static TipoContasDAO instance;
+public class DAOTipoContas {
+    private static DAOTipoContas instance;
 
-    public TipoContasDAO() {
+    public DAOTipoContas() {
         MySQLDAO.getConnection();
     }
 
-    public static TipoContasDAO getInstance() {
+    public static DAOTipoContas getInstance() {
         if (instance == null) {
-            instance = new TipoContasDAO();
+            instance = new DAOTipoContas();
         }
         return instance;
     }
     
-    public ArrayList<TipoContasBEAN> findlistTipo(){
+    public ArrayList<BEANTipoContas> findlistTipo(){
         return list("SELECT * FROM tipo");
     }
     
-    public ArrayList<TipoContasBEAN> findlistTipo(int id){
+    public ArrayList<BEANTipoContas> findlistTipo(int id){
         return list("SELECT * FROM `tipo` WHERE `id_grupo` = " + id + " ORDER BY `id` ASC ");
     }
     
-    private ArrayList<TipoContasBEAN> list(String query){
-        ArrayList<TipoContasBEAN> list = new ArrayList<>();
+    private ArrayList<BEANTipoContas> list(String query){
+        ArrayList<BEANTipoContas> list = new ArrayList<>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                list.add(new TipoContasBEAN(rs.getInt("id"), rs.getString("descricao"), rs.getInt("id_grupo")));
+                list.add(new BEANTipoContas(rs.getInt("id"), rs.getString("descricao"), rs.getInt("id_grupo")));
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TipoContasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOTipoContas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
     
 //    public static void main(String[] args) {
-//        TipoContasDAO tipo = new TipoContasDAO();
+//        DAOTipoContas tipo = new DAOTipoContas();
 //        tipo.findlistTipo(0);
 //        
 //    }

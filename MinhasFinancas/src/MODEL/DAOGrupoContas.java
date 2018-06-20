@@ -15,40 +15,40 @@ import java.util.logging.Logger;
  *
  * @author marco
  */
-public class GrupoContasDAO {
+public class DAOGrupoContas {
     
-    private static GrupoContasDAO instance;
+    private static DAOGrupoContas instance;
 
-    public GrupoContasDAO() {
+    public DAOGrupoContas() {
         MySQLDAO.getConnection();
     }
 
-    public static GrupoContasDAO getInstance() {
+    public static DAOGrupoContas getInstance() {
         if (instance == null) {
-            instance = new GrupoContasDAO();
+            instance = new DAOGrupoContas();
         }
         return instance;
     }
     
-    public ArrayList<GrupoContasBEAN> findListGrupo(){
+    public ArrayList<BEANGrupoContas> findListGrupo(){
         return list("SELECT * FROM grupo");
     }
     
-    public ArrayList<GrupoContasBEAN> findListGrupo(int id){
+    public ArrayList<BEANGrupoContas> findListGrupo(int id){
         return list("SELECT * FROM `grupo` WHERE `id` = " + id);
     }
     
-    private ArrayList<GrupoContasBEAN> list(String query){
-        ArrayList<GrupoContasBEAN> list = new ArrayList<>();
+    private ArrayList<BEANGrupoContas> list(String query){
+        ArrayList<BEANGrupoContas> list = new ArrayList<>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                list.add(new GrupoContasBEAN(rs.getInt("id"), rs.getString("descricao")));
+                list.add(new BEANGrupoContas(rs.getInt("id"), rs.getString("descricao")));
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GrupoContasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOGrupoContas.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }

@@ -6,7 +6,7 @@
 package VIEW;
 
 import CONTROLLER.Controller;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -83,7 +83,7 @@ public class NovoUsuario extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(159, Short.MAX_VALUE)
                 .addComponent(botaoCadastrar)
                 .addGap(143, 143, 143))
         );
@@ -134,13 +134,14 @@ public class NovoUsuario extends javax.swing.JDialog {
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         if (verificaSenha()) {
             if (verificaCamposPreenchidos()) {
-                UsuarioBEAN usuario = new UsuarioBEAN();
+                BEANUsuario usuario = new BEANUsuario();
                 usuario.setId(-1);
                 usuario.setNome(txtNome.getText());
                 usuario.setNome_usuario(txtNomeUsuario.getText());
                 usuario.setSenha(txtSenha.getText());
                 Controller.addUsuario(usuario);
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Preencher todos os campos em branco");
             }
@@ -168,13 +169,13 @@ public class NovoUsuario extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gastos2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Gasto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

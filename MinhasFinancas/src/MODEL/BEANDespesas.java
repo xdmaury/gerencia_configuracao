@@ -9,7 +9,7 @@ package MODEL;
  *
  * @author Bruno
  */
-public class DespesasBEAN {
+public class BEANDespesas {
 
     private int id;
     private float valor;
@@ -25,7 +25,7 @@ public class DespesasBEAN {
     private int id_grupo;
     private int id_tipo;
 
-    public DespesasBEAN(int id, float valor, String descricao, int situacao, String vencimento, int parcelado, int vezes, float icms, float pis, float cofins, int id_usuario, int id_grupo, int id_tipo) {
+    public BEANDespesas(int id, float valor, String descricao, int situacao, String vencimento, int parcelado, int vezes, float icms, float pis, float cofins, int id_usuario, int id_grupo, int id_tipo) {
         this.id = id;
         this.valor = valor;
         this.descricao = descricao;
@@ -41,7 +41,7 @@ public class DespesasBEAN {
         this.id_tipo = id_tipo;
     }
 
-    public DespesasBEAN() {
+    public BEANDespesas() {
 
     }
 

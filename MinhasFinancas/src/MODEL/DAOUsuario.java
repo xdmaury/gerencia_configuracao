@@ -14,23 +14,23 @@ import java.util.logging.Logger;
  *
  * @author marcos
  */
-public class UsuarioDAO {
+public class DAOUsuario {
     
-    private static UsuarioDAO instance;
+    private static DAOUsuario instance;
 
-    public UsuarioDAO() {
+    public DAOUsuario() {
         MySQLDAO.getConnection();
     }
     
-    public static UsuarioDAO getInstance() {
+    public static DAOUsuario getInstance() {
         if (instance == null) {
-            instance = new UsuarioDAO();
+            instance = new DAOUsuario();
         }
         return instance;
     }
     
-    public UsuarioBEAN find(String nome_usuario, String senha){
-        UsuarioBEAN usuario = new UsuarioBEAN();
+    public BEANUsuario find(String nome_usuario, String senha){
+        BEANUsuario usuario = new BEANUsuario();
         String query = "SELECT * from usuario WHERE nome_usuario = '" + nome_usuario + "' AND senha = '" + senha + "'";
         ResultSet rs = MySQLDAO.getResultSet(query);
         try {
@@ -42,14 +42,14 @@ public class UsuarioDAO {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return usuario;
     }
     
-    public void create(UsuarioBEAN u){
-        u.setId(UsuarioDAO.getInstance().selecionaMaiorValor() + 1);
+    public void create(BEANUsuario u){
+        u.setId(DAOUsuario.getInstance().selecionaMaiorValor() + 1);
         String query = "INSERT INTO `usuario` (`id`, `nome`, `nome_usuario`, `senha`) VALUES ('"+u.getId()+"' , '"+ u.getNome() +"', '"+u.getNome_usuario()+"', '"+u.getSenha()+"')";
         MySQLDAO.executeQuery(query);
     }
@@ -64,7 +64,7 @@ public class UsuarioDAO {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
     }

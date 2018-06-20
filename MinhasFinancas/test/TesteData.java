@@ -1,5 +1,5 @@
 
-import MODEL.DespesasBEAN;
+import MODEL.BEANDespesas;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -20,6 +20,6 @@ public class TesteData {
         inicio = fim = datah.toString();
         inicio = inicio.substring(0, 8) + "01";
         fim = fim.substring(0, 8) + "30";
-        ArrayList<DespesasBEAN> lista = CONTROLLER.Controller.listarDespesas(3, 0, inicio, fim);
+        ArrayList<BEANDespesas> lista = CONTROLLER.Controller.listarDespesas(3, 0, inicio, fim);
     }
 }

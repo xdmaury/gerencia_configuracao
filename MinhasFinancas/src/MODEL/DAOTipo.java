@@ -14,17 +14,17 @@ import java.util.logging.Logger;
  *
  * @author marco
  */
-public class TipoDAO {
+public class DAOTipo {
     
-    private static TipoDAO instance;
+    private static DAOTipo instance;
 
-    public TipoDAO() {
+    public DAOTipo() {
         MySQLDAO.getConnection();
     }
 
-    public static TipoDAO getInstance() {
+    public static DAOTipo getInstance() {
         if (instance == null) {
-            instance = new TipoDAO();
+            instance = new DAOTipo();
         }
         return instance;
     }
@@ -39,7 +39,7 @@ public class TipoDAO {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TipoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOTipo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return descricao;
     }

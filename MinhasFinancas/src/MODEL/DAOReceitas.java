@@ -10,22 +10,22 @@ import java.util.logging.Logger;
  *
  * @author Bruno
  */
-public class ReceitasDAO {
+public class DAOReceitas {
 
-    private static ReceitasDAO instance;
+    private static DAOReceitas instance;
 
-    private ReceitasDAO() {
+    private DAOReceitas() {
         MySQLDAO.getConnection();
     }
 
-    public static ReceitasDAO getInstance() {
+    public static DAOReceitas getInstance() {
         if (instance == null) {
-            instance = new ReceitasDAO();
+            instance = new DAOReceitas();
         }
         return instance;
     }
 
-    public long createReceita(ReceitasBEAN r) {
+    public long createReceita(BEANReceitas r) {
         int id = selecionaMaiorValor() + 1;
         String query = "INSERT INTO `receita` "
                                  +"(`id`, "
@@ -45,13 +45,13 @@ public class ReceitasDAO {
         return  MySQLDAO.executeQuery(query);
     }
 
-    private ArrayList<ReceitasBEAN> listaReceitas(String query) {
-        ArrayList<ReceitasBEAN> lista = new ArrayList<ReceitasBEAN>();
+    private ArrayList<BEANReceitas> listaReceitas(String query) {
+        ArrayList<BEANReceitas> lista = new ArrayList<BEANReceitas>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
         try {
             while (rs.next()) {
-                ReceitasBEAN r = new ReceitasBEAN();
+                BEANReceitas r = new BEANReceitas();
                 r.setData(rs.getString("DataInclusao"));
                 r.setDocumento(rs.getString("documento"));
                 r.setIdGrupo(rs.getInt("id_grupo"));
@@ -60,7 +60,7 @@ public class ReceitasDAO {
                 r.setIdUsuario(rs.getInt("id_usuario"));
                 r.setValor(rs.getFloat("valor"));
                 lista.add(r);
-//                lista.add(new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+//                lista.add(new BEANReceitas(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
 //                        rs.getInt("id_grupo"), rs.getInt("id_tipo")));
             }
             rs.close();
@@ -70,21 +70,21 @@ public class ReceitasDAO {
         return lista;
     }
 
-    public ArrayList<ReceitasBEAN> findAllReceitas() {
+    public ArrayList<BEANReceitas> findAllReceitas() {
         return listaReceitas("SELECT * FROM receita ORDER BY id");
     }
 
-    public ArrayList<ReceitasBEAN> findAllReceitasUsuario(int IdUsuario) {
+    public ArrayList<BEANReceitas> findAllReceitasUsuario(int IdUsuario) {
         return listaReceitas("SELECT * FROM receita WHERE id_usuario = " + IdUsuario);
     }
 
-    public ReceitasBEAN findReceita(int idReceita) {
-        ReceitasBEAN result = null;
+    public BEANReceitas findReceita(int idReceita) {
+        BEANReceitas result = null;
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet("SELECT * FROM receita WHERE id=?", idReceita);
         try {
             if (rs.next()) {
-//                result = new ReceitasBEAN(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
+//                result = new BEANReceitas(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
 //                        rs.getInt("id_grupo"), rs.getInt("id_tipo"));
             }
             rs.close();
@@ -104,7 +104,7 @@ public class ReceitasDAO {
             }
             rs.close();
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return id;
     }
@@ -138,7 +138,7 @@ public class ReceitasDAO {
 //        return false;
 //    }
 
-//    public void updateSituacaoReceita(ReceitasBEAN receita) {
+//    public void updateSituacaoReceita(BEANReceitas receita) {
 //        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
 //        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
 //    }
@@ -159,7 +159,7 @@ public class ReceitasDAO {
    
 //    public static void main(String[] args) {
 //        
-//        ReceitasDAO.getInstance().createReceita(null);
+//        DAOReceitas.getInstance().createReceita(null);
 //    }
     
 }

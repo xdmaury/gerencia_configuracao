@@ -7,25 +7,29 @@ package MODEL;
 
 /**
  *
- * @author Bruno
+ * @author marco
  */
-public class TipoContasBEAN {
-    int idTipoConta;
+public class BEANTipo {
+    
+    private int id;
     private String descricao;
-    int id_grupo;
+    private int id_grupo;
 
-    public TipoContasBEAN(int idTipoConta, String descricao, int id_grupo) {
-        this.idTipoConta = idTipoConta;
+    public BEANTipo() {
+    }
+
+    public BEANTipo(int id, String descricao, int id_grupo) {
+        this.id = id;
         this.descricao = descricao;
         this.id_grupo = id_grupo;
     }
 
-    public int getIdTipoConta() {
-        return idTipoConta;
+    public int getId() {
+        return id;
     }
 
-    public void setIdTipoConta(int idTipoConta) {
-        this.idTipoConta = idTipoConta;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -43,6 +47,5 @@ public class TipoContasBEAN {
     public void setId_grupo(int id_grupo) {
         this.id_grupo = id_grupo;
     }
-
     
 }

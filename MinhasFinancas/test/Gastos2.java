@@ -1,6 +1,6 @@
 
-import MODEL.DespesasBEAN;
-import MODEL.UsuarioBEAN;
+import MODEL.BEANDespesas;
+import MODEL.BEANUsuario;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -239,13 +239,13 @@ public class Gastos2 extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbApagar;
     private javax.swing.JRadioButton rbPago;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<DespesasBEAN> lista;
-    private UsuarioBEAN usuario;
+    private ArrayList<BEANDespesas> lista;
+    private BEANUsuario usuario;
 
     private PieDataset CriaDataset() {
         DefaultPieDataset dataset = new DefaultPieDataset();
         double fixos = 0, investimentos = 0, outros = 0;
-        for (DespesasBEAN l : lista) {
+        for (BEANDespesas l : lista) {
             switch (l.getId_grupo()) {
                 case 0:
                     fixos = l.getValor();
@@ -282,7 +282,7 @@ public class Gastos2 extends javax.swing.JDialog {
         return new ChartPanel(chart);
     }
 
-    public void setUsuario(UsuarioBEAN usuario) {
+    public void setUsuario(BEANUsuario usuario) {
         this.usuario = usuario;
         String[] periodo = periodoAtual();
         lista = CONTROLLER.Controller.listarDespesas(usuario.getId(), 0, periodo[0], periodo[1]);
