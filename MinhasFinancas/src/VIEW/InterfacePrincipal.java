@@ -43,7 +43,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         BotaoVerificarEtGas = new javax.swing.JButton();
         lblVlrEtanol = new javax.swing.JLabel();
         lblVlrGasolina = new javax.swing.JLabel();
-        printResult = new java.awt.Label();
+        lblResultatoGasEta = new java.awt.Label();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         rbApagar = new javax.swing.JRadioButton();
@@ -159,8 +159,8 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
         lblVlrGasolina.setText("Valor Gasolina");
 
-        printResult.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        printResult.setForeground(new java.awt.Color(0, 255, 51));
+        lblResultatoGasEta.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblResultatoGasEta.setForeground(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -181,7 +181,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                         .addGap(68, 68, 68)
                         .addComponent(BotaoVerificarEtGas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(printResult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblResultatoGasEta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -198,7 +198,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(BotaoVerificarEtGas)
                 .addGap(59, 59, 59)
-                .addComponent(printResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblResultatoGasEta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -355,24 +355,18 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         try {
             float valorGasolina = Float.parseFloat(textVlrGasolina.getText().toString());
             float valorEtanol = Float.parseFloat(textVlrEtanol.getText().toString());
-
-            if ((valorGasolina * 0.70) > valorEtanol) {
-                printResult.setText("");
+            
+            misc m = new misc();
+                lblResultatoGasEta.setText("");
                 textVlrEtanol.setText("");
                 textVlrGasolina.setText("");
-                printResult.setText("Abasteça com etanol!");
-
-            } else {
-                printResult.setText("");
-                textVlrEtanol.setText("");
-                textVlrGasolina.setText("");
-                printResult.setText("Abasteça com gasolina!");
-
-            }
-
+            if (m.gasolinaEtanol(valorGasolina, valorEtanol)) 
+                lblResultatoGasEta.setText("Abasteça com etanol!");
+            else
+                lblResultatoGasEta.setText("Abasteça com gasolina");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro " + erro);
-            printResult.setText("");
+            lblResultatoGasEta.setText("");
             textVlrEtanol.setText("");
             textVlrGasolina.setText("");
         }
@@ -499,10 +493,10 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableContasPagar;
+    private java.awt.Label lblResultatoGasEta;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblVlrEtanol;
     private javax.swing.JLabel lblVlrGasolina;
-    private java.awt.Label printResult;
     private javax.swing.JRadioButton rbApagar;
     private javax.swing.JRadioButton rbPago;
     private javax.swing.JTextField textSaldo;

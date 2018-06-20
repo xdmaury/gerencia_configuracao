@@ -38,5 +38,11 @@ public class misc {
         return false;
         
     }
+    
+    public boolean gasolinaEtanol(float gasolina, float alcool){
+        if((gasolina * 0.7)> alcool)
+            return true;
+        return false;
+    }
 
 }
