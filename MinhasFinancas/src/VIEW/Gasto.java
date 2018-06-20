@@ -548,9 +548,9 @@ public class Gasto extends javax.swing.JDialog {
                         break;
                 }
             }
-            dataset.setValue("Gastos Fixos", new Double(fixos));
-            dataset.setValue("Investimentos", new Double(investimentos));
-            dataset.setValue("Outros", new Double(outros));
+            dataset.setValue("Gastos Fixos = " + fixos, new Double(fixos));
+            dataset.setValue("Investimentos = " + investimentos, new Double(investimentos));
+            dataset.setValue("Outros = " + outros, new Double(outros));
         } else {
             ArrayList<String> listaDescricao = new ArrayList<>();
             ArrayList<Double> listaDouble = new ArrayList<>();
@@ -571,7 +571,7 @@ public class Gasto extends javax.swing.JDialog {
                 }
             }
             for (int i = 0; i < listaDouble.size(); i++) {
-                dataset.setValue(listaDescricao.get(i), listaDouble.get(i));
+                dataset.setValue(listaDescricao.get(i) + " = " + listaDouble.get(i) , listaDouble.get(i));
             }
         }
 
