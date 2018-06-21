@@ -257,7 +257,7 @@ public class Receitas extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Cadastro realizado!");
                 txtValor.setText("");
                 txt_documento.setText("");
-                txt_Parcela.setText("");
+                // txt_Parcela.setText("");
                 Controller.addReceita(oReceita);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Não foi possivel realizar o cadastro" + e.getMessage());
