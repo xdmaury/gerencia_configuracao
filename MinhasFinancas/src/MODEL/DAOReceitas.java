@@ -60,8 +60,6 @@ public class DAOReceitas {
                 r.setIdUsuario(rs.getInt("id_usuario"));
                 r.setValor(rs.getFloat("valor"));
                 lista.add(r);
-//                lista.add(new BEANReceitas(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
-//                        rs.getInt("id_grupo"), rs.getInt("id_tipo")));
             }
             rs.close();
         } catch (SQLException e) {
@@ -84,8 +82,6 @@ public class DAOReceitas {
         rs = MySQLDAO.getResultSet("SELECT * FROM receita WHERE id=?", idReceita);
         try {
             if (rs.next()) {
-//                result = new BEANReceitas(rs.getInt("id"), rs.getDouble("valor"), rs.getInt("id_usuario"),
-//                        rs.getInt("id_grupo"), rs.getInt("id_tipo"));
             }
             rs.close();
         } catch (SQLException e) {
@@ -109,38 +105,6 @@ public class DAOReceitas {
         return id;
     }
 
-//    public boolean alterarReceita(double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
-//        PreparedStatement pst = null;
-//        String sql = "update receita set valor=?, id_usuario=?, id_grupo=?, id_tipo=? where idCliente=?";
-//        try {
-//            pst = MySQLDAO.getResultSet(sql);
-//            pst.setDouble(1, valor);
-//            pst.setInt(2, idUsuario);
-//            pst.setInt(3, idGrupo);
-//            pst.setInt(4, idTipo);
-//            if ((nome.isEmpty()) || (telefone.isEmpty())) {//validação dos campos obrigatorios
-//                JOptionPane.showMessageDialog(null, "Atenção!! Preencha todos os campos obrigatórios");
-//            } else {
-//                //atualizando a tabela(clientes) com os dados dos campos
-//                //confirmando a inserção
-//                int adicionado = pst.executeUpdate();
-//                //System.out.println(adicionado);
-//                if (adicionado > 0) {
-//                    JOptionPane.showMessageDialog(null, "Cliente alterado com sucesso!");
-//                    return true;
-//                }
-//            }
-//            //pst.executeUpdate();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//            return false;
-//        }
-//        return false;
-//    }
-//    public void updateSituacaoReceita(BEANReceitas receita) {
-//        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
-//        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
-//    }
     public Boolean isExistReceita(int idReceita) {
         Boolean result = false;
         ResultSet rs = null;
@@ -155,9 +119,4 @@ public class DAOReceitas {
         }
         return result;
     }
-
-//    public static void main(String[] args) {
-//        
-//        DAOReceitas.getInstance().createReceita(null);
-//    }
 }

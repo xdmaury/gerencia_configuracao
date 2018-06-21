@@ -27,11 +27,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -62,7 +58,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="BotaoTelaReceitas" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BotaoTelaGastos" min="-2" pref="142" max="-2" attributes="0"/>
+                          <Component id="BotaoTelaGastos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BotaoTelasDespesas" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -79,18 +75,18 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel2" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="rbApagar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rbPago" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jDataDe" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jDataAte" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -118,7 +114,7 @@
                               </Group>
                               <Component id="jDataSaldo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -134,9 +130,9 @@
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jDataAte" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jDataDe" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jDataAte" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -153,7 +149,7 @@
         <Component class="javax.swing.JButton" name="BotaoTelasDespesas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Despesas"/>
             <Property name="actionCommand" type="java.lang.String" value="AdicionarDespesas"/>
@@ -165,7 +161,7 @@
         <Component class="javax.swing.JButton" name="BotaoTelaGastos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gastos e Estat&#xed;sticas"/>
             <Property name="actionCommand" type="java.lang.String" value="AdicionarDespesas"/>
@@ -211,6 +207,9 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jTableContasPagar">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="5" rowCount="0">
                         <Column editable="true" title="Pago?" type="java.lang.Boolean"/>
@@ -269,7 +268,7 @@
         <Component class="javax.swing.JLabel" name="lblSaldo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="1"/>
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Saldo:"/>
           </Properties>
@@ -285,7 +284,7 @@
         <Component class="javax.swing.JButton" name="BotaoTelaReceitas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="0"/>
+              <Font name="Tahoma" size="14" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Receitas"/>
           </Properties>
@@ -304,6 +303,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
+                  <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -352,7 +352,7 @@
                       <Component id="lblVlrGasolina" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="textVlrGasolina" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Component id="BotaoVerificarEtGas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="lblResultatoGasEta" min="-2" pref="70" max="-2" attributes="0"/>
@@ -371,6 +371,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="BotaoVerificarEtGas">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Verificar"/>
               </Properties>
               <Events>
@@ -419,6 +422,7 @@
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder/>
                   </Border>
+                  <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -439,6 +443,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Atualizar"/>
           </Properties>
           <Events>
@@ -449,6 +456,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="A pagar"/>
           </Properties>
@@ -461,6 +471,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pago"/>
           </Properties>
           <Events>
@@ -471,6 +484,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="De"/>
           </Properties>
         </Component>
@@ -478,6 +494,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="At&#xe9;"/>
           </Properties>
         </Component>

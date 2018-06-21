@@ -45,11 +45,6 @@ public class DAODespesas {
                 despesa.getId_tipo());
     }
 
-    /*public void update(DespesasBEAN despesa) {
-        String query = "UPDATE despesaES SET Nome=?, status=? WHERE iddespesa = ?";
-        MySQLDAO.executeQuery(query, despesa.getNome(), despesa.getStatus(), despesa.getIddespesa());
-    }
-     */
     public ArrayList<BEANDespesas> findAlldespesas() {
         return listadespesas("SELECT * FROM Despesa");
     }
@@ -135,12 +130,6 @@ public class DAODespesas {
         return result;
     }
 
-    /*
-    public void updateSituacao(DespesasBEAN despesa) {
-        String query = "UPDATE Despesa SET situacao = ? WHERE id = ?";
-        MySQLDAO.executeQuery(query, despesa.getSituacao(), despesa.getId());
-    }
-     */
     public Boolean isExist(int iddespesa) {
         Boolean result = false;
         ResultSet rs = null;

@@ -84,8 +84,4 @@ public class DAOUsuario {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(UsuarioDAO.getInstance().isExistUsuario(3));
-////        UsuarioDAO.getInstance().isExistUsuario(3);
-//    }
 }

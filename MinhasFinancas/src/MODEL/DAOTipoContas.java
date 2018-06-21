@@ -52,10 +52,4 @@ public class DAOTipoContas {
         }
         return list;
     }
-
-//    public static void main(String[] args) {
-//        DAOTipoContas tipo = new DAOTipoContas();
-//        tipo.findlistTipo(0);
-//        
-//    }
 }

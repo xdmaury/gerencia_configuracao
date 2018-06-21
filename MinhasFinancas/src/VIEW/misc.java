@@ -3,7 +3,6 @@ package VIEW;
 import CONTROLLER.Controller;
 import MODEL.BEANDespesas;
 import MODEL.BEANUsuario;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
