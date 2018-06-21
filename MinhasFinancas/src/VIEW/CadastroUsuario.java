@@ -41,6 +41,8 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastro de Novo Usuário");
@@ -64,6 +66,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
             }
         });
 
+        TipoContaCadastro.setBackground(new java.awt.Color(255, 255, 255));
         TipoContaCadastro.setText("Conta Conjunta");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
