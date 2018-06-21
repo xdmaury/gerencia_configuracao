@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author marco
  */
 public class DAOGrupoContas {
-    
+
     private static DAOGrupoContas instance;
 
     public DAOGrupoContas() {
@@ -29,16 +29,16 @@ public class DAOGrupoContas {
         }
         return instance;
     }
-    
-    public ArrayList<BEANGrupoContas> findListGrupo(){
+
+    public ArrayList<BEANGrupoContas> findListGrupo() {
         return list("SELECT * FROM grupo");
     }
-    
-    public ArrayList<BEANGrupoContas> findListGrupo(int id){
+
+    public ArrayList<BEANGrupoContas> findListGrupo(int id) {
         return list("SELECT * FROM `grupo` WHERE `id` = " + id);
     }
-    
-    private ArrayList<BEANGrupoContas> list(String query){
+
+    private ArrayList<BEANGrupoContas> list(String query) {
         ArrayList<BEANGrupoContas> list = new ArrayList<>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
@@ -52,5 +52,5 @@ public class DAOGrupoContas {
         }
         return list;
     }
-    
+
 }

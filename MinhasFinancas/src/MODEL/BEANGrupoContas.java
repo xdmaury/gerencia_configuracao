@@ -10,7 +10,7 @@ package MODEL;
  * @author marco
  */
 public class BEANGrupoContas {
-    
+
     private int idGrupoContas;
     private String descrição;
 
@@ -18,7 +18,7 @@ public class BEANGrupoContas {
         this.idGrupoContas = idGrupoContas;
         this.descrição = descrição;
     }
-    
+
     public BEANGrupoContas() {
     }
 
@@ -37,5 +37,5 @@ public class BEANGrupoContas {
     public void setDescricao(String descrição) {
         this.descrição = descrição;
     }
-    
+
 }

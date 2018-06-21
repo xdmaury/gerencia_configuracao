@@ -11,7 +11,6 @@ import org.jfree.data.general.PieDataset;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author marco
@@ -137,7 +136,7 @@ public class Teste extends javax.swing.JDialog {
                     }
                 });
 //                dialog.setContentPane(CriaPainel());
-                
+
                 dialog.setVisible(true);
             }
         });
@@ -148,29 +147,29 @@ public class Teste extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel planoDeFundo;
     // End of variables declaration//GEN-END:variables
-    
-    private static PieDataset CriaDataset( ) {
-      DefaultPieDataset dataset = new DefaultPieDataset( );
-      dataset.setValue( "IPhone 5s" , new Double( 20 ) );  
-      dataset.setValue( "SamSung Grand" , new Double( 20 ) );   
-      dataset.setValue( "MotoG" , new Double( 40 ) );    
-      dataset.setValue( "Nokia Lumia" , new Double( 10 ) );  
-      return dataset;         
-   }
-    
-    private static JFreeChart CriaGrafico( PieDataset dataset ) {
-      JFreeChart chart = ChartFactory.createPieChart(      
-         "Mobile Sales",   // chart title 
-         dataset,          // data    
-         true,             // include legend   
-         true, 
-         false);
 
-      return chart;
-   }
-    
-    public static JPanel CriaPainel( ) {
-      JFreeChart chart = CriaGrafico(CriaDataset( ) );  
-      return new ChartPanel( chart ); 
-   }
+    private static PieDataset CriaDataset() {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("IPhone 5s", new Double(20));
+        dataset.setValue("SamSung Grand", new Double(20));
+        dataset.setValue("MotoG", new Double(40));
+        dataset.setValue("Nokia Lumia", new Double(10));
+        return dataset;
+    }
+
+    private static JFreeChart CriaGrafico(PieDataset dataset) {
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Mobile Sales", // chart title 
+                dataset, // data    
+                true, // include legend   
+                true,
+                false);
+
+        return chart;
+    }
+
+    public static JPanel CriaPainel() {
+        JFreeChart chart = CriaGrafico(CriaDataset());
+        return new ChartPanel(chart);
+    }
 }

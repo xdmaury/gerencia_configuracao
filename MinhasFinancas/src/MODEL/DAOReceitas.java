@@ -28,21 +28,21 @@ public class DAOReceitas {
     public long createReceita(BEANReceitas r) {
         int id = selecionaMaiorValor() + 1;
         String query = "INSERT INTO `receita` "
-                                 +"(`id`, "
-                                 + "`valor`, "
-                                 + "`id_usuario`, "
-                                 + "`DataInclusao`, "
-                                 + "`id_grupo`, "
-                                 + "`id_tipo`, "
-                                 + "`documento`) "
-                         + "VALUES ('"+id+"', "
-                                 + "'"+r.getValor()+"', "
-                                 + "'"+r.getIdUsuario()+"', "
-                                 + "'"+r.getData()+"', "
-                                 + "'"+r.getIdGrupo()+"', "
-                                 + "'"+r.getIdTipo()+"', "
-                                 + "'"+r.getDocumento()+"')";
-        return  MySQLDAO.executeQuery(query);
+                + "(`id`, "
+                + "`valor`, "
+                + "`id_usuario`, "
+                + "`DataInclusao`, "
+                + "`id_grupo`, "
+                + "`id_tipo`, "
+                + "`documento`) "
+                + "VALUES ('" + id + "', "
+                + "'" + r.getValor() + "', "
+                + "'" + r.getIdUsuario() + "', "
+                + "'" + r.getData() + "', "
+                + "'" + r.getIdGrupo() + "', "
+                + "'" + r.getIdTipo() + "', "
+                + "'" + r.getDocumento() + "')";
+        return MySQLDAO.executeQuery(query);
     }
 
     private ArrayList<BEANReceitas> listaReceitas(String query) {
@@ -93,8 +93,8 @@ public class DAOReceitas {
         }
         return result;
     }
-    
-    private int selecionaMaiorValor(){
+
+    private int selecionaMaiorValor() {
         String query = "SELECT max(id) FROM receita";
         int id = -1;
         ResultSet rs = MySQLDAO.getResultSet(query);
@@ -108,7 +108,7 @@ public class DAOReceitas {
         }
         return id;
     }
-    
+
 //    public boolean alterarReceita(double valor, Integer idUsuario, Integer idGrupo, Integer idTipo) {
 //        PreparedStatement pst = null;
 //        String sql = "update receita set valor=?, id_usuario=?, id_grupo=?, id_tipo=? where idCliente=?";
@@ -137,7 +137,6 @@ public class DAOReceitas {
 //        }
 //        return false;
 //    }
-
 //    public void updateSituacaoReceita(BEANReceitas receita) {
 //        String query = "UPDATE ttDedito SET Situacao = ? WHERE idttDedito = ?";
 //        MySQLDAO.executeQuery(query, receita.getSituacao(), receita.getIdttDebito());
@@ -156,10 +155,9 @@ public class DAOReceitas {
         }
         return result;
     }
-   
+
 //    public static void main(String[] args) {
 //        
 //        DAOReceitas.getInstance().createReceita(null);
 //    }
-    
 }

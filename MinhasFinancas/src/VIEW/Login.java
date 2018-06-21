@@ -173,12 +173,12 @@ public class Login extends javax.swing.JFrame {
                 tela.setUsuario(usuario);
                 tela.setVisible(true);
                 dispose();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
                 txtUsuario.setText("");
                 txtSenha.setText("");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
         }
     }//GEN-LAST:event_botaoLoginActionPerformed

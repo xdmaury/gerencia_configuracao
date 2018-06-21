@@ -1,7 +1,6 @@
 
 import org.jfree.ui.RefineryUtilities;
 
-
 public class NewJDialog extends javax.swing.JDialog {
 
     public NewJDialog(java.awt.Frame parent, boolean modal) {
@@ -66,7 +65,7 @@ public class NewJDialog extends javax.swing.JDialog {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 NewJDialog dialog = new NewJDialog(new javax.swing.JFrame(), true);

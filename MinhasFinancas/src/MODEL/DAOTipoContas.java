@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  * @author Bruno
  */
 public class DAOTipoContas {
+
     private static DAOTipoContas instance;
 
     public DAOTipoContas() {
@@ -28,16 +29,16 @@ public class DAOTipoContas {
         }
         return instance;
     }
-    
-    public ArrayList<BEANTipoContas> findlistTipo(){
+
+    public ArrayList<BEANTipoContas> findlistTipo() {
         return list("SELECT * FROM tipo");
     }
-    
-    public ArrayList<BEANTipoContas> findlistTipo(int id){
+
+    public ArrayList<BEANTipoContas> findlistTipo(int id) {
         return list("SELECT * FROM `tipo` WHERE `id_grupo` = " + id + " ORDER BY `id` ASC ");
     }
-    
-    private ArrayList<BEANTipoContas> list(String query){
+
+    private ArrayList<BEANTipoContas> list(String query) {
         ArrayList<BEANTipoContas> list = new ArrayList<>();
         ResultSet rs = null;
         rs = MySQLDAO.getResultSet(query);
@@ -51,11 +52,10 @@ public class DAOTipoContas {
         }
         return list;
     }
-    
+
 //    public static void main(String[] args) {
 //        DAOTipoContas tipo = new DAOTipoContas();
 //        tipo.findlistTipo(0);
 //        
 //    }
-    
 }

@@ -10,7 +10,7 @@ package MODEL;
  * @author marco
  */
 public class BEANTipo {
-    
+
     private int id;
     private String descricao;
     private int id_grupo;
@@ -47,5 +47,5 @@ public class BEANTipo {
     public void setId_grupo(int id_grupo) {
         this.id_grupo = id_grupo;
     }
-    
+
 }

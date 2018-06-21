@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -11,6 +12,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 
 public class Grafico {
+
     public static void main(String[] args) {
         EventQueue.invokeLater(Grafico::run);
     }

@@ -10,6 +10,7 @@ package MODEL;
  * @author Bruno
  */
 public class BEANTipoContas {
+
     int idTipoConta;
     private String descricao;
     int id_grupo;
@@ -44,5 +45,4 @@ public class BEANTipoContas {
         this.id_grupo = id_grupo;
     }
 
-    
 }

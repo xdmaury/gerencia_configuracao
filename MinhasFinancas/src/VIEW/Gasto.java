@@ -281,10 +281,11 @@ public class Gasto extends javax.swing.JDialog {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabelDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelDespesas, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -353,7 +354,7 @@ public class Gasto extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
 
@@ -411,7 +412,7 @@ public class Gasto extends javax.swing.JDialog {
         /*
         Aqui eu peguei uma lista de todas as contas e coloquei ali manulmente o
         salario/receitas do usuario
-        */
+         */
         listaDespesas = controle.listarDespesasVencidas(usuario.getId(), data);
         listaReceitas = controle.listaReceitasIDusuario(usuario.getId());
 
@@ -605,7 +606,7 @@ public class Gasto extends javax.swing.JDialog {
                 }
             }
             for (int i = 0; i < listaDouble.size(); i++) {
-                dataset.setValue(listaDescricao.get(i) + " = " + listaDouble.get(i) , listaDouble.get(i));
+                dataset.setValue(listaDescricao.get(i) + " = " + listaDouble.get(i), listaDouble.get(i));
             }
         }
 

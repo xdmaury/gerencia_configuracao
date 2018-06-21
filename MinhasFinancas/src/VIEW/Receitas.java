@@ -250,7 +250,7 @@ public class Receitas extends javax.swing.JDialog {
             oReceita.setIdGrupo(listaGrupoContas.get(cb_grupoConta.getSelectedIndex()).getIdGrupoContas());
             oReceita.setIdTipo(listaTipoContas.get(cb_TipoConta.getSelectedIndex()).getIdTipoConta());
             Object oValor = txtValor.getValue();
-            oReceita.setValor(Float.valueOf(oValor.toString()));            
+            oReceita.setValor(Float.valueOf(oValor.toString()));
             oReceita.setIdReceita(-1);
             oReceita.setIdUsuario(usuario.getId());
             try {

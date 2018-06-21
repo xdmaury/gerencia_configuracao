@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * @author marco
  */
 public class DAOTipo {
-    
+
     private static DAOTipo instance;
 
     public DAOTipo() {
@@ -28,10 +28,10 @@ public class DAOTipo {
         }
         return instance;
     }
-    
-    public String getDescricao(int id){
+
+    public String getDescricao(int id) {
         String descricao = null;
-        String query = "SELECT * FROM `tipo` WHERE `id` = "+ id +" ORDER BY `id` ASC";
+        String query = "SELECT * FROM `tipo` WHERE `id` = " + id + " ORDER BY `id` ASC";
         ResultSet rs = MySQLDAO.getResultSet(query);
         try {
             if (rs.next()) {
@@ -43,5 +43,5 @@ public class DAOTipo {
         }
         return descricao;
     }
-    
+
 }

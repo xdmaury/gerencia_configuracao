@@ -377,15 +377,16 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         try {
             float valorGasolina = Float.parseFloat(textVlrGasolina.getText().toString());
             float valorEtanol = Float.parseFloat(textVlrEtanol.getText().toString());
-            
+
             misc m = new misc();
-                lblResultatoGasEta.setText("");
-                textVlrEtanol.setText("");
-                textVlrGasolina.setText("");
-            if (m.gasolinaEtanol(valorGasolina, valorEtanol)) 
+            lblResultatoGasEta.setText("");
+            textVlrEtanol.setText("");
+            textVlrGasolina.setText("");
+            if (m.gasolinaEtanol(valorGasolina, valorEtanol)) {
                 lblResultatoGasEta.setText("Abasteça com etanol!");
-            else
+            } else {
                 lblResultatoGasEta.setText("Abasteça com gasolina");
+            }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro " + erro);
             lblResultatoGasEta.setText("");
@@ -426,7 +427,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
                 situacao = -1;
             }
             atualizaSaldoDisponivel(situacao, inicio, fim);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -500,7 +501,6 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoTelaGastos;
     private javax.swing.JButton BotaoTelaReceitas;
@@ -580,16 +580,16 @@ public class InterfacePrincipal extends javax.swing.JFrame {
 
     private boolean verificaCamposPreenchidos() {
         String inicio = "", fim = "";
-        try{
+        try {
             inicio = jDataAte.getDate().toString();
             fim = jDataDe.getDate().toString();
-        }catch(java.lang.NullPointerException e){
-            
+        } catch (java.lang.NullPointerException e) {
+
         }
-        return !(inicio.isEmpty() || fim.isEmpty()|| !(rbApagar.isSelected() || rbPago.isSelected()));
+        return !(inicio.isEmpty() || fim.isEmpty() || !(rbApagar.isSelected() || rbPago.isSelected()));
     }
-    
-    private String[] periodoAtual(){
+
+    private String[] periodoAtual() {
         Date datah = new Date(System.currentTimeMillis());
         String inicio = null, fim = null;
         inicio = fim = datah.toString();

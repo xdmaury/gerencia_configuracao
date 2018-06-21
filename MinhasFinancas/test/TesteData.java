@@ -8,12 +8,12 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author marcos
  */
 public class TesteData {
+
     public static void main(String[] args) {
         Date datah = new Date(System.currentTimeMillis());
         String inicio = null, fim = null;
