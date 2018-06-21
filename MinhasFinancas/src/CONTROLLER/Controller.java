@@ -10,7 +10,6 @@ public class Controller {
         return DAOGrupoContas.getInstance().findListGrupo();
     }
 
-    
     public static ArrayList<BEANGrupoContas> listaGrupoContas(int id) {
         return DAOGrupoContas.getInstance().findListGrupo(id);
     }
@@ -36,11 +35,11 @@ public class Controller {
     public static ArrayList<BEANDespesas> listarDespesas(int id) {
         return DAODespesas.getInstance().findAlldespesas(id);
     }
-    
+
     public static ArrayList<BEANDespesas> listarDespesas(int id, int situacao, String inicio, String fim) {
         return DAODespesas.getInstance().findAlldespesas(id, situacao, inicio, fim);
     }
-    
+
     public static ArrayList<BEANDespesas> listarDespesasApagar(int id) {
         return DAODespesas.getInstance().findAlldespesasApagar(id);
     }
@@ -48,8 +47,8 @@ public class Controller {
     public static void atualizarSituacao(int situacao, int id) {
         DAODespesas.getInstance().atualizarSituacao(situacao, id);
     }
-    
-    public ArrayList<BEANDespesas> listarDespesasPagas(int idUsuario){
+
+    public ArrayList<BEANDespesas> listarDespesasPagas(int idUsuario) {
         return DAODespesas.getInstance().findAlldespesasPagas(idUsuario);
     }
 
@@ -65,8 +64,8 @@ public class Controller {
     public static void addUsuario(BEANUsuario u) {
         DAOUsuario.getInstance().create(u);
     }
-    
-    public static Boolean vericaUsuario(int id){
+
+    public static Boolean vericaUsuario(int id) {
         return DAOUsuario.getInstance().isExistUsuario(id);
     }
 
@@ -74,8 +73,8 @@ public class Controller {
     public static ArrayList<BEANReceitas> listaReceitasIDusuario(int idUsuario) {
         return DAOReceitas.getInstance().findAllReceitasUsuario(idUsuario);
     }
-    
-    public static void addReceita(BEANReceitas r){
+
+    public static void addReceita(BEANReceitas r) {
         DAOReceitas.getInstance().createReceita(r);
     }
 
@@ -84,9 +83,9 @@ public class Controller {
         public listarDespesas() {
         }
     }
-    
+
     //Tipos
-    public static String getDescricao(int id){
+    public static String getDescricao(int id) {
         return DAOTipo.getInstance().getDescricao(id);
     }
 }
