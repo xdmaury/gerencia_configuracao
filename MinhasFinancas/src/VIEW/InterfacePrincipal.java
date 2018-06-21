@@ -126,7 +126,7 @@ public class InterfacePrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,17 +307,17 @@ public class InterfacePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotaoTelaReceitas)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(BotaoTelaGastos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotaoTelasDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotaoTelaReceitas))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblSaldo)
                                 .addComponent(textSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jDataSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 4, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BotaoTelaGastos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotaoTelasDespesas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -375,17 +375,21 @@ public class InterfacePrincipal extends javax.swing.JFrame {
     private void BotaoVerificarEtGasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVerificarEtGasActionPerformed
         // TODO add your handling code here:
         try {
-            float valorGasolina = Float.parseFloat(textVlrGasolina.getText().toString());
-            float valorEtanol = Float.parseFloat(textVlrEtanol.getText().toString());
+            if (verificaCamposPreenchidos()) {
+                float valorGasolina = Float.parseFloat(textVlrGasolina.getText().toString());
+                float valorEtanol = Float.parseFloat(textVlrEtanol.getText().toString());
 
-            misc m = new misc();
-            lblResultatoGasEta.setText("");
-            textVlrEtanol.setText("");
-            textVlrGasolina.setText("");
-            if (m.gasolinaEtanol(valorGasolina, valorEtanol)) {
-                lblResultatoGasEta.setText("Abasteça com etanol!");
+                misc m = new misc();
+                lblResultatoGasEta.setText("");
+                textVlrEtanol.setText("");
+                textVlrGasolina.setText("");
+                if (m.gasolinaEtanol(valorGasolina, valorEtanol)) {
+                    lblResultatoGasEta.setText("Abasteça com etanol!");
+                } else {
+                    lblResultatoGasEta.setText("Abasteça com gasolina");
+                }
             } else {
-                lblResultatoGasEta.setText("Abasteça com gasolina");
+                JOptionPane.showMessageDialog(null, "Necessario preencher todos os campos em branco!");
             }
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Erro " + erro);
